@@ -3,9 +3,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <asp:TextBox ID="TextBox1"  AutoPostBack="false" runat="server" />
-    <asp:Label ID="Label1"  runat="server" />
-    <asp:Button Text="Submit" runat="server" />
+    <asp:TextBox ID="Recherche"  AutoPostBack="false" runat="server" />
+    <asp:TextBox ID="RechercheAPrixMin"  AutoPostBack="false" runat="server" />
+    <asp:TextBox ID="RechercheAPrixMax"  AutoPostBack="false" runat="server" />
+    <asp:Button Text="Recherche" runat="server" />
 
     <asp:Repeater ID="rpResultats" runat="server">
         <ItemTemplate>
@@ -16,7 +17,7 @@
                 </tr>
                 <tr>
                     <td>Img :</td>
-                    <td><img scr="<%# "data:image/png;base64,"+ Eval("PhotoPrincipaleBase64") %>" /></td>
+                    <td><img src="<%# "data:image/png;base64,"+ Eval("PhotoPrincipaleBase64") %>" /></td>
                 </tr>
                 <tr>
                     <td>Titre :</td>

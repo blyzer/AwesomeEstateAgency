@@ -24,43 +24,52 @@ namespace ClientWeb
                     client.Open();
                     
                     ServiceAgence.CriteresRechercheBiensImmobiliers a = new ServiceAgence.CriteresRechercheBiensImmobiliers();
-                    a.TitreContient = Label1.Text;
-                    a.AdresseContient = "";
-                    a.CodePostal = "";
-                    a.DateMiseEnTransaction1 = null;
-                    a.DateMiseEnTransaction2 = null;
-                    a.DateTransaction1 = null;
-                    a.DateTransaction2 = null;
-                    a.DescriptionContient = "";
-                    a.EnergieChauffage = null;
-                    a.MontantCharges1 = -1;
-                    a.MontantCharges2 = -1;
-                    a.NbEtages1 = -1;
-                    a.NbEtages2 = -1;
-                    a.NbPieces1 = -1;
-                    a.NbPieces2 = -1;
-                    a.NumEtage1 = -1;
-                    a.NumEtage2 = -1;
-                    a.Prix1 = -1;
-                    a.Prix2 = -1;
-                    a.Surface1 = -1;
-                    a.Surface2 = -1;
-                    a.TransactionEffectuee = null;
-                    a.Tris = null;
-                    a.TypeBien = null;
-                    a.TypeChauffage = null;
-                    a.TypeTransaction = null;
-                    a.Ville = "";
-
+                    //LRecherche.Text = Recherche.Text;
+                    Initcriteres(a);
+                    a.TitreContient = Recherche.Text;
+                    if (RechercheAPrixMin.Text != null)
+                    {
+                        a.Prix1 = (double)Double.Parse(RechercheAPrixMin.Text);
+                    }
                     ServiceAgence.ResultatListeBiensImmobiliers res = client.LireListeBiensImmobiliers(a, 0, 2);
-
-                    //List<ServiceAgence.BienImmobilier> liste = new List<ServiceAgence.BienImmobilier>();
+                    
                     this.rpResultats.DataSource = res.Liste.List;
                     this.rpResultats.DataBind();
                     //this.rpResultats.Items[0].FindControl("");
                     client.Close();
                 }
             }
+        }
+
+        private void Initcriteres(ServiceAgence.CriteresRechercheBiensImmobiliers c)
+        {
+            c.TitreContient = "";
+            c.AdresseContient = "";
+            c.CodePostal = "";
+            c.DateMiseEnTransaction1 = null;
+            c.DateMiseEnTransaction2 = null;
+            c.DateTransaction1 = null;
+            c.DateTransaction2 = null;
+            c.DescriptionContient = "";
+            c.EnergieChauffage = null;
+            c.MontantCharges1 = -1;
+            c.MontantCharges2 = -1;
+            c.NbEtages1 = -1;
+            c.NbEtages2 = -1;
+            c.NbPieces1 = -1;
+            c.NbPieces2 = -1;
+            c.NumEtage1 = -1;
+            c.NumEtage2 = -1;
+            c.Prix1 = -1;
+            c.Prix2 = -1;
+            c.Surface1 = -1;
+            c.Surface2 = -1;
+            c.TransactionEffectuee = null;
+            c.Tris = null;
+            c.TypeBien = null;
+            c.TypeChauffage = null;
+            c.TypeTransaction = null;
+            c.Ville = "";
         }
     }
 
