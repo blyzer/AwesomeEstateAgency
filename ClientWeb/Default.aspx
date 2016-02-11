@@ -10,7 +10,7 @@
 
     <asp:Repeater ID="rpResultats" runat="server">
         <ItemTemplate>
-            <table>
+            <table border="1">
                 <tr>
                     <td>Titre :</td>
                     <td><%# Eval("Titre") %></td>
@@ -32,6 +32,6 @@
         </SeparatorTemplate>
     </asp:Repeater>
 
-
+    <center>Test</center>
 
 </asp:Content>
