@@ -1,0 +1,10 @@
+packages
+ClientSQLite
+ClientWeb/*
+ClientWPF
+ServiceWCF
+*.sln
+*.suo
+!ClientWeb/*.aspx
+!ClientWeb/*.cs
+!ClientWeb/*.aspx.designer.cs
