@@ -16,7 +16,7 @@ namespace ClientWeb
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            if (this.IsPostBack)
+            //if (this.IsPostBack)
             {
 
                 // Label1.Text = "<b>" + TextBox1.Text.ToUpper() + "</b>";
@@ -61,7 +61,12 @@ namespace ClientWeb
                     ServiceAgence.ResultatListeBiensImmobiliers res = client.LireListeBiensImmobiliers(a, 0, 2);
 
                     Label1.Text = res.Liste.List.First().Titre;
-                    
+
+                    //List<ServiceAgence.BienImmobilier> liste = new List<ServiceAgence.BienImmobilier>();
+                    this.rpResultats.DataSource = res.Liste.List;
+                    this.rpResultats.DataBind();
+
+
                     client.Close();
                 }
             }

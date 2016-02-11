@@ -7,4 +7,20 @@
     <asp:Label ID="Label1"  runat="server" />
     <asp:Button Text="Submit" runat="server" />
 
+    <asp:Repeater ID="rpResultats" runat="server">
+        <ItemTemplate>
+            <table>
+                <tr>
+                    <td>Titre :</td>
+                    <td><%# Eval("Titre"); %></td>
+                </tr>
+            </table>
+        </ItemTemplate>
+        <SeparatorTemplate>
+            <hr />
+        </SeparatorTemplate>
+    </asp:Repeater>
+
+
+
 </asp:Content>
