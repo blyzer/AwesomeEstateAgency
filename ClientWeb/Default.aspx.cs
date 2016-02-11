@@ -24,7 +24,7 @@ namespace ClientWeb
                     client.Open();
                     
                     ServiceAgence.CriteresRechercheBiensImmobiliers a = new ServiceAgence.CriteresRechercheBiensImmobiliers();
-                    a.TitreContient = "";
+                    a.TitreContient = Label1.Text;
                     a.AdresseContient = "";
                     a.CodePostal = "";
                     a.DateMiseEnTransaction1 = null;
@@ -58,7 +58,6 @@ namespace ClientWeb
                     this.rpResultats.DataSource = res.Liste.List;
                     this.rpResultats.DataBind();
                     //this.rpResultats.Items[0].FindControl("");
-
                     client.Close();
                 }
             }

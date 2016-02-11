@@ -15,9 +15,15 @@
                     <td><%# Eval("Titre") %></td>
                 </tr>
                 <tr>
-                    <td>Titre :</td>
-                    <td><%# Eval("Prix") %></td>
+                    <td>Img :</td>
+                    <td><img scr="<%# "data:image/png;base64,"+ Eval("PhotoPrincipaleBase64") %>" /></td>
                 </tr>
+                <tr>
+                    <td>Titre :</td>
+                    <td><%# ((double)Eval("Prix")==0) ? "Pas de prix" : Eval("Prix").ToString() %></td>
+                </tr>
+                
+
             </table>
         </ItemTemplate>
         <SeparatorTemplate>
