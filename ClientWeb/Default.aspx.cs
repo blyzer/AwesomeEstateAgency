@@ -57,7 +57,7 @@ namespace ClientWeb
                     //List<ServiceAgence.BienImmobilier> liste = new List<ServiceAgence.BienImmobilier>();
                     this.rpResultats.DataSource = res.Liste.List;
                     this.rpResultats.DataBind();
-
+                    //this.rpResultats.Items[0].FindControl("");
 
                     client.Close();
                 }
