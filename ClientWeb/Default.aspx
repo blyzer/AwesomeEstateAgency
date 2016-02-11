@@ -12,7 +12,11 @@
             <table>
                 <tr>
                     <td>Titre :</td>
-                    <td><%# Eval("Titre"); %></td>
+                    <td><%# Eval("Titre") %></td>
+                </tr>
+                <tr>
+                    <td>Titre :</td>
+                    <td><%# Eval("Prix") %></td>
                 </tr>
             </table>
         </ItemTemplate>

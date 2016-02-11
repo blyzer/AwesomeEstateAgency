@@ -16,21 +16,15 @@ namespace ClientWeb
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            //if (this.IsPostBack)
+            if (this.IsPostBack)
             {
-
-                // Label1.Text = "<b>" + TextBox1.Text.ToUpper() + "</b>";
-
-              //  List<ServiceAgence.BienImmobilier> liste = null;
-
-
                 using (ServiceAgence.AgenceClient client = new ServiceAgence.AgenceClient())
                 {
 
                     client.Open();
                     
                     ServiceAgence.CriteresRechercheBiensImmobiliers a = new ServiceAgence.CriteresRechercheBiensImmobiliers();
-                   a.TitreContient = "o";
+                   a.TitreContient = "";
                    a.AdresseContient = "";
                    a.CodePostal = "";
                    a.DateMiseEnTransaction1 = null;
@@ -59,8 +53,6 @@ namespace ClientWeb
                    a.Ville = "";
 
                     ServiceAgence.ResultatListeBiensImmobiliers res = client.LireListeBiensImmobiliers(a, 0, 2);
-
-                    Label1.Text = res.Liste.List.First().Titre;
 
                     //List<ServiceAgence.BienImmobilier> liste = new List<ServiceAgence.BienImmobilier>();
                     this.rpResultats.DataSource = res.Liste.List;
