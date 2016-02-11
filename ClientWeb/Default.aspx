@@ -6,7 +6,7 @@
     <asp:TextBox ID="TextBox1"  AutoPostBack="false" runat="server" />
     <asp:Label ID="Label1"  runat="server" />
     <asp:Button Text="Submit" runat="server" />
-
+    <h1>Biens</h1>
     <asp:Repeater ID="rpResultats" runat="server">
         <ItemTemplate>
             <table>
