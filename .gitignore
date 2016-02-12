@@ -8,7 +8,6 @@ ServiceWCF
 !ClientWeb/*.aspx
 !ClientWeb/*.cs
 !ClientWeb/*.aspx.designer.cs
-!ClientWeb/*.html
 !ClientWeb/css/
 !ClientWeb/js/
 !ClientWeb/images/

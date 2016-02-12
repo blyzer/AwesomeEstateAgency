@@ -13,31 +13,13 @@ namespace ClientWeb {
     public partial class Default {
         
         /// <summary>
-        /// Contrôle Recherche.
+        /// Contrôle Searchterm.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Recherche;
-        
-        /// <summary>
-        /// Contrôle RechercheAPrixMin.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox RechercheAPrixMin;
-        
-        /// <summary>
-        /// Contrôle RechercheAPrixMax.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox RechercheAPrixMax;
+        protected global::System.Web.UI.WebControls.TextBox Searchterm;
         
         /// <summary>
         /// Contrôle rpResultats.
