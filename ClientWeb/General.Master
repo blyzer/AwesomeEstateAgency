@@ -17,10 +17,10 @@
 			<menu></menu>
 			<nav class="wrap">
 				<span>
-					<a class="selected" href="">Accueil</a> /
+					<a class="selected" href="Default.aspx">Accueil</a> /
 					<a href="Catalogue.aspx">Catalogue</a> /
-					<a href="">Ajouter un bien</a> /
-					<a href="">Connexion</a>
+					<a href="Bien.aspx">Ajouter un bien</a> /
+					<a href="Connexion.aspx">Connexion</a>
 				</span>
 			</nav>
 		</header>
