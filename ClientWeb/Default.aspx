@@ -8,7 +8,7 @@
 
 	<figure class="fullscreen">
 		<h1>L'incroyable agence immobilière !</h1>
-		<div>
+		<div id="searchbox">
 			<form action="Catalogue.aspx" runat="server">
 				<asp:TextBox ID="Searchterm" placeholder="Quel est votre rêve ?" class="" AutoPostBack="false" runat="server"  />
 				<asp:Button Text="&#x1f50d;" runat="server" />

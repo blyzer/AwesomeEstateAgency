@@ -86,7 +86,7 @@ figure h1 {
 	text-shadow: 0 0 5px #263238, 0 0 10px #263238, 0 0 15px #263238, 2px 0 0 #455a64, -2px 0 0 #455a64, 0 2px 0 #455a64, 0 -2px 0 #455a64, 1px 1px #455a64, -1px -1px 0 #455a64, 1px -1px 0 #455a64, -1px 1px 0 #455a64;
 }
 
-figure div {
+figure #searchbox {
 	
 	margin: 50px auto 0;
 	width:400px;
@@ -94,7 +94,7 @@ figure div {
 	height:50px;
 }
 
-figure div input[type=text] {
+figure input[type=text] {
 	border:0;
 	height:40px;
 	line-height:40px;
@@ -105,7 +105,7 @@ figure div input[type=text] {
 	float:left;
 	width:330px;
 }
-figure div input[type=submit] {
+figure input[type=submit] {
 	width:50px;
 	height:50px;
 	background: #8bc34a;
