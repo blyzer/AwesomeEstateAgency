@@ -16,8 +16,6 @@
                 <div class="row">
 
                     <asp:TextBox ID="Recherche" class="" AutoPostBack="false" runat="server" />
-                    <asp:TextBox ID="RechercheAPrixMin" AutoPostBack="false" runat="server" />
-                    <asp:TextBox ID="RechercheAPrixMax" AutoPostBack="false" runat="server" />
                     <asp:Button Text="Recherche" runat="server" />
 
                     <h3>Recherche :</h3>
@@ -25,6 +23,20 @@
                     <br />
                     <h3>Recherche avancée:</h3>
                     <br />
+                    <p>RechercheAdresse:</p>
+                    <asp:TextBox ID="RechercheAdresse" class="" AutoPostBack="false" runat="server" />
+                    <br />
+                    <p>RechercheCodePostal:</p>
+                    <asp:TextBox ID="RechercheCodePostal" class="" AutoPostBack="false" runat="server" />
+                    <br />
+                    <p>RechercheDescription:</p>
+                    <asp:TextBox ID="RechercheDescription" class="" AutoPostBack="false" runat="server" />
+                    <br />
+                    <p>RechercheVille:</p>
+                    <asp:TextBox ID="RechercheVille" class="" AutoPostBack="false" runat="server" />
+                    <br />
+                    
+                    
 
                     <p>Prix min :</p>
                     <asp:TextBox ID="RecherchePrixMin" AutoPostBack="false" runat="server" />
@@ -32,19 +44,20 @@
                     <asp:TextBox ID="RecherchePrixMax" AutoPostBack="false" runat="server" />
 
                     <p>Surface min :</p>
-                    <asp:TextBox ID="RechercheASurfaceMin" AutoPostBack="false" runat="server" />
+                    <asp:TextBox ID="RechercheSurfaceMin" AutoPostBack="false" runat="server" />
                     <p>Surface max :</p>
-                    <asp:TextBox ID="RechercheASurfaceMax" AutoPostBack="false" runat="server" />
+                    <asp:TextBox ID="RechercheSurfaceMax" AutoPostBack="false" runat="server" />
 
                     <p>NbEtage min :</p>
-                    <asp:TextBox ID="RechercheAEtageMin" AutoPostBack="false" runat="server" />
-                    <h3>NbEtage max :</h3>
-                    <asp:TextBox ID="RechercheAEtageMax" AutoPostBack="false" runat="server" />
+                    <asp:TextBox ID="RechercheEtageMin" AutoPostBack="false" runat="server" />
+                    <p>NbEtage max :</p>
+                    <asp:TextBox ID="RechercheEtageMax" AutoPostBack="false" runat="server" />
 
                     <p>NbPiece min :</p>
-                    <asp:TextBox ID="RechercheAPieceMin" AutoPostBack="false" runat="server" />
+                    <asp:TextBox ID="RecherchePieceMin" AutoPostBack="false" runat="server" />
                     <p>NbPiece max :</p>
-                    <asp:TextBox ID="RechercheAPieceMax" AutoPostBack="false" runat="server" />
+                    <asp:TextBox ID="RecherchePieceMax" AutoPostBack="false" runat="server" />
+                    
 
                     <p>Type Bien :</p>
                     <asp:DropDownList ID="DropDownListTypeBien" runat="server">
