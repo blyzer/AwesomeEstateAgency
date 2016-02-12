@@ -1,0 +1,351 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+body,html {
+	margin:0;
+	width:100%;
+	height:100%;
+	font-family: Roboto, sans-serif;
+	color: #263238;
+}
+
+input {
+	font-family: Roboto, sans-serif;
+}
+
+header {
+	width:inherit;
+	position:fixed;
+	top:0;
+	z-index: 10;
+}
+
+menu {
+	width:inherit;
+	height:80px;
+	background: #8bc34a;
+	margin:0;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+}
+
+nav {
+	height:80px;
+
+    margin: -50px auto 0;
+	
+	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+	font-size:18px;
+	line-height:80px;
+	text-align: center;
+	background: #fff url(../images/logo.png) no-repeat;
+	}
+	
+a {
+	text-decoration: none;
+	color: #263238;
+	}
+	
+a:hover {
+	color: #78909c;
+}
+
+.selected {
+	font-weight:bold;
+	font-size:20px;
+}
+
+.selected:hover {
+	color: #263238;
+}
+
+
+figure {
+	margin:0;
+	width:inherit;
+	height:30%;
+	background-image:url(../images/jumbotron.jpg);
+	background-size:cover;
+	background-position: center center;
+
+
+}
+
+.fullscreen {
+	height:100%;
+}
+
+figure h1 {
+    color: #fff;
+    display: inline-block;
+    font-size: 50px;
+    font-weight: bold;
+    margin: 20% 0 0;
+    text-align: center;
+    width: inherit;
+	/*text-shadow: , 0 0 20px #263238, 0 0 30px #263238, 0 0 40px #263238,*/
+	text-shadow: 0 0 5px #263238, 0 0 10px #263238, 0 0 15px #263238, 2px 0 0 #455a64, -2px 0 0 #455a64, 0 2px 0 #455a64, 0 -2px 0 #455a64, 1px 1px #455a64, -1px -1px 0 #455a64, 1px -1px 0 #455a64, -1px 1px 0 #455a64;
+}
+
+figure div {
+	
+	margin: 50px auto 0;
+	width:400px;
+	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+	height:50px;
+}
+
+figure div input[type=text] {
+	border:0;
+	height:40px;
+	line-height:40px;
+	padding: 5px 10px;
+	font-size:20px;
+	margin:0;
+	display:block;
+	float:left;
+	width:330px;
+}
+figure div input[type=submit] {
+	width:50px;
+	height:50px;
+	background: #8bc34a;
+	color: white;
+	border:0;
+
+	line-height:30px;
+	padding: 5px;
+	font-size:20px;
+	margin:0;
+	display:block;
+	float:left;	
+}
+
+aside {
+	width:inherit;
+	height:200px;
+	background-color: #eceff1;
+	
+}
+
+#main {
+	width:inherit;
+	background-color: #eceff1;
+	padding: 30px 0 0;
+
+}
+
+h2 {
+	
+	border-left:4px solid #8bc34a;
+	padding-left:8px;
+	margin: 0 0 30px;
+	text-transform: uppercase;
+}
+
+footer {
+	width:inherit;
+}
+
+footer section:first-child {
+	width:inherit;
+	height:600px;
+	background-image:url(../images/footer.jpg);
+	background-size:cover;
+	background-position:50% 50%;
+}
+footer section:first-child + section {
+	width:inherit;
+	height:60px;
+	line-height:60px;
+	background-color: #263238;
+	color: white;
+	text-align:center;
+}
+
+.tile {
+	
+	width:100%;
+	background: #fff;
+	min-height:80px; /*dbg*/
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+	
+}
+
+.wrap {
+	width:1140px;	
+}
+
+.tilecontainer {
+	margin: 0 auto;
+	padding: 0;
+	clear:both;
+}
+
+.clear {
+	clear:both;
+}
+
+.tilecolumn {
+	width:23.5%;
+	float:left;
+	padding:0 0 2% 2%;
+}
+
+.tilecolumn:nth-child(4n+1) {
+	padding-left: 0;
+}
+
+#more {
+	clear:both;
+	margin:0;
+}
+
+#more a{
+	display:block;
+	margin: 50px auto 0;
+	width:200px;
+	height:40px;
+	line-height:40px;
+	background-color: transparent;
+	font-weight:bold;
+	color:#8bc34a;
+	text-align:center;
+	border-radius:5px;
+	border: 1px solid #8bc34a;
+	}
+	
+#more a:hover {
+	background-color:#8bc34a;
+	color:#fff;
+	transition: background-color 0.3s, color 0.3s;
+
+}
+
+.tile {
+	background-size:cover;
+	background-position:50% 50%;
+	height:250px;
+	width:100%;
+	overflow:hidden;
+	position: relative;
+	display:block;
+}
+
+.title {
+	font-weight:bold;
+}
+
+.tile:hover  .informations{
+	background: #8bc34a;
+	opacity: 1;
+}
+
+.informations   {
+	position: absolute;
+	bottom:0;
+	background: #263238;
+	opacity:0.8;
+	color: #fff;
+	width: 100%;
+	transition: background 0.2s, opacity 0.2s;
+}
+
+.informations .onerow, .informations  .tworow {
+	line-height:20px;
+}
+
+.informations .onerow {
+    padding: 2.5px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.informations .onerow span {
+    padding: 0 5px;
+}
+
+.informations .tworow {
+	width:50%;
+	float:left;
+	text-align:center;
+	padding: 2.5px 0; 
+}
+
+.center {
+	text-align: center;
+}
+
+.off {
+	position: absolute;
+	width:100%;
+	opacity: 0;
+	transition: opacity 0.2s;
+}
+.on {
+	opacity: 1;
+	transition: opacity 0.2s;
+}
+
+.tile:hover  .on{
+	opacity: 0;
+}
+.tile:hover  .off{
+	opacity: 1;
+}
+
+@media screen and (max-width: 1200px) and (min-width: 800px) {
+  .wrap {
+	  width:780px;
+  }
+  
+	.tilecolumn {
+		width:30%;
+		float:left;
+		padding:0 0 5% 5%;
+	}
+	.tilecolumn:nth-child(3n+1) {
+		padding-left: 0 !important;
+	}
+	.tilecolumn:nth-child(4n+1) {
+		padding-left: 5%;
+	}
+	
+	figure h1 {
+		font-size:40px;
+	}
+}
+
+@media screen and (max-width: 800px) {
+  .wrap {
+	  width:480px;
+  }
+  
+	.tilecolumn {
+		width:48%;
+		float:left;
+		padding:0 0 3.5% 3.5%;
+	}
+	.tilecolumn:nth-child(2n+1) {
+		padding-left: 0 !important;
+	}
+	.tilecolumn:nth-child(3n+1) {
+		padding-left: 3.5%;
+	}
+	.tilecolumn:nth-child(4n+1) {
+		padding-left: 3.5%;
+	}
+	
+	figure h1 {
+		font-size:25px;
+		margin: 200px 0 0;
+	}
+	nav {
+		background-image:url(../images/minilogo.png);		text-align:right;
+	}
+	nav span {
+		margin-right: 10px;
+
+	}
+}

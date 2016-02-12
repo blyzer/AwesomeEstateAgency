@@ -1,0 +1,40 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="General.master.cs" Inherits="ClientWeb.General" %>
+
+<!doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Awesome Estate Agency</title>
+		<link rel="stylesheet" href="css/style.css">
+		<script src="js/script.js"></script>
+        <asp:ContentPlaceHolder ID="head" runat="server">
+        </asp:ContentPlaceHolder>
+	</head>
+	<body>
+	
+		<header>
+			<menu></menu>
+			<nav class="wrap">
+				<span>
+					<a class="selected" href="">Accueil</a> /
+					<a href="Catalogue.aspx">Catalogue</a> /
+					<a href="">Ajouter un bien</a> /
+					<a href="">Connexion</a>
+				</span>
+			</nav>
+		</header>
+
+        <asp:ContentPlaceHolder ID="main" runat="server">
+            <figure></figure>
+            <div id="main">Il manque du code</div>
+        </asp:ContentPlaceHolder>
+
+		
+		<footer>
+			<section></section>
+			<section>&copy The Awesome Estate Agency - 2016 - Made with &#x2764; in Bourg-en-Bresse</section>
+		</footer>
+
+	</body>
+</html>
