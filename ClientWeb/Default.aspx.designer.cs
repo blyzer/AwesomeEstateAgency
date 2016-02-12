@@ -7,11 +7,13 @@
 // </généré automatiquement>
 //------------------------------------------------------------------------------
 
-namespace ClientWeb {
-    
-    
-    public partial class Default {
-        
+namespace ClientWeb
+{
+
+
+    public partial class Default
+    {
+
         /// <summary>
         /// Contrôle Searchterm.
         /// </summary>
@@ -20,7 +22,7 @@ namespace ClientWeb {
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox Searchterm;
-        
+
         /// <summary>
         /// Contrôle rpResultats.
         /// </summary>
