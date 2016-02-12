@@ -7,7 +7,7 @@
     <asp:TextBox ID="RechercheAPrixMin"  AutoPostBack="false" runat="server" />
     <asp:TextBox ID="RechercheAPrixMax"  AutoPostBack="false" runat="server" />
     <asp:Button Text="Recherche" runat="server" />
-    <h1>Hello world</h1>
+    <h1>Hello world -> Hello</h1>
     <asp:Repeater ID="rpResultats" runat="server">
         <ItemTemplate>
             <table border="1">
