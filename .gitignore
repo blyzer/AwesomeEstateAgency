@@ -16,3 +16,5 @@ ServiceWCF
 !ClientWeb/js/*
 !ClientWeb/images/*
 *.csproj
+ClientWeb/ClientWeb.csproj
+ClientWeb/ClientWeb.csproj
