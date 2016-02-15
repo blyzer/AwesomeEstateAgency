@@ -66,6 +66,11 @@
                     <asp:DropDownList ID="DropDownListTypeChauffage" runat="server">
                     </asp:DropDownList>
                     <br />
+                    <p>Energie Chauffage :</p>
+                    <asp:DropDownList ID="DropDownListEnergieChauffage" runat="server">
+                    </asp:DropDownList>
+                    <br />
+
                     <asp:Button Text="Recherche" runat="server" />
 
 
