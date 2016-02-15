@@ -30,8 +30,8 @@ namespace ClientWeb
                     client.Open();
                     ServiceAgence.CriteresRechercheBiensImmobiliers a = new ServiceAgence.CriteresRechercheBiensImmobiliers();
                     Initcriteres(a);
-
-                    a.TitreContient = Recherche.Text;
+					
+                    a.TitreContient = RechercheTitre_simple.Text;
                     a.AdresseContient = RechercheAdresse.Text;
                     a.CodePostal = RechercheCodePostal.Text;
                     a.DescriptionContient = RechercheDescription.Text;

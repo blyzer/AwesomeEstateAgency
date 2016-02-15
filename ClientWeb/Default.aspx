@@ -18,7 +18,7 @@
 		
 
 	<div id="main">
-		<div class="tilecontainer wrap">
+		<div class="container wrap">
 			
 			<h2>Les derniers biens</h2>
 			

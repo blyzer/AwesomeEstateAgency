@@ -1,11 +1,13 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 
+
 body,html {
 	margin:0;
 	width:100%;
 	height:100%;
 	font-family: Roboto, sans-serif;
 	color: #263238;
+	background-color: #eceff1;
 }
 
 input {
@@ -86,7 +88,7 @@ figure h1 {
 	text-shadow: 0 0 5px #263238, 0 0 10px #263238, 0 0 15px #263238, 2px 0 0 #455a64, -2px 0 0 #455a64, 0 2px 0 #455a64, 0 -2px 0 #455a64, 1px 1px #455a64, -1px -1px 0 #455a64, 1px -1px 0 #455a64, -1px 1px 0 #455a64;
 }
 
-figure #searchbox {
+#searchbox {
 	
 	margin: 50px auto 0;
 	width:400px;
@@ -94,7 +96,7 @@ figure #searchbox {
 	height:50px;
 }
 
-figure input[type=text] {
+#searchbox input[type=text] {
 	border:0;
 	height:40px;
 	line-height:40px;
@@ -105,7 +107,7 @@ figure input[type=text] {
 	float:left;
 	width:330px;
 }
-figure input[type=submit] {
+#searchbox input[type=submit] {
 	width:50px;
 	height:50px;
 	background: #8bc34a;
@@ -129,9 +131,9 @@ aside {
 
 #main {
 	width:inherit;
-	background-color: #eceff1;
-	padding: 30px 0 0;
 
+	padding: 30px 0 0;
+	margin-bottom:30px;
 }
 
 h2 {
@@ -140,6 +142,13 @@ h2 {
 	padding-left:8px;
 	margin: 0 0 30px;
 	text-transform: uppercase;
+}
+
+h3 {
+	margin: 0 0 30px;
+	text-transform: uppercase;
+    border-bottom: 2px solid #8bc34a;
+    padding: 5px 0 20px;
 }
 
 footer {
@@ -175,10 +184,14 @@ footer section:first-child + section {
 	width:1140px;	
 }
 
-.tilecontainer {
+.container {
 	margin: 0 auto;
 	padding: 0;
 	clear:both;
+}
+
+form {
+	width:inherit;
 }
 
 .clear {
@@ -189,6 +202,7 @@ footer section:first-child + section {
 	width:23.5%;
 	float:left;
 	padding:0 0 2% 2%;
+	box-sizing: content-box;
 }
 
 .tilecolumn:nth-child(4n+1) {
@@ -348,4 +362,147 @@ footer section:first-child + section {
 		margin-right: 10px;
 
 	}
+}
+
+.panel {
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+	border-top: 4px solid #8bc34a;
+	background-color: white;
+}
+
+#userform {
+    
+    margin: 0 auto;
+    padding: 0;
+    width: 400px;
+	text-align:center;
+
+}
+
+#userform .marger {
+	padding: 30px 40px;
+}
+
+hr {
+    border: 1px solid #eceff1;
+}
+
+#userform hr {
+	margin:20px 0;
+}
+
+#userform .boxinput {
+
+    margin: 10px 0;
+    padding: 5px;
+    width: 310px;
+}
+
+#userform .boxsubmit {
+
+    border-radius: 4px;
+    margin: 15px auto;
+    width: 175px;
+
+	}
+
+.boxinput {
+    border: 1px solid #cfd8dc;
+    font-size: 16px;
+    height: 30px;
+    line-height: 30px;
+    padding: 5px;
+}
+
+.boxdropdown {
+    border: 1px solid #cfd8dc;
+    font-size: 16px;
+    height: 40px;
+    line-height: 40px;
+    padding: 5px;
+}
+
+.boxdropdown option {
+	padding: 5px;
+}
+
+.boxsubmit {
+    background-color: #8bc34a;
+    border: 1px solid #8bc34a;
+    color: #fff;
+    display: block;
+    height: 42px;
+	font-size: 16px;
+	cursor:pointer;
+}
+
+fieldset {
+	border: 1px solid #cfd8dc;
+	margin-bottom:10px;
+}
+
+fieldset input {
+	width:40%;
+}
+
+#searchform {
+	
+}
+
+#searchform .marger {
+	padding: 20px;
+}
+
+.flex-line {
+	display:flex;
+}
+
+.extend {
+	flex: 1 1 0;
+	width:100%;
+}
+
+
+.serachtype_selector {
+	color: #8bc34a;
+	cursor:pointer;
+}
+
+legend {
+    font-weight: bold;
+}
+
+
+#searchform table td:first-child {
+    width: 150px;
+}
+#searchform .boxdropdown {
+	width: 212px;
+}
+
+#searchform .boxinput {
+	width:200px;
+
+}
+
+#searchtype {
+	display:none;
+}
+
+#simpleSearch {
+	display:none;
+}
+
+
+
+#searchtype:checked + #simpleSearch {
+	display:block;
+}
+
+#advancedSearch {
+	display:block;
+}
+
+#searchtype:checked + #simpleSearch + #advancedSearch {
+	display:none;
 }
