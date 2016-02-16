@@ -15,9 +15,9 @@
 				<div class="title">My super title</div>
 			</div>
 
-			<div id="infos">
+			<div id="infos" class="categories">
 
-				<div class="info">
+				<div class="category">
 					<fieldset>
 						<legend>Information générale</legend>
 						<table>
@@ -32,7 +32,7 @@
 						</table>
 					</fieldset>
 				</div>
-				<div class="info">
+				<div class="category">
 					<fieldset>
 						<legend>Information générale</legend>
 						<table>
@@ -47,7 +47,7 @@
 						</table>
 					</fieldset>
 				</div>
-				<div class="info">
+				<div class="category">
 					<fieldset>
 						<legend>Information générale</legend>
 						<table>
@@ -62,7 +62,7 @@
 						</table>
 					</fieldset>
 				</div>
-				<div class="info">
+				<div class="category">
 					<fieldset>
 						<legend>Information générale</legend>
 						<table>
@@ -77,7 +77,7 @@
 						</table>
 					</fieldset>
 				</div>
-				<div class="info">
+				<div class="category">
 					<fieldset>
 						<legend>Information générale</legend>
 						<table>
@@ -92,7 +92,7 @@
 						</table>
 					</fieldset>
 				</div>
-				<div class="info">
+				<div class="category">
 					<fieldset>
 						<legend>Information générale</legend>
 						<table>
