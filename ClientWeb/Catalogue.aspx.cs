@@ -16,8 +16,9 @@ namespace ClientWeb
         {
             if (!this.IsPostBack)
             {
-                Load_DropDownListItem<ServiceAgence.BienImmobilierBase.eTypeBien>(DropDownListTypeBien);
-                Load_DropDownListItem<ServiceAgence.BienImmobilierBase.eTypeChauffage>(DropDownListTypeChauffage);
+                Load_DropDownListItem<ServiceAgence.BienImmobilierBase.eTypeBien>(DropDownListTypeBien,true);
+                Load_DropDownListItem<ServiceAgence.BienImmobilierBase.eTypeChauffage>(DropDownListTypeChauffage,false);
+                Load_DropDownListItem<ServiceAgence.BienImmobilierBase.eTypeChauffage>(DropDownListEnergieChauffage, false);
             }
 
             if (this.IsPostBack)
@@ -37,9 +38,9 @@ namespace ClientWeb
                     a.Ville = RechercheVille.Text;
 
 
-                    a.EnergieChauffage = (ServiceAgence.BienImmobilierBase.eEnergieChauffage)AffectSelectedValue(DropDownListTypeBien);
-                    a.TypeBien = (ServiceAgence.BienImmobilierBase.eTypeBien)AffectSelectedValue(DropDownListTypeBien);
-                    a.TypeChauffage = (ServiceAgence.BienImmobilierBase.eTypeChauffage)AffectSelectedValue(DropDownListTypeChauffage);
+                    //a.EnergieChauffage = (ServiceAgence.BienImmobilierBase.eEnergieChauffage)AffectSelectedValue(DropDownListEnergieChauffage);
+                    //a.TypeBien = (ServiceAgence.BienImmobilierBase.eTypeBien)AffectSelectedValue(DropDownListTypeBien);
+                    //a.TypeChauffage = (ServiceAgence.BienImmobilierBase.eTypeChauffage)AffectSelectedValue(DropDownListTypeChauffage);
 
 
                     // Recherche avancée
@@ -97,7 +98,7 @@ namespace ClientWeb
             c.Ville = "";
         }
 
-        public void Load_DropDownListItem<T>(DropDownList ddli)
+        public void Load_DropDownListItem<T>(DropDownList ddli,bool Tous)
         {
             ddli.Items.Clear();
             string[] names = Enum.GetNames(typeof(T));
@@ -105,6 +106,11 @@ namespace ClientWeb
             {
                 ddli.Items.Add(new ListItem(Enum.GetName(typeof(T), value), value.ToString()));
             }
+            if (Tous)
+            {
+                ddli.Items.Add(new ListItem("Tous", "-1"));
+            }
+            
 
         }
 
