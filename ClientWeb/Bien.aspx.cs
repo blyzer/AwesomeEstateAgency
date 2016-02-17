@@ -11,7 +11,22 @@ namespace ClientWeb
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
+            ServiceAgence.BienImmobilier bien;
+            using (ServiceAgence.AgenceClient client = new ServiceAgence.AgenceClient())
+            {
 
-		}
+                client.Open();
+
+                ServiceAgence.ResultatBienImmobilier res = client.LireDetailsBienImmobilier(Request.QueryString["id"]);
+                bien = res.Bien;
+
+                BienTitre.Text = bien.Titre.ToString();
+                BienAdresse.Text= bien.Adresse.ToString();
+                BienCP.Text=bien.CodePostal.ToString();
+                BienDesc.Text = bien.Description.ToString();
+
+                client.Close();
+            }
+        }
 	}
 }

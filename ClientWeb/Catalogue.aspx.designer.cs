@@ -22,6 +22,15 @@ namespace ClientWeb {
         protected global::System.Web.UI.HtmlControls.HtmlForm form2;
         
         /// <summary>
+        /// Contrôle dbg.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label dbg;
+        
+        /// <summary>
         /// Contrôle RechercheTitre_simple.
         /// </summary>
         /// <remarks>

@@ -15,8 +15,8 @@
 
 				<div id="searchform" class="panel">
 					<div class="marger">
-
-						<input type="checkbox" id="searchtype" checked />
+                        <asp:Label ID="dbg" runat="server" Text="Label"></asp:Label>
+						<input type="checkbox" id="searchtype" checked name="searchtype" value="simple" />
 						<div id="simpleSearch">
 						
 							<div class="flex-line">
@@ -188,6 +188,13 @@
 											</asp:DropDownList>
 										</td>
 									</tr>
+                                    <tr>
+										<td>Type d'énergie</td>
+										<td>
+											<asp:DropDownList ID="DropDownListEnergieChauffage" class="boxdropdown" runat="server">
+											</asp:DropDownList>
+										</td>
+									</tr>
 
 								</table>
 
@@ -202,7 +209,7 @@
 					</div>
 				</div>
 
-
+</form>
 
                 <div class="row">
 
@@ -210,41 +217,40 @@
 
 
                     <asp:Repeater ID="rpResultats" runat="server">
-                        <ItemTemplate>
+					<ItemTemplate>
+                     
+						<div class="tilecolumn">
+							<a href=<%# "/Bien.aspx?id="+Eval("Id").ToString()%> class="tile" style="background-image:<%# "url(data:image/png;base64,"+ Eval("PhotoPrincipaleBase64")+ ")" %>">
+								<div class="informations">
+									<div class="title">
+										<div class="onerow"><span><%# Eval("Titre") %></span></div>
+									</div>
+									<div class="clear">
+										<div class="onerow" class="onerow"><span>&#x1F3E0; New York city STATE, 42 Wallstreet av</span></div>
+									</div>
+									<div class="clear">
+										<div class="tworow">xx m²</div>
+										<div class="tworow"><%# ((double)Eval("Prix")==0) ? "Pas de prix" : Eval("Prix").ToString() %></div>
+									</div>
+									<div class="clear">
+										<div class="on">
+											<div class="tworow">5<sup>ème</sup> étage</div>
+											<div class="tworow">6 pièces<sup>&nbsp;</sup></div>
+										</div>
+										<div class="off">
+											<div class="center onerow"><span>Cliquer pour en voir plus<sup>&nbsp;</sup></span></div>
+										</div>
+									</div>
+								
+								</div>
+							</a>
+					
+						</div>
 
-                            <div class="tilecolumn">
-
-                                <a href="" class="tile" style="background-image: url(<%# "data:image/png;base64,"+ Eval("PhotoPrincipaleBase64") %>);">
-                                    <div class="informations">
-                                        <div class="title">
-                                            <div class="onerow"><span><%# Eval("Titre") %></span></div>
-                                        </div>
-                                        <div class="clear">
-                                            <div class="onerow" class="onerow"><span>&#x1F3E0; New York city STATE, 42 Wallstreet av</span></div>
-                                        </div>
-                                        <div class="clear">
-                                            <div class="tworow">65 m²</div>
-                                            <div class="tworow"><%# ((double)Eval("Prix")==0) ? "Pas de prix" : Eval("Prix").ToString() %></div>
-                                        </div>
-                                        <div class="clear">
-                                            <div class="on">
-                                                <div class="tworow">5<sup>ème</sup> étage</div>
-                                                <div class="tworow">6 pièces<sup>&nbsp;</sup></div>
-                                            </div>
-                                            <div class="off">
-                                                <div class="center onerow"><span>Cliquer pour en voir plus<sup>&nbsp;</sup></span></div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </a>
-
-                            </div>
-
-                        </ItemTemplate>
-                        <SeparatorTemplate>
-                        </SeparatorTemplate>
-                    </asp:Repeater>
+					</ItemTemplate>
+					<SeparatorTemplate>
+					</SeparatorTemplate>
+				</asp:Repeater>
 
                 </div>
 
@@ -254,5 +260,5 @@
 
 
         </div>
-    </form>
+    
 </asp:content>

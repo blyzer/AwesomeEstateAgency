@@ -12,7 +12,7 @@
 				<div style="background-image:url(/images/jumbotron.jpg)" class="background"></div>
 				<img src="/images/jumbotron.jpg" />
 				
-				<div class="title">My super title</div>
+				<div class="title"><asp:Label ID="BienTitre" runat="server" Text="BienTitre"></asp:Label></div>
 			</div>
 
 			<div id="infos">
@@ -22,42 +22,30 @@
 						<legend>Information générale</legend>
 						<table>
 							<tr>
-								<td>habba</td>
-								<td>babba</td>
+								<td>Id :</td>
+								<td>leul</td>
 							</tr>
-							<tr>
-								<td>habba</td>
-								<td>babba</td>
-							</tr>
+							
 						</table>
 					</fieldset>
 				</div>
 				<div class="info">
 					<fieldset>
-						<legend>Information générale</legend>
-						<table>
-							<tr>
-								<td>habba</td>
-								<td>babba</td>
-							</tr>
-							<tr>
-								<td>habba</td>
-								<td>babba</td>
-							</tr>
-						</table>
+						<legend>Description</legend>
+						<asp:Label ID="BienDesc" runat="server" Text="BienDesc"></asp:Label>
 					</fieldset>
 				</div>
 				<div class="info">
 					<fieldset>
-						<legend>Information générale</legend>
+						<legend>Coordonnées</legend>
 						<table>
 							<tr>
-								<td>habba</td>
-								<td>babba</td>
+								<td>Adresse :</td>
+								<asp:Label ID="BienAdresse" runat="server" Text="BienAdresse"></asp:Label>
 							</tr>
 							<tr>
-								<td>habba</td>
-								<td>babba</td>
+								<td>Code Postal : </td>
+								<asp:Label ID="BienCP" runat="server" Text="BienCP"></asp:Label>
 							</tr>
 						</table>
 					</fieldset>

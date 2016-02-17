@@ -17,10 +17,38 @@
 			<menu></menu>
 			<nav class="wrap">
 				<span>
-					<a class="selected" href="Default.aspx">Accueil</a> /
-					<a href="Catalogue.aspx">Catalogue</a> /
-					<a href="Bien.aspx">Ajouter un bien</a> /
-					<a href="Connexion.aspx">Connexion</a>
+                    <% bool b; %>
+					<a <%
+                        b = Convert.ToBoolean(System.IO.Path.GetFileName(Request.CurrentExecutionFilePath).CompareTo("Default.aspx"));
+                        if (!b) {
+                            Response.Write("class=\"selected\"");
+                        }
+                        %>
+                         href="Default.aspx">Accueil</a> /
+					<a
+                        <%
+                        b = Convert.ToBoolean(System.IO.Path.GetFileName(Request.CurrentExecutionFilePath).CompareTo("Catalogue.aspx"));
+                        if (!b) {
+                            Response.Write("class=\"selected\"");
+                        }
+                        %>
+                         href="Catalogue.aspx">Catalogue</a> /
+					<a 
+                        <%
+                        b = Convert.ToBoolean(System.IO.Path.GetFileName(Request.CurrentExecutionFilePath).CompareTo("Ajouter.aspx"));
+                        if (!b) {
+                            Response.Write("class=\"selected\"");
+                        }
+                        %>
+                        href="Ajouter.aspx">Ajouter un bien</a> /
+					<a 
+                        <%
+                        b = Convert.ToBoolean(System.IO.Path.GetFileName(Request.CurrentExecutionFilePath).CompareTo("Connexion.aspx"));
+                        if (!b) {
+                            Response.Write("class=\"selected\"");
+                        }
+                        %>
+                        href="Connexion.aspx">Connexion</a>
 				</span>
 			</nav>
 		</header>
