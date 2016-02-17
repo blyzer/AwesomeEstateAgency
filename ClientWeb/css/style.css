@@ -363,7 +363,7 @@ form {
 
 	}
 
-	.info {
+	.category {
 		float: none !important;
 		width: 100% !important;
 	}
@@ -569,21 +569,25 @@ legend {
 }
 
 
-.info {
+.category {
     float: left;
     width: 50%;
 }
 
-#infos fieldset {
+.category fieldset {
 	margin: 0 20px 20px;
 }
 
-#infos {
+.categories {
     padding: 10px;
 }
 
-#infos table td:first-child {
-	width:150px;
+.categories table  {
+	width:100%;
+	}
+
+.categories table td:first-child, #add table td:first-child {
+	width:120px;
 	}
 
 #good .title {
@@ -598,4 +602,25 @@ legend {
 	font-size:22px;
 	transition: opacity 0.5s;
 	opacity:1;
+}
+
+
+
+#add h1, #submit {
+		text-align:center;
+	}
+
+
+
+#add fieldset {
+	margin: 0 20px 20px;
+}
+
+#add .boxinput {
+	width:85%;
+}
+
+#submit .boxsubmit {
+	margin:0 auto;
+	padding: 0 20px;
 }

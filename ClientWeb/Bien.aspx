@@ -15,9 +15,9 @@
 				<div class="title"><asp:Label ID="BienTitre" runat="server" Text="BienTitre"></asp:Label></div>
 			</div>
 
-			<div id="infos">
+			<div id="infos" class="categories">
 
-				<div class="info">
+				<div class="category">
 					<fieldset>
 						<legend>Information générale</legend>
 						<table>
@@ -29,13 +29,13 @@
 						</table>
 					</fieldset>
 				</div>
-				<div class="info">
+				<div class="category">
 					<fieldset>
 						<legend>Description</legend>
 						<asp:Label ID="BienDesc" runat="server" Text="BienDesc"></asp:Label>
 					</fieldset>
 				</div>
-				<div class="info">
+				<div class="category">
 					<fieldset>
 						<legend>Coordonnées</legend>
 						<table>
@@ -50,7 +50,7 @@
 						</table>
 					</fieldset>
 				</div>
-				<div class="info">
+				<div class="category">
 					<fieldset>
 						<legend>Information générale</legend>
 						<table>
@@ -65,7 +65,7 @@
 						</table>
 					</fieldset>
 				</div>
-				<div class="info">
+				<div class="category">
 					<fieldset>
 						<legend>Information générale</legend>
 						<table>
@@ -80,7 +80,7 @@
 						</table>
 					</fieldset>
 				</div>
-				<div class="info">
+				<div class="category">
 					<fieldset>
 						<legend>Information générale</legend>
 						<table>
