@@ -217,10 +217,10 @@
 					<ItemTemplate>
                      
 						<div class="tilecolumn">
-                            <%# Eval("PhotoPrincipaleBase64").ToString().CompareTo("") == 0 ? this.Image=false : this.Image=true%>
+                            <asp:Label visible="false" ID="IsImage" Text='<%# Eval("PhotoPrincipaleBase64").ToString().CompareTo("") == 0 ? "False" : "True"%>' runat="server"></asp:Label>
                             <%    
-                                   if (!this.Image)
-                                   {
+                                   if (true==false)
+                                   { // Il n'y a pas de photo
 
                             %>
                             <a href=<%# "/Bien.aspx?id="+Eval("Id").ToString()%> class="tile" style="background-image:url(/images/AucuneImage.jpg)">
