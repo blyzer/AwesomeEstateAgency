@@ -15,7 +15,7 @@
 
 				<div id="searchform" class="panel">
 					<div class="marger">
-                        <asp:Label ID="dbg" runat="server" Text="Label"></asp:Label>
+                        
 						<input type="checkbox" id="searchtype" checked name="searchtype" value="simple" />
 						<div id="simpleSearch">
 						
