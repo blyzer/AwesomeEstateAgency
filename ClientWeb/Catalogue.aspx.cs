@@ -12,8 +12,12 @@ namespace ClientWeb
 {
     public partial class Catalogue : System.Web.UI.Page
     {
+
+		
+
         protected void Page_Load(object sender, EventArgs e)
         {
+
 
             using (ServiceAgence.AgenceClient client = new ServiceAgence.AgenceClient())
             {
@@ -44,14 +48,14 @@ namespace ClientWeb
                 {
                     if (Request.Form["searchtype"] != null)
                     { // Recherche simple
-                        dbg.Text = Request.Form["searchtype"].ToString();
+
                         a.TitreContient = RechercheTitre_simple.Text;
                     }
 
                     else
                     {// Recherche avancée
 
-                        dbg.Text = "adv";
+
 
                         a.TitreContient = RechercheTitre_adv.Text;
                         a.DescriptionContient = RechercheDescription.Text;

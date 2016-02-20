@@ -85,10 +85,13 @@ figure h1 {
 
 #searchbox {
 	margin: 50px auto 0;
-	width: 400px;
+	width: 400px; /*old*/
+	width:300px;
 	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 	height: 50px;
 }
+
+
 
 	#searchbox input[type=text] {
 		border: 0;
@@ -100,6 +103,21 @@ figure h1 {
 		display: block;
 		float: left;
 		width: 330px;
+	}
+
+	#searchbox a {
+		width: 300px;
+		height: 40px;
+		background: #8bc34a;
+		color: white;
+		border: 0;
+		line-height: 40px;
+		padding: 5px;
+		font-size: 20px;
+		margin: 0;
+		display: block;
+		text-align:center;
+
 	}
 
 	#searchbox input[type=submit] {
@@ -280,6 +298,11 @@ form {
 
 .center {
 	text-align: center;
+}
+
+.highlight {
+	text-align: center;
+	font-size:24px;
 }
 
 .off {

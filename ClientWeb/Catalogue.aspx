@@ -8,7 +8,7 @@
     <figure>
     </figure>
 
-<form id="form2" runat="server">
+<form id="form2" method="post" runat="server">
   
         <div id="main">
             <div class="container wrap">
@@ -227,10 +227,16 @@
 										<div class="onerow"><span><%# Eval("Titre") %></span></div>
 									</div>
 									<div class="clear">
-										<div class="onerow" class="onerow"><span><%# Eval("Ville") %></span></div>
+										<div class="onerow"><span>&#x1F3E0; <%# Eval("CodePostal") %>, <%# Eval("Ville") %></span></div>
 									</div>
 									<div class="clear">
-										<div class="tworow">xx m²</div>
+										<div class="onerow highlight"><span><%# ((double)Eval("Prix")==0) ? "Pas de prix" : Eval("Prix").ToString() + " €" %></span></div>
+									</div>
+									<div class="clear">
+										<div class="onerow center"><span>Cliquer pour en voir plus</span></div>
+									</div>
+									<!--<div class="clear">
+										<div class="tworow">65 m²</div>
 										<div class="tworow"><%# ((double)Eval("Prix")==0) ? "Pas de prix" : Eval("Prix").ToString() %></div>
 									</div>
 									<div class="clear">
@@ -242,7 +248,7 @@
 											<div class="center onerow"><span>Cliquer pour en voir plus<sup>&nbsp;</sup></span></div>
 										</div>
 									</div>
-								
+								-->
 								</div>
 							</a>
 					

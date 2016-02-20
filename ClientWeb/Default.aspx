@@ -9,10 +9,15 @@
 	<figure class="fullscreen">
 		<h1>L'incroyable agence immobilière !</h1>
 		<div id="searchbox">
-			<form action="Catalogue.aspx" runat="server">
-				<asp:TextBox ID="Recherche" placeholder="Quel est votre rêve ?" class="" AutoPostBack="false" runat="server"  />
+			<a href="/Catalogue.aspx">Trouver le bien de votre rêve</a>
+			<!--<form action="Catalogue.aspx" EnableViewState="false" runat="server">
+				
+				<asp:TextBox ID="RechercheTitre_simple" placeholder="Quel est votre rêve ?" class="" AutoPostBack="false" runat="server"  />
 				<asp:Button Text="&#x1f50d;" runat="server" />
-			</form>
+				
+				
+				<input type="hidden" id="searchtype" checked name="searchtype" value="simple" />
+			</form>-->
 		</div>
 	</figure>
 		
@@ -37,9 +42,15 @@
 										<div class="onerow"><span><%# Eval("Titre") %></span></div>
 									</div>
 									<div class="clear">
-										<div class="onerow" class="onerow"><span>&#x1F3E0; New York city STATE, 42 Wallstreet av</span></div>
+										<div class="onerow"><span>&#x1F3E0; <%# Eval("CodePostal") %>, <%# Eval("Ville") %></span></div>
 									</div>
 									<div class="clear">
+										<div class="onerow highlight"><span><%# ((double)Eval("Prix")==0) ? "Pas de prix" : Eval("Prix").ToString() + " €" %></span></div>
+									</div>
+									<div class="clear">
+										<div class="onerow center"><span>Cliquer pour en voir plus</span></div>
+									</div>
+									<!--<div class="clear">
 										<div class="tworow">65 m²</div>
 										<div class="tworow"><%# ((double)Eval("Prix")==0) ? "Pas de prix" : Eval("Prix").ToString() %></div>
 									</div>
@@ -52,7 +63,7 @@
 											<div class="center onerow"><span>Cliquer pour en voir plus<sup>&nbsp;</sup></span></div>
 										</div>
 									</div>
-								
+								-->
 								</div>
 							</a>
 					
