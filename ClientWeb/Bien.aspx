@@ -8,7 +8,7 @@
 		<div id="good" class="container wrap panel">
 
 			<div class="image">
-				<div id="look">&#x2B1C;</div>
+				
                  
 				<!-- <div style="background-image:url(/images/jumbotron.jpg)" class="background"></div> -->
                 <%
@@ -16,14 +16,15 @@
                     {
 
                 %>
-                <div style="background-image:url(/images/AucuneImage.jpg)" class="background"></div>
+                <div style="background-color: #8bc34a;  background-image: url(/images/nothumbnail.png); background-position: 50% 75%;    background-repeat: no-repeat;  background-size: auto auto;" class="background"></div>
                 <% 
                     }
                     else
                     {
                 %>
-
+				<div id="look">&#x2B1C;</div>
                 <div style=<% Response.Write("background-image:" + "url(data:image/png;base64," + this.BienImage + ")");%> class="background"></div>
+				<img src="<% Response.Write("data:image/png;base64," +this.BienImage);%>" />
 
                 <%
                     }
