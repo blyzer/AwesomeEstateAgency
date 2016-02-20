@@ -12,6 +12,8 @@ namespace ClientWeb
 {
     public partial class Catalogue : System.Web.UI.Page
     {
+        public string sImage;
+        public bool Image;
         protected void Page_Load(object sender, EventArgs e)
         {
 

@@ -213,14 +213,28 @@
 
                 <div class="row">
 
-
-
-
                     <asp:Repeater ID="rpResultats" runat="server">
 					<ItemTemplate>
                      
 						<div class="tilecolumn">
-							<a href=<%# "/Bien.aspx?id="+Eval("Id").ToString()%> class="tile" style="background-image:<%# "url(data:image/png;base64,"+ Eval("PhotoPrincipaleBase64")+ ")" %>">
+                            <%# Eval("PhotoPrincipaleBase64").ToString().CompareTo("") == 0 ? this.Image=false : this.Image=true%>
+                            <%    
+                                   if (!this.Image)
+                                   {
+
+                            %>
+                            <a href=<%# "/Bien.aspx?id="+Eval("Id").ToString()%> class="tile" style="background-image:url(/images/AucuneImage.jpg)">
+                            <% 
+                                }
+                                else
+                                {
+                            %>
+                                <a href=<%# "/Bien.aspx?id="+Eval("Id").ToString()%> class="tile" style="background-image:<%# "url(data:image/png;base64,"+ Eval("PhotoPrincipaleBase64")+ ")" %>">
+                            <%
+                                }
+                            %>
+
+							
 								<div class="informations">
 									<div class="title">
 										<div class="onerow"><span><%# Eval("Titre") %></span></div>

@@ -24,6 +24,7 @@ namespace ClientWeb
         public string BienSurface;
         public string BienTypeChauffage;
         public string BienTypeBien;
+        public string BienImage;
 
         protected void Page_Load(object sender, EventArgs e)
 		{
@@ -64,6 +65,9 @@ namespace ClientWeb
                 //Info complémentaires :
                 BienDateMiseEnTransaction = bien.DateMiseEnTransaction.ToString();
                 BienNumEtage = bien.NumEtage.ToString();
+
+                //Image :
+                BienImage = bien.PhotoPrincipaleBase64;
                 
                 
 

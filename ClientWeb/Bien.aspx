@@ -9,10 +9,28 @@
 
 			<div class="image">
 				<div id="look">&#x2B1C;</div>
-				<div style="background-image:url(/images/jumbotron.jpg)" class="background"></div>
-				<img src="/images/jumbotron.jpg" />
+                 
+				<!-- <div style="background-image:url(/images/jumbotron.jpg)" class="background"></div> -->
+                <%
+                    if (this.BienImage.CompareTo("") == 0)
+                    {
+
+                %>
+                <div style="background-image:url(/images/AucuneImage.jpg)" class="background"></div>
+                <% 
+                    }
+                    else
+                    {
+                %>
+
+                <div style=<% Response.Write("background-image:" + "url(data:image/png;base64," + this.BienImage + ")");%> class="background"></div>
+
+                <%
+                    }
+                %>
+				<!--<img src=<% Response.Write("url(data:image/png;base64," + this.BienImage + ")");%> /> -->
 				
-				<div class="title"><%= this.BienTitre.ToString() %></div>
+				<div class="title"><%= this.BienTitre %></div>
 			</div>
 
 			<div id="infos" class="categories">
