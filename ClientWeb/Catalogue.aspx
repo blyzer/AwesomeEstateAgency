@@ -219,7 +219,7 @@
 						<div class="tilecolumn">
 
 
-							<a href=<%# "/Bien.aspx?id="+Eval("Id").ToString()%> class="tile" style="<%# Eval("PhotoPrincipaleBase64").ToString().CompareTo("") == 0 ? "background-size: contain;" : ("background-image:url(data:image/png;base64,"+ Eval("PhotoPrincipaleBase64")+ ")") %>">
+							<a href=<%# "/Bien.aspx?id="+Eval("Id").ToString()%> class="tile" style="<%# Eval("PhotoPrincipaleBase64").ToString().CompareTo("") == 0 ? "background-image:url(/images/nothumbnail.png)" : ("background-image:url(data:image/png;base64,"+ Eval("PhotoPrincipaleBase64")+ ")") %>">
 
 							
 								<div class="informations">

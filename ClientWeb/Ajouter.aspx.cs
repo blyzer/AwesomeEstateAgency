@@ -11,7 +11,18 @@ namespace ClientWeb
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
+            if (!this.IsPostBack)
+            {
+                Catalogue obj= new Catalogue();
+                obj.Load_DropDownListItem<ServiceAgence.BienImmobilierBase.eTypeBien>(DropDownListTypeBien, false);
+                obj.Load_DropDownListItem<ServiceAgence.BienImmobilierBase.eTypeChauffage>(DropDownListTypeChauffage, false);
+                obj.Load_DropDownListItem<ServiceAgence.BienImmobilierBase.eEnergieChauffage>(DropDownListEnergieChauffage, false);
 
-		}
+                DropDownListTypeBien.SelectedValue = "0";
+                DropDownListEnergieChauffage.SelectedValue = "0";
+                DropDownListTypeChauffage.SelectedValue = "1";
+
+            }
+        }
 	}
 }

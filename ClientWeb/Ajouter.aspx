@@ -12,106 +12,143 @@
 			<h1>Ajouter un bien</h1>
 
 			<hr />
+
+            <form id="form2" runat="server">
 <div class="categories">
 			<div class="category">
 			<fieldset>
-				<legend>Category</legend>
+				<legend>Votre bien</legend>
 
 				<table>
 					<tr>
-						<td>Blah blah</td>
-						<td>
-							<input type="text" class="boxinput" />
-						</td>
+						<td>Type</td>
+					<td>
+						<asp:DropDownList ID="DropDownListTypeBien"  class="boxdropdown" type="number" runat="server">
+						</asp:DropDownList>	
+
+					</td>
 					</tr>
 					<tr>
-						<td>Blah blah</td>
+						<td>Titre</td>
 						<td>
-							<input type="text" class="boxinput" />
-						</td>
-					</tr>
-					<tr>
-						<td>Blah blah</td>
-						<td>
-							<input type="text" class="boxinput" />
+							<asp:TextBox ID="Titre" class="boxinput extend" AutoPostBack="false" runat="server" />
 						</td>
 					</tr>
 				</table>
 			</fieldset>
 			</div>
+
+    <div class="category">
+			<fieldset>
+				<legend>Image</legend>
+                <asp:FileUpload ID="Image" runat="server" />
+			</fieldset>
+			</div>
+
 			<div class="category">
 			<fieldset>
-				<legend>Category</legend>
+				<legend>Prix</legend>
 
 				<table>
 					<tr>
-						<td>Blah blah</td>
+						<td>Prix :</td>
 						<td>
-							<input type="text" class="boxinput" />
+							<asp:TextBox ID="Prix" class="boxinput" type="number" AutoPostBack="false" runat="server" />
 						</td>
 					</tr>
 					<tr>
-						<td>Blah blah</td>
+						<td>Montant des charges :</td>
 						<td>
-							<input type="text" class="boxinput" />
-						</td>
-					</tr>
-					<tr>
-						<td>Blah blah</td>
-						<td>
-							<input type="text" class="boxinput" />
+							<asp:TextBox ID="MontantCharges" class="boxinput" type="number" AutoPostBack="false" runat="server" />
 						</td>
 					</tr>
 				</table>
 			</fieldset>
-			</div>			<div class="category">
-			<fieldset>
-				<legend>Category</legend>
+                </div>
+    <div class="category">
+                <fieldset>
+				<legend>Coordonnées</legend>
 
 				<table>
 					<tr>
-						<td>Blah blah</td>
+						<td>Ville</td>
 						<td>
-							<input type="text" class="boxinput" />
+							<asp:TextBox ID="Ville" class="boxinput extend" AutoPostBack="false" runat="server" />
 						</td>
 					</tr>
 					<tr>
-						<td>Blah blah</td>
+						<td>Code postal</td>
 						<td>
-							<input type="text" class="boxinput" />
+							<asp:TextBox ID="CP" class="boxinput extend" AutoPostBack="false" runat="server" />
 						</td>
 					</tr>
 					<tr>
-						<td>Blah blah</td>
+						<td>Adresse</td>
 						<td>
-							<input type="text" class="boxinput" />
+							<asp:TextBox ID="Adresse" class="boxinput extend" AutoPostBack="false" runat="server" />
 						</td>
 					</tr>
 				</table>
 			</fieldset>
-			</div>			<div class="category">
+
+			</div>
+    			<div class="category">
 			<fieldset>
-				<legend>Category</legend>
+				<legend>Informations générale</legend>
 
 				<table>
 					<tr>
-						<td>Blah blah</td>
+						<td>Surface</td>
 						<td>
-							<input type="text" class="boxinput" />
+							<asp:TextBox ID="Surface" class="boxinput" type="number" AutoPostBack="false" runat="server" />
 						</td>
 					</tr>
 					<tr>
-						<td>Blah blah</td>
+						<td>Nombre d'etage</td>
 						<td>
-							<input type="text" class="boxinput" />
+							<asp:TextBox ID="NombreEtage" class="boxinput" type="number" AutoPostBack="false" runat="server" />
 						</td>
 					</tr>
 					<tr>
-						<td>Blah blah</td>
+						<td>Etages numero</td>
 						<td>
-							<input type="text" class="boxinput" />
+							<asp:TextBox ID="NumeroEtage" class="boxinput" type="number" AutoPostBack="false" runat="server" />
 						</td>
 					</tr>
+                    <tr>
+						<td>Nombre de pieces</td>
+						<td>
+							<asp:TextBox ID="NombrePiece" class="boxinput" type="number" AutoPostBack="false" runat="server" />
+						</td>
+					</tr>
+				</table>
+			</fieldset>
+                    </div>
+                <fieldset>
+				<legend>Description</legend>
+                    <asp:TextBox id="tb5" rows="5" TextMode="multiline" runat="server" />
+			</fieldset>
+
+			</div>			<div class="category">
+			<fieldset>
+				<legend>Chauffage</legend>
+
+				<table>
+					<tr>
+						<td>Type</td>
+					<td>
+						<asp:DropDownList ID="DropDownListTypeChauffage"  class="boxdropdown" type="number" runat="server">
+						</asp:DropDownList>	
+
+					</td>
+					</tr>
+					<tr>
+						<td>Energie</td>
+					<td>
+						<asp:DropDownList ID="DropDownListEnergieChauffage"  class="boxdropdown" type="number" runat="server">
+						</asp:DropDownList>	
+
+					</td>
 				</table>
 			</fieldset>
 			</div>
@@ -128,6 +165,7 @@
 
 				<div class="clear"></div>
 </div>
+                </form>
 			</div>
 		
 
