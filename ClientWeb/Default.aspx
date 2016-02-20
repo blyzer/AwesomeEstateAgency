@@ -30,7 +30,8 @@
 
 						<div class="tilecolumn">
 					
-							<a href="" class="tile" style="background-image:<%# "url(data:image/png;base64,"+ Eval("PhotoPrincipaleBase64")+ ")" %>">
+							<a href=<%# "/Bien.aspx?id="+Eval("Id").ToString()%> class="tile" style="<%# Eval("PhotoPrincipaleBase64").ToString().CompareTo("") == 0 ? "background-size: contain;" : ("background-image:url(data:image/png;base64,"+ Eval("PhotoPrincipaleBase64")+ ")") %>">
+
 								<div class="informations">
 									<div class="title">
 										<div class="onerow"><span><%# Eval("Titre") %></span></div>
