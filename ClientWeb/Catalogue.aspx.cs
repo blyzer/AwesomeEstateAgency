@@ -15,42 +15,50 @@ namespace ClientWeb
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            
-            if (!this.IsPostBack)
+            using (ServiceAgence.AgenceClient client = new ServiceAgence.AgenceClient())
             {
+                client.Open();
+                ServiceAgence.CriteresRechercheBiensImmobiliers a = new ServiceAgence.CriteresRechercheBiensImmobiliers();
+                Initcriteres(a);
                 
-                Load_DropDownListItem<ServiceAgence.BienImmobilierBase.eTypeBien>(DropDownListTypeBien,true);
-                Load_DropDownListItem<ServiceAgence.BienImmobilierBase.eTypeChauffage>(DropDownListTypeChauffage,true);
-                Load_DropDownListItem<ServiceAgence.BienImmobilierBase.eEnergieChauffage>(DropDownListEnergieChauffage, true);
+                if (false==true)
+                { // Le visiteur vient de la page d'accueil
+                    a.TitreContient = "";
+                }
 
-                DropDownListTypeBien.SelectedValue = "-1";
-                DropDownListEnergieChauffage.SelectedValue = "-1";
-                DropDownListTypeChauffage.SelectedValue = "-1";
-            }
 
-            if (this.IsPostBack)
-            {
-                if (Request.Form["searchtype"] != null)
-                    dbg.Text = Request.Form["searchtype"].ToString();
-                else
-                    dbg.Text = "adv";
-                using (ServiceAgence.AgenceClient client = new ServiceAgence.AgenceClient())
+                if (!this.IsPostBack)
                 {
 
-                    client.Open();
-                    ServiceAgence.CriteresRechercheBiensImmobiliers a = new ServiceAgence.CriteresRechercheBiensImmobiliers();
-                    Initcriteres(a);
+                    Load_DropDownListItem<ServiceAgence.BienImmobilierBase.eTypeBien>(DropDownListTypeBien, true);
+                    Load_DropDownListItem<ServiceAgence.BienImmobilierBase.eTypeChauffage>(DropDownListTypeChauffage, true);
+                    Load_DropDownListItem<ServiceAgence.BienImmobilierBase.eEnergieChauffage>(DropDownListEnergieChauffage, true);
 
-                    bool searchtype = !string.IsNullOrEmpty(Request.Form["searchtype"]); // True : simple / False : avancée / Ne marche pas
+                    DropDownListTypeBien.SelectedValue = "-1";
+                    DropDownListEnergieChauffage.SelectedValue = "-1";
+                    DropDownListTypeChauffage.SelectedValue = "-1";
                     
-                    if (!searchtype) // Recherche avancée
-                    {
+                }
+
+                if (this.IsPostBack)
+                {
+                    if (Request.Form["searchtype"] != null)
+                    { // Recherche simple
+                        dbg.Text = Request.Form["searchtype"].ToString();
+                        a.TitreContient = RechercheTitre_simple.Text;
+                    }
+
+                    else
+                    {// Recherche avancée
+
+                        dbg.Text = "adv";
+
                         a.TitreContient = RechercheTitre_adv.Text;
                         a.DescriptionContient = RechercheDescription.Text;
                         a.AdresseContient = RechercheAdresse.Text;
                         a.CodePostal = RechercheCodePostal.Text;
                         a.Ville = RechercheVille.Text;
-                        
+
                         if (DropDownListTypeBien.SelectedValue != "-1")
                         {
                             a.TypeBien = (ServiceAgence.BienImmobilierBase.eTypeBien)AffectSelectedValue(DropDownListTypeBien);
@@ -64,7 +72,7 @@ namespace ClientWeb
                             a.TypeChauffage = (ServiceAgence.BienImmobilierBase.eTypeChauffage)AffectSelectedValue(DropDownListTypeChauffage);
                         }
 
-                        
+
 
                         double Number = 0;
                         if (Double.TryParse(RecherchePrixMin.Text, out Number)) a.Prix1 = Number;
@@ -76,28 +84,22 @@ namespace ClientWeb
                         if (Double.TryParse(RecherchePieceMin.Text, out Number)) a.NbPieces1 = (int)Number;
                         if (Double.TryParse(RecherchePieceMax.Text, out Number)) a.NbPieces2 = (int)Number;
                     }
-                    else
-                    {
-                        a.TitreContient = RechercheTitre_simple.Text;
-                    }
-                    
-                    ServiceAgence.ResultatListeBiensImmobiliers res = client.LireListeBiensImmobiliers(a, 0, 2);
 
-                    this.rpResultats.DataSource = res.Liste.List;
-                    this.rpResultats.DataBind();
                     
-                    //this.rpResultats.Items[0].FindControl("");
-
-                    client.Close();
                 }
 
+                ServiceAgence.ResultatListeBiensImmobiliers res = client.LireListeBiensImmobiliers(a, 0, 2);
 
+                this.rpResultats.DataSource = res.Liste.List;
+                this.rpResultats.DataBind();
+                client.Close();
+               
             }
         }
 
         private void Initcriteres(ServiceAgence.CriteresRechercheBiensImmobiliers c)
         {
-            
+
             c.TitreContient = "";
             c.AdresseContient = "";
             c.CodePostal = "";
@@ -128,10 +130,10 @@ namespace ClientWeb
 
         }
 
-        public void Load_DropDownListItem<T>(DropDownList ddli,bool Tous)
+        public void Load_DropDownListItem<T>(DropDownList ddli, bool Tous)
         {
             ddli.Items.Clear();
-            
+
             string[] names = Enum.GetNames(typeof(T));
             foreach (int value in Enum.GetValues(typeof(T)))
             {
@@ -141,7 +143,7 @@ namespace ClientWeb
             {
                 ddli.Items.Add(new ListItem("Tous", "-1"));
             }
-            
+
 
         }
 

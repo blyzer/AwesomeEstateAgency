@@ -10,7 +10,7 @@
 		<h1>L'incroyable agence immobilière !</h1>
 		<div id="searchbox">
 			<form action="Catalogue.aspx" runat="server">
-				<asp:TextBox ID="Searchterm" placeholder="Quel est votre rêve ?" class="" AutoPostBack="false" runat="server"  />
+				<asp:TextBox ID="Recherche" placeholder="Quel est votre rêve ?" class="" AutoPostBack="false" runat="server"  />
 				<asp:Button Text="&#x1f50d;" runat="server" />
 			</form>
 		</div>
@@ -67,7 +67,7 @@
 			<div class="clear"></div>
 				
 			<div id="more">
-				<a href="">Tout notre catalogue</a>
+				<a href="Catalogue.aspx">Tout notre catalogue</a>
 			</div>
 				
 		</div>

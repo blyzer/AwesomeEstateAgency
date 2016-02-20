@@ -22,7 +22,7 @@
 							<div class="flex-line">
 
 									<asp:TextBox ID="RechercheTitre_simple" class="boxinput extend" AutoPostBack="false" runat="server" />
-
+                                
 									<asp:Button Text="Rechercher" class="boxsubmit" runat="server" />
 
 							</div>
@@ -226,7 +226,7 @@
 										<div class="onerow"><span><%# Eval("Titre") %></span></div>
 									</div>
 									<div class="clear">
-										<div class="onerow" class="onerow"><span>&#x1F3E0; New York city STATE, 42 Wallstreet av</span></div>
+										<div class="onerow" class="onerow"><span><%# Eval("Ville") %></span></div>
 									</div>
 									<div class="clear">
 										<div class="tworow">xx m²</div>

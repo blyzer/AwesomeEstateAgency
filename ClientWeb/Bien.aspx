@@ -12,7 +12,7 @@
 				<div style="background-image:url(/images/jumbotron.jpg)" class="background"></div>
 				<img src="/images/jumbotron.jpg" />
 				
-				<div class="title"><asp:Label ID="BienTitre" runat="server" Text="BienTitre"></asp:Label></div>
+				<div class="title"><%= this.BienTitre.ToString() %></div>
 			</div>
 
 			<div id="infos" class="categories">
@@ -23,75 +23,120 @@
 						<table>
 							<tr>
 								<td>Id :</td>
-								<td>leul</td>
+								<td><%=Request.QueryString["id"]%></td>
 							</tr>
-							
+                            <tr>
+								<td>Type de bien :</td>
+                                <td><%= this.BienTypeBien%></td>
+							</tr>
+                            <%
+                                if (Convert.ToInt32(this.BienNbEtages) != 0)
+                                {
+                            %>
+                                <tr>
+								<td>Nombre d'étages :</td>
+                                <td><%= this.BienNbEtages%></td>
+							    </tr>
+                            <%
+                                }
+                            %>
+
+                            <%
+                                if (Convert.ToInt32(this.BienNbPieces) != 0)
+                                {
+                            %>
+                                <tr>
+								<td>Nombre de pièces :</td>
+                                <td><%= this.BienNbPieces%></td>
+							    </tr>
+                            <%
+                                }
+                            %>
+                            <tr>
+								<td>Surface :</td>
+                                <td><%= this.BienSurface%></td>
+							</tr>
 						</table>
 					</fieldset>
 				</div>
 				<div class="category">
 					<fieldset>
 						<legend>Description</legend>
-						<asp:Label ID="BienDesc" runat="server" Text="BienDesc"></asp:Label>
+						<td><%= this.BienDesc %></td>
 					</fieldset>
 				</div>
 				<div class="category">
 					<fieldset>
 						<legend>Coordonnées</legend>
 						<table>
-							<tr>
-								<td>Adresse :</td>
-								<asp:Label ID="BienAdresse" runat="server" Text="BienAdresse"></asp:Label>
+
+                            <tr>
+								<td>Ville : </td>
+								<td><%= this.BienVille %></td>
 							</tr>
+
+							<tr>
+                                <td>Adresse : </td>
+								<td><%= this.BienAdresse %></td>
+							</tr>
+                            
 							<tr>
 								<td>Code Postal : </td>
-								<asp:Label ID="BienCP" runat="server" Text="BienCP"></asp:Label>
+								<td><%= this.BienCP %></td>
+							</tr>
+                            
+						</table>
+					</fieldset>
+				</div>
+				<div class="category">
+					<fieldset>
+						<legend>Prix</legend>
+						<table>
+							<tr>
+								<td>Prix : </td>
+								<td><%= this.BienPrix%></td>
+							</tr>
+							<tr>
+                                <td>Montant des charges : </td>
+                                <td><%= this.BienMontantCharges%></td>
 							</tr>
 						</table>
 					</fieldset>
 				</div>
 				<div class="category">
 					<fieldset>
-						<legend>Information générale</legend>
+						<legend>Chauffage</legend>
 						<table>
-							<tr>
-								<td>habba</td>
-								<td>babba</td>
+                            <tr>
+                                <td>Type : </td>
+                                <td><%= this.BienTypeChauffage%></td>
 							</tr>
 							<tr>
-								<td>habba</td>
-								<td>babba</td>
+								<td>Energie : </td>
+								<td><%= this.BienEnergieChauffage%></td>
 							</tr>
 						</table>
 					</fieldset>
 				</div>
 				<div class="category">
 					<fieldset>
-						<legend>Information générale</legend>
+						<legend>Info complémentaires</legend>
 						<table>
 							<tr>
-								<td>habba</td>
-								<td>babba</td>
+                                <td>Mise en ligne le : </td>
+                                <td><%= this.BienDateMiseEnTransaction%></td>
 							</tr>
+                            <%
+                                if (Convert.ToInt32(this.BienNumEtage) != 0)
+                                {
+                            %>
 							<tr>
-								<td>habba</td>
-								<td>babba</td>
+								<td>Etage numero : </td>
+								<td><%= this.BienNumEtage%></td>
 							</tr>
-						</table>
-					</fieldset>
-				</div>
-				<div class="category">
-					<fieldset>
-						<legend>Information générale</legend>
-						<table>
-							<tr>
-								<td>habba</td>
-								<td>babba</td>
-							</tr>
-							<tr>
-								<td>habba</td>
-								<td>babba</td>
-							</tr>
+                            <%
+                                }
+                            %>
 						</table>
 					</fieldset>
 				</div>
