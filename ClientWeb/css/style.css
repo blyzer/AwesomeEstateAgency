@@ -485,6 +485,10 @@ fieldset {
 	width: 100%;
 }
 
+.marged {
+	margin:0 5px;
+}
+
 
 .serachtype_selector {
 	color: #8bc34a;
