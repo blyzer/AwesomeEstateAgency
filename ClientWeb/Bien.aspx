@@ -81,7 +81,7 @@
 				<div class="category">
 					<fieldset>
 						<legend>Description</legend>
-						<td><%= this.BienDesc %></td>
+						<td><span class="justify"><%= this.BienDesc %></span></td>
 					</fieldset>
 				</div>
 				<div class="category">
@@ -131,7 +131,7 @@
                                 <td><%= this.BienTypeChauffage%></td>
 							</tr>
 							<tr>
-								<td>Energie : </td>
+								<td>Énergie : </td>
 								<td><%= this.BienEnergieChauffage%></td>
 							</tr>
 						</table>
@@ -150,7 +150,7 @@
                                 {
                             %>
 							<tr>
-								<td>Etage numero : </td>
+								<td>Étage numéro : </td>
 								<td><%= this.BienNumEtage%></td>
 							</tr>
                             <%

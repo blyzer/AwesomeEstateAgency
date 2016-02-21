@@ -661,3 +661,8 @@ legend {
 #adminform .marger {
 	padding: 20px;
 }
+
+.justify {
+	text-align:justify;
+	display: block;
+}
