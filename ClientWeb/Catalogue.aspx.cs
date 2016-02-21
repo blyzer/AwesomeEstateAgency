@@ -24,12 +24,6 @@ namespace ClientWeb
                 client.Open();
                 ServiceAgence.CriteresRechercheBiensImmobiliers a = new ServiceAgence.CriteresRechercheBiensImmobiliers();
                 Initcriteres(a);
-                
-                if (false==true)
-                { // Le visiteur vient de la page d'accueil
-                    a.TitreContient = "";
-                }
-
 
                 if (!this.IsPostBack)
                 {
@@ -37,11 +31,14 @@ namespace ClientWeb
                     Load_DropDownListItem<ServiceAgence.BienImmobilierBase.eTypeBien>(DropDownListTypeBien, true);
                     Load_DropDownListItem<ServiceAgence.BienImmobilierBase.eTypeChauffage>(DropDownListTypeChauffage, true);
                     Load_DropDownListItem<ServiceAgence.BienImmobilierBase.eEnergieChauffage>(DropDownListEnergieChauffage, true);
+                    Load_DropDownListItem<ServiceAgence.BienImmobilierBase.eTypeTransaction>(DropDownListTypeTransaction, true);
+                    
 
                     DropDownListTypeBien.SelectedValue = "-1";
                     DropDownListEnergieChauffage.SelectedValue = "-1";
                     DropDownListTypeChauffage.SelectedValue = "-1";
-                    
+                    DropDownListTypeTransaction.SelectedValue = "-1";
+
                 }
 
                 if (this.IsPostBack)
@@ -75,6 +72,11 @@ namespace ClientWeb
                         {
                             a.TypeChauffage = (ServiceAgence.BienImmobilierBase.eTypeChauffage)AffectSelectedValue(DropDownListTypeChauffage);
                         }
+                        if(DropDownListTypeTransaction.SelectedValue !="-1")
+                        {
+                            a.TypeTransaction = (ServiceAgence.BienImmobilierBase.eTypeTransaction)AffectSelectedValue(DropDownListTypeTransaction);
+                        }
+
 
 
 
@@ -129,7 +131,7 @@ namespace ClientWeb
             c.Tris = null; // Pas dans recherche
             c.TypeBien = null;
             c.TypeChauffage = null;
-            c.TypeTransaction = null; // Pas dans recherche
+            c.TypeTransaction = null;
             c.Ville = "";
 
         }

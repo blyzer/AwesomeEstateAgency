@@ -62,6 +62,13 @@
 							<asp:TextBox ID="MontantCharges" class="boxinput" type="number" AutoPostBack="false" runat="server" />
 						</td>
 					</tr>
+                    <tr>
+						<td>Type de transaction :</td>
+						<td>
+							<asp:DropDownList ID="DropDownListTypeTransaction"  class="boxdropdown" type="number" runat="server">
+                                </asp:DropDownList>	
+						</td>
+					</tr>
 				</table>
 			</fieldset>
                 </div>
@@ -126,7 +133,7 @@
                     </div>
                 <fieldset>
 				<legend>Description</legend>
-                    <asp:TextBox id="tb5" rows="5" TextMode="multiline" runat="server" />
+                    <asp:TextBox id="Description" rows="5" TextMode="multiline" runat="server" />
 			</fieldset>
 
 			</div>			<div class="category">

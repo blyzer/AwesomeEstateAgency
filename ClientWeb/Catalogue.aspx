@@ -65,6 +65,14 @@
 											<asp:DropDownList ID="DropDownListTypeBien"  class="boxdropdown" type="number" runat="server">
 											</asp:DropDownList>										</td>
 									</tr>
+                                    <tr>
+						                <td>Type de transaction :</td>
+						                <td>
+							                <asp:DropDownList ID="DropDownListTypeTransaction"  class="boxdropdown" type="number" runat="server">
+                                                </asp:DropDownList>	
+						                </td>
+					                </tr>
+
 								</table>
 
 							</fieldset>

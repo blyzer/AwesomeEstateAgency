@@ -67,6 +67,15 @@ namespace ClientWeb {
         protected global::System.Web.UI.WebControls.TextBox MontantCharges;
         
         /// <summary>
+        /// Contrôle DropDownListTypeTransaction.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListTypeTransaction;
+        
+        /// <summary>
         /// Contrôle Ville.
         /// </summary>
         /// <remarks>
@@ -130,13 +139,13 @@ namespace ClientWeb {
         protected global::System.Web.UI.WebControls.TextBox NombrePiece;
         
         /// <summary>
-        /// Contrôle tb5.
+        /// Contrôle Description.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb5;
+        protected global::System.Web.UI.WebControls.TextBox Description;
         
         /// <summary>
         /// Contrôle DropDownListTypeChauffage.
