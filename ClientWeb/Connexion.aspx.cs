@@ -11,7 +11,15 @@ namespace ClientWeb
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-
+            if(Email.Text.CompareTo("Admin")==0 && Password.Text.CompareTo("Pass") == 0)
+            {
+                Session["Admin"] = "true";
+                Response.Redirect("~/Administration.aspx");
+            }
+            else
+            {
+                Session["Admin"] = "false";
+            }
 		}
 	}
 }

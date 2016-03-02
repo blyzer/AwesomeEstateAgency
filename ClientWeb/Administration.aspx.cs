@@ -139,11 +139,13 @@ namespace ClientWeb
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
-
+            if(Session["Admin"]==null || Session["Admin"].ToString() == "false")
+            {
+                Response.Redirect("~/Connexion.aspx");
+            }
 		if (!IsPostBack)
 			{
 				BindData();
-
 			}
 	
 

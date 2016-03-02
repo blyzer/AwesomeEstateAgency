@@ -41,6 +41,27 @@
                         }
                         %>
                         href="Ajouter.aspx">Ajouter un bien</a> /
+
+                    <%
+
+                        if (Session["Admin"] != null && Session["Admin"].ToString() == "true")
+                        {
+                        %>
+                        
+                   <a
+
+                        <%
+                        b = Convert.ToBoolean(System.IO.Path.GetFileName(Request.CurrentExecutionFilePath).CompareTo("Administration.aspx"));
+                        if (!b) {
+                            Response.Write("class=\"selected\"");
+                        }
+                        %>
+
+                        <%
+                            Response.Write("href=\"Administration.aspx\">Admin</a> / ");
+                        }
+                         %>
+
 					<a 
                         <%
                         b = Convert.ToBoolean(System.IO.Path.GetFileName(Request.CurrentExecutionFilePath).CompareTo("Connexion.aspx"));
@@ -48,7 +69,20 @@
                             Response.Write("class=\"selected\"");
                         }
                         %>
-                        href="Connexion.aspx">Connexion</a>
+
+                        <%
+                        if(Session["Admin"]==null || Session["Admin"].ToString()=="false")
+                        {
+                            Response.Write("href=\"Connexion.aspx\">Connexion</a>");
+                        }
+                        else
+                        {
+                            Response.Write("href=\"Deconnexion.aspx\">Déconnexion</a>");
+                        }
+                         %>
+
+                        
+                        
 				</span>
 			</nav>
 		</header>
