@@ -7,8 +7,8 @@ using System.Web.UI.WebControls;
 
 namespace ClientWeb
 {
-	public partial class Bien : System.Web.UI.Page
-	{
+    public partial class Bien : System.Web.UI.Page
+    {
         public string BienTitre;
         public string BienAdresse;
         public string BienCP;
@@ -27,7 +27,7 @@ namespace ClientWeb
         public string BienImage;
 
         protected void Page_Load(object sender, EventArgs e)
-		{
+        {
             ServiceAgence.BienImmobilier bien;
             using (ServiceAgence.AgenceClient client = new ServiceAgence.AgenceClient())
             {
@@ -51,8 +51,8 @@ namespace ClientWeb
                 BienPrix = bien.Prix.ToString() + " €";
 
                 //Coordonnées :
-                BienAdresse= bien.Adresse.ToString();
-                BienCP= bien.CodePostal.ToString();
+                BienAdresse = bien.Adresse.ToString();
+                BienCP = bien.CodePostal.ToString();
                 BienVille = bien.Ville.ToString();
 
                 //Description :
@@ -68,11 +68,9 @@ namespace ClientWeb
 
                 //Image :
                 BienImage = bien.PhotoPrincipaleBase64;
-                
-                
 
                 client.Close();
             }
         }
-	}
+    }
 }

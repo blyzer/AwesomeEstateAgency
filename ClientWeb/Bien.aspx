@@ -12,7 +12,7 @@
                  
 				<!-- <div style="background-image:url(/images/jumbotron.jpg)" class="background"></div> -->
                 <%
-                    if (this.BienImage.CompareTo("") == 0)
+                    if (this.BienImage=="")
                     {
 
                 %>

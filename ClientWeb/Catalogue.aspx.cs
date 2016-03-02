@@ -13,7 +13,7 @@ namespace ClientWeb
     public partial class Catalogue : System.Web.UI.Page
     {
 
-		
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -32,7 +32,7 @@ namespace ClientWeb
                     Load_DropDownListItem<ServiceAgence.BienImmobilierBase.eTypeChauffage>(DropDownListTypeChauffage, true);
                     Load_DropDownListItem<ServiceAgence.BienImmobilierBase.eEnergieChauffage>(DropDownListEnergieChauffage, true);
                     Load_DropDownListItem<ServiceAgence.BienImmobilierBase.eTypeTransaction>(DropDownListTypeTransaction, true);
-                    
+
 
                     DropDownListTypeBien.SelectedValue = "-1";
                     DropDownListEnergieChauffage.SelectedValue = "-1";
@@ -72,7 +72,7 @@ namespace ClientWeb
                         {
                             a.TypeChauffage = (ServiceAgence.BienImmobilierBase.eTypeChauffage)AffectSelectedValue(DropDownListTypeChauffage);
                         }
-                        if(DropDownListTypeTransaction.SelectedValue !="-1")
+                        if (DropDownListTypeTransaction.SelectedValue != "-1")
                         {
                             a.TypeTransaction = (ServiceAgence.BienImmobilierBase.eTypeTransaction)AffectSelectedValue(DropDownListTypeTransaction);
                         }
@@ -91,7 +91,7 @@ namespace ClientWeb
                         if (Double.TryParse(RecherchePieceMax.Text, out Number)) a.NbPieces2 = (int)Number;
                     }
 
-                    
+
                 }
 
                 ServiceAgence.ResultatListeBiensImmobiliers res = client.LireListeBiensImmobiliers(a, 0, 2);
@@ -99,7 +99,7 @@ namespace ClientWeb
                 this.rpResultats.DataSource = res.Liste.List;
                 this.rpResultats.DataBind();
                 client.Close();
-               
+
             }
         }
 

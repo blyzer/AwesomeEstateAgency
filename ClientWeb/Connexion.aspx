@@ -17,10 +17,17 @@
 						<asp:TextBox TextMode="Password" ID="Password" class="boxinput" placeholder="Mot de passe"  AutoPostBack="false" runat="server"  />
 
 						<asp:Button class="boxsubmit" Text="Connexion" runat="server" />
+                        <%
+                            if (IsPostBack && (Session["Error"] != null || Session["Error"] != ""))
+                            {
+                                Response.Write("<hr/>");
+                                Response.Write("<a>" + Session["Error"] + "</a>");
+                                Session["Error"] = "";
+                            }
 
-						<hr />
+                        %>
+                        
 
-						<a href="Inscription.aspx">Vous n'avez pas de compte ? Inscrivez-vous !</a>
 					</div>
 				</div>
 			</div>

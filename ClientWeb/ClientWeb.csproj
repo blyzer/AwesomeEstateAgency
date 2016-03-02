@@ -74,6 +74,7 @@
     <Content Include="Catalogue.aspx" />
     <Content Include="Connexion.aspx" />
     <Content Include="css\style.css" />
+    <Content Include="Deconnexion.aspx" />
     <Content Include="images\footer.jpg" />
     <Content Include="images\jumbotron.jpg" />
     <Content Include="images\logo.png" />
@@ -155,6 +156,13 @@
     </Compile>
     <Compile Include="Connexion.aspx.designer.cs">
       <DependentUpon>Connexion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Deconnexion.aspx.cs">
+      <DependentUpon>Deconnexion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Deconnexion.aspx.designer.cs">
+      <DependentUpon>Deconnexion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

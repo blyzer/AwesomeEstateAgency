@@ -8,14 +8,14 @@ using System.Web.UI.WebControls;
 
 namespace ClientWeb
 {
-	public partial class Ajouter : System.Web.UI.Page
-	{
-		protected void Page_Load(object sender, EventArgs e)
-		{
+    public partial class Ajouter : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
             Catalogue obj = new Catalogue();
             if (!this.IsPostBack)
             {
-                
+
                 obj.Load_DropDownListItem<ServiceAgence.BienImmobilierBase.eTypeBien>(DropDownListTypeBien, false);
                 obj.Load_DropDownListItem<ServiceAgence.BienImmobilierBase.eTypeChauffage>(DropDownListTypeChauffage, false);
                 obj.Load_DropDownListItem<ServiceAgence.BienImmobilierBase.eEnergieChauffage>(DropDownListEnergieChauffage, false);
@@ -42,72 +42,28 @@ namespace ClientWeb
                     bien.DateTransaction = null; // ?? A completer ??
                     bien.Description = Description.Text;
                     bien.EnergieChauffage = (ServiceAgence.BienImmobilierBase.eEnergieChauffage)obj.AffectSelectedValue(DropDownListEnergieChauffage);
-                    try
-                    {
-                        bien.MontantCharges = Convert.ToDouble(MontantCharges.Text);
-                    }
-                    catch (FormatException)
-                    {
-                        bien.MontantCharges = 0;
-                    }
-                    try
-                    {
-                        bien.NbEtages = Convert.ToInt32(NombreEtage.Text);
-                    }
-                    catch (FormatException)
-                    {
-                        bien.NbEtages = 0;
-                    }
-                    try
-                    {
-                        bien.NbPieces = Convert.ToInt32(NombrePiece.Text);
-                    }
-                    catch (FormatException)
-                    {
-                        bien.NbPieces = 0;
-                    }
-                    try
-                    {
-                        bien.NumEtage = Convert.ToInt32(NumeroEtage.Text);
-                    }
-                    catch (FormatException)
-                    {
-                        bien.NumEtage = 0;
-                    }
+                    bien.MontantCharges = ConvertStringToDouble(MontantCharges.Text, 0);
+                    bien.NbEtages = ConvertStringToInt(NombreEtage.Text, 0);
+                    bien.NbPieces = ConvertStringToInt(NombrePiece.Text, 0);
+                    bien.NumEtage = ConvertStringToInt(NumeroEtage.Text, 0);
 
                     if (Image.HasFile)
                     {
-                        Stream fs = Image.PostedFile.InputStream;
-                        BinaryReader br = new BinaryReader(fs);
-                        Byte[] bytes = br.ReadBytes((Int32)fs.Length);
-                        bien.PhotoPrincipaleBase64 = Convert.ToBase64String(bytes, 0, bytes.Length);
+                        //bien.Description = ImageToBase64(Image);
+                        bien.PhotoPrincipaleBase64 = ImageToBase64(Image);
+                        string img = ImageToBase64(Image);
+                        bien.PhotosBase64 = new List<string>();
+                        bien.PhotosBase64.Add(img);
                     }
                     else
                     {
                         bien.PhotoPrincipaleBase64 = "";
                     }
 
-                    bien.PhotosBase64 = null; // A completer
 
-                    try
-                    {
-                        bien.Prix = Convert.ToDouble(Prix.Text);
-                    }
-                    catch (FormatException)
-                    {
-                        bien.Prix = 0;
-                    }
+                    bien.Prix = ConvertStringToDouble(Prix.Text, 0);
+                    bien.Surface = ConvertStringToDouble(Surface.Text, 0);
 
-                    try
-                    {
-                        bien.Surface = Convert.ToDouble(Surface.Text);
-                    }
-                    catch (FormatException)
-                    {
-                        bien.Surface = 0;
-                    }
-
-                    
                     bien.Titre = Titre.Text;
                     bien.TransactionEffectuee = false;
                     bien.TypeBien = (ServiceAgence.BienImmobilierBase.eTypeBien)obj.AffectSelectedValue(DropDownListTypeBien);
@@ -117,6 +73,8 @@ namespace ClientWeb
 
                     client.AjouterBienImmobilier(bien);
                 }
+
+                Response.Redirect("~/Catalogue.aspx");
             }
         }
 
@@ -135,6 +93,28 @@ namespace ClientWeb
             b.Titre = "";
             b.TransactionEffectuee = false;
             b.Ville = "";
+        }
+
+        public int ConvertStringToInt(string s, int j)
+        {
+            int i;
+            if (int.TryParse(s, out i)) return i;
+            return j;
+        }
+        public double ConvertStringToDouble(string s, double j)
+        {
+            double i;
+            if (double.TryParse(s, out i)) return i;
+            return j;
+        }
+
+        public string ImageToBase64(FileUpload img)
+        {
+            string base64String = "";
+            MemoryStream m = new MemoryStream(img.FileBytes);
+            byte[] imageBytes = m.ToArray();
+            base64String = Convert.ToBase64String(imageBytes);
+            return base64String;
         }
 
     }

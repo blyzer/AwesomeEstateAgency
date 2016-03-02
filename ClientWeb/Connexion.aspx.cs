@@ -7,19 +7,24 @@ using System.Web.UI.WebControls;
 
 namespace ClientWeb
 {
-	public partial class Connexion : System.Web.UI.Page
-	{
-		protected void Page_Load(object sender, EventArgs e)
-		{
-            if(Email.Text.CompareTo("Admin")==0 && Password.Text.CompareTo("Pass") == 0)
+    public partial class Connexion : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (IsPostBack)
             {
-                Session["Admin"] = "true";
-                Response.Redirect("~/Administration.aspx");
+                if (Email.Text.CompareTo("Admin") == 0 && Password.Text.CompareTo("Pass") == 0)
+                {
+                    Session["Admin"] = "true";
+                    Response.Redirect("~/Administration.aspx");
+                }
+                else
+                {
+                    Session["Error"] = "Echec de connexion";
+                    Session["Admin"] = "false";
+                }
             }
-            else
-            {
-                Session["Admin"] = "false";
-            }
-		}
-	}
+
+        }
+    }
 }
