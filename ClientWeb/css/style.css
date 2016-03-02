@@ -697,16 +697,7 @@ legend {
 }
 
 
-body, .g, html, .std, .c h2, h1, #cdr_min, #cdr_max, .cpbb, .kpbb, .kprb, .kpgb, .kpgrb, .ksb {
-    font-family: arial,sans-serif;
-}
-body {
-    color: #222;
-}
-.g, body, html, input, .std, h1 {
-    font-family: arial,sans-serif;
-    font-size: small;
-}
+
 
 #result td:last-child {
     width: 160px;
