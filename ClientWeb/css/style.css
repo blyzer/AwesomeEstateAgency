@@ -437,6 +437,15 @@ hr {
 	padding: 5px;
 }
 
+.boxarea {
+	border: 1px solid #cfd8dc;
+	font-size: 16px;
+	min-height: 100px;
+	padding: 5px;
+	width:100%;
+	box-sizing:border-box;
+}
+
 .boxdropdown {
 	border: 1px solid #cfd8dc;
 	font-size: 16px;
@@ -628,6 +637,7 @@ legend {
 
 #add h1, #submit {
 	text-align: center;
+	padding:10px 0;
 }
 
 

@@ -133,7 +133,7 @@
                     </div>
                 <fieldset>
 				<legend>Description</legend>
-                    <asp:TextBox id="Description" rows="5" TextMode="multiline" runat="server" />
+                    <asp:TextBox class="boxarea" id="Description" rows="5" TextMode="multiline" runat="server" />
 			</fieldset>
 
 			</div>			<div class="category">
