@@ -347,6 +347,14 @@ form {
 	figure h1 {
 		font-size: 40px;
 	}
+
+	nav {
+		text-align:right !important;
+	}
+
+	nav span {
+		margin-right:60px !important;
+		}
 }
 
 @media screen and (max-width: 800px) {
@@ -379,7 +387,16 @@ form {
 
 	nav {
 		background-image: url(../images/minilogo.png);
-		text-align: right;
+		text-align:right !important;
+		font-size:14px !important;
+	}
+
+	nav span {
+		margin-right:20px !important;
+		}
+
+	.selected {
+		font-size:16px;
 	}
 
 		nav span {
@@ -488,6 +505,15 @@ fieldset {
 .flex-line {
 	display: flex;
 }
+
+.flex-row {
+	display: flex;
+	flex-direction:column;
+}
+
+.flex-row input {
+	box-sizing:border-box;
+	}
 
 .extend {
 	flex: 1 1 0;
@@ -668,6 +694,36 @@ legend {
 	border: 1px solid #78909c;
 }
 
+
+body, .g, html, .std, .c h2, h1, #cdr_min, #cdr_max, .cpbb, .kpbb, .kprb, .kpgb, .kpgrb, .ksb {
+    font-family: arial,sans-serif;
+}
+body {
+    color: #222;
+}
+.g, body, html, input, .std, h1 {
+    font-family: arial,sans-serif;
+    font-size: small;
+}
+body {
+    background: #fff none repeat scroll 0 0;
+}
+body {
+    color: #000;
+    margin: 0;
+    overflow-y: scroll;
+}
+body, .g, html, .std, .c h2, h1, #cdr_min, #cdr_max, .cpbb, .kpbb, .kprb, .kpgb, .kpgrb, .ksb {
+    font-family: arial,sans-serif;
+}
+.g, body, html, input, .std, h1 {
+    font-family: arial,sans-serif;
+    font-size: small;
+}
+#result td:last-child {
+    width: 160px;
+}
+
 #adminform .marger {
 	padding: 20px;
 }
@@ -676,3 +732,43 @@ legend {
 	text-align:justify;
 	display: block;
 }
+
+#adminform .boxsubmit {
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: 24px auto;
+	min-width: 42px;
+}
+
+.viewBtn {
+	background-color:#8bc34a;
+	border-color:#8bc34a;
+
+	background-image: url("/images/icons/view.png");
+}
+
+.editBtn {
+	background-color:#c0ca33;
+	border-color:#c0ca33;
+
+	background-image: url("/images/icons/edit.png");
+}
+
+.deleteBtn {
+	background-color:#e53935;
+	border-color:#e53935;
+	background-image: url("/images/icons/delete.png");
+}
+
+.saveBtn {
+
+
+	background-image: url("/images/icons/save.png");
+}
+
+.cancelBtn {
+	background-color:#607d8b;
+	border-color:#607d8b;
+	background-image: url("/images/icons/cancel.png");
+}
+

@@ -41,7 +41,7 @@
 
 										</ItemTemplate>
 										<EditItemTemplate>
-											<div class="flex-line">
+											<div class="flex-row">
 												<asp:TextBox class="boxinput extend" ID="txtTitre" Text='<%# Eval("Titre") %>' runat="server" />
 											</div>
 										</EditItemTemplate>
@@ -56,7 +56,7 @@
 
 										</ItemTemplate>
 										<EditItemTemplate>
-											<div class="flex-line">
+											<div class="flex-row">
 												<asp:TextBox class="boxinput extend" ID="txtPrix" Text='<%# Eval("Prix") %>' runat="server" />
 											</div>
 										</EditItemTemplate>
@@ -69,7 +69,7 @@
 
 										</ItemTemplate>
 										<EditItemTemplate>
-											<div class="flex-line">
+											<div class="flex-row">
 												<asp:TextBox class="boxinput extend" ID="txtMontantCharges" Text='<%# Eval("MontantCharges") %>' runat="server" />
 											</div>
 										</EditItemTemplate>
@@ -82,21 +82,21 @@
 											<div class="flex-line">
 
 
-											<input type="button" value="Voir" class="boxsubmit extend marged" onclick="location.href = 'Bien.aspx?id=<%# Eval("Id") %>';" />
+											<input type="button" value="" class="boxsubmit extend marged viewBtn" onclick="location.href = 'Bien.aspx?id=<%# Eval("Id") %>';" />
 
-											<asp:Button ID="lnkEdit" text="Éditer" class="boxsubmit extend marged"
+											<asp:Button ID="lnkEdit" text="" class="boxsubmit extend marged editBtn"
 												CommandName="Edit" runat="server"></asp:Button>
 
-											<asp:Button ID="lnkDelete" text="Supprimer" class="boxsubmit extend marged" 
+											<asp:Button ID="lnkDelete" text="" class="boxsubmit extend marged deleteBtn" 
 												CommandName="Delete" runat="server"></asp:Button>
 </div>
 										</ItemTemplate>
 										<EditItemTemplate>
 											<div class="flex-line">
-											<asp:Button ID="lnkSave" text="Sauvegarder" class="boxsubmit extend marged" 
+											<asp:Button ID="lnkSave" text="" class="boxsubmit extend marged saveBtn" 
 												CommandName="Update" runat="server"></asp:Button>
 
-											<asp:Button ID="lnkCancel" text="Annuler" class="boxsubmit extend marged"
+											<asp:Button ID="lnkCancel" text="" class="boxsubmit extend marged cancelBtn"
 												CommandName="Cancel" runat="server"></asp:Button>
 										
 										</div>
