@@ -28,6 +28,18 @@ namespace ClientWeb
 
         protected void Page_Load(object sender, EventArgs e)
         {
+			if (IsPostBack)
+			{
+				if (Nom.Text.Length > 0 && Email.Text.Length > 0 && Numero.Text.Length > 0 && Message.Text.Length > 0)
+				{
+
+					Console.Write(Nom.Text);
+					Console.Write(Email.Text);
+					Console.Write(Numero.Text);
+					Console.Write(Message.Text);
+				}
+			}
+
             ServiceAgence.BienImmobilier bien;
             using (ServiceAgence.AgenceClient client = new ServiceAgence.AgenceClient())
             {
