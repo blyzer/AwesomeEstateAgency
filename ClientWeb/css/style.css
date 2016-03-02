@@ -687,11 +687,13 @@ legend {
 
 #result table {
 	width: 100%;
+
 }
 
 #result td, #result th {
 	padding: 5px;
-	border: 1px solid #78909c;
+
+	border: 1px solid #cfd8dc;
 }
 
 
@@ -705,21 +707,7 @@ body {
     font-family: arial,sans-serif;
     font-size: small;
 }
-body {
-    background: #fff none repeat scroll 0 0;
-}
-body {
-    color: #000;
-    margin: 0;
-    overflow-y: scroll;
-}
-body, .g, html, .std, .c h2, h1, #cdr_min, #cdr_max, .cpbb, .kpbb, .kprb, .kpgb, .kpgrb, .ksb {
-    font-family: arial,sans-serif;
-}
-.g, body, html, input, .std, h1 {
-    font-family: arial,sans-serif;
-    font-size: small;
-}
+
 #result td:last-child {
     width: 160px;
 }
