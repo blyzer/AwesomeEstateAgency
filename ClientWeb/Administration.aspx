@@ -58,6 +58,7 @@
 							</table>
 						</fieldset>
 					</div>
+                            <asp:Button Text="Rechercher" class="boxsubmit" runat="server" />
 				</div>
 						</fieldset>
 						<div id="result">
