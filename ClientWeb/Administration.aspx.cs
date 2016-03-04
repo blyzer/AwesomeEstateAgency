@@ -43,24 +43,29 @@ namespace ClientWeb
 
 
 
-        private void BindData()
+        private void BindData(ServiceAgence.CriteresRechercheBiensImmobiliers criteres=null)
         {
             using (ServiceAgence.AgenceClient client = new ServiceAgence.AgenceClient())
             {
 
                 client.Open();
-
-                ServiceAgence.CriteresRechercheBiensImmobiliers c = new ServiceAgence.CriteresRechercheBiensImmobiliers();
-
-                Initcriteres(c);
-
-                ServiceAgence.ResultatListeBiensImmobiliers res = client.LireListeBiensImmobiliers(c, 0, 8);
-
-
-                List<ServiceAgence.BienImmobilierBase> liste = res.Liste.List;
-                this.gvDisplay.DataSource = liste;
-                this.gvDisplay.DataBind();
-
+                
+                if (criteres == null)
+                {
+                    ServiceAgence.CriteresRechercheBiensImmobiliers c = new ServiceAgence.CriteresRechercheBiensImmobiliers();
+                    Initcriteres(c);
+                    ServiceAgence.ResultatListeBiensImmobiliers res = client.LireListeBiensImmobiliers(c, 0, 8);
+                    List<ServiceAgence.BienImmobilierBase> liste = res.Liste.List;
+                    this.gvDisplay.DataSource = liste;
+                    this.gvDisplay.DataBind();
+                }
+                else
+                {
+                    ServiceAgence.ResultatListeBiensImmobiliers res = client.LireListeBiensImmobiliers(criteres, 0, 8);
+                    List<ServiceAgence.BienImmobilierBase> liste = res.Liste.List;
+                    this.gvDisplay.DataSource = liste;
+                    this.gvDisplay.DataBind();
+                }
 
                 client.Close();
             }
@@ -151,12 +156,32 @@ namespace ClientWeb
             {
                 Response.Redirect("~/Connexion.aspx");
             }
+
+            Catalogue obj = new Catalogue();
             if (!IsPostBack)
             {
+
+                obj.Load_DropDownListItem<ServiceAgence.BienImmobilierBase.eTypeBien>(DropDownListTypeBien, true);
+                DropDownListTypeBien.SelectedValue = "-1";
+
                 BindData();
             }
+            if (IsPostBack)
+            {
+                ServiceAgence.CriteresRechercheBiensImmobiliers a = new ServiceAgence.CriteresRechercheBiensImmobiliers();
 
+                Initcriteres(a);
+                a.TitreContient = Titre.Text;
+                if (DropDownListTypeBien.SelectedValue != "-1")
+                {
+                    a.TypeBien = (ServiceAgence.BienImmobilierBase.eTypeBien)obj.AffectSelectedValue(DropDownListTypeBien);
+                }
 
+                a.AdresseContient = Adresse.Text;
+                a.CodePostal = CP.Text;
+                a.Ville = Ville.Text;
+                BindData(a);
+            }
 
         }
         private string ConvertirListeErreur(List<ServiceAgence.ResultatOperation.Erreur> liste)
@@ -171,5 +196,15 @@ namespace ClientWeb
             return resultat;
 
         }
+
+        /*
+        foreach(GridViewRow row in gvResultats.Rows){
+        if((CheckBox) row.Cells[n].Control[1].Checked{
+        Response.Write("Button checked num:" + row.RowIndex.ToString());
+        }
+
+        }
+
+        */
     }
 }

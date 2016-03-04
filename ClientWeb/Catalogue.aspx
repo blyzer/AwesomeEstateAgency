@@ -96,7 +96,7 @@
 									<tr>
 										<td>Ville</td>
 										<td>
-											<asp:TextBox ID="RechercheVille"  class="boxinput" type="number" AutoPostBack="false" runat="server" />
+											<asp:TextBox ID="RechercheVille"  class="boxinput" AutoPostBack="false" runat="server" />
 										</td>
 									</tr>
 

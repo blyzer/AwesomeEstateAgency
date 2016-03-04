@@ -13,7 +13,53 @@
 
 						<fieldset>
 							<legend>Filtrer</legend>
-
+                            <div class="category">
+						<fieldset>
+							<legend>Votre bien</legend>
+							<table>
+								<tr>
+									<td>Type</td>
+									<td>
+										<asp:DropDownList ID="DropDownListTypeBien"  class="boxdropdown" type="number" runat="server">
+										</asp:DropDownList>
+									</td>
+								</tr>
+								<tr>
+									<td>Titre</td>
+									<td>
+										<asp:TextBox ID="Titre" class="boxinput extend" AutoPostBack="false" runat="server" />
+									</td>
+								</tr>
+							</table>
+						</fieldset>
+					</div>
+					<div class="category">
+						<fieldset>
+							<legend>Coordonnées</legend>
+							<table>
+								<tr>
+									<td>Ville</td>
+									<td>
+										<asp:TextBox ID="Ville" class="boxinput extend" AutoPostBack="false" runat="server" />
+									</td>
+								</tr>
+								<tr>
+									<td>Code postal</td>
+									<td>
+										<asp:TextBox ID="CP" class="boxinput extend" AutoPostBack="false" runat="server" />
+									</td>
+								</tr>
+								<tr>
+									<td>Adresse</td>
+									<td>
+										<asp:TextBox ID="Adresse" class="boxinput extend" AutoPostBack="false" runat="server" />
+									</td>
+								</tr>
+							</table>
+						</fieldset>
+					</div>
+                            <asp:Button Text="Rechercher" class="boxsubmit" runat="server" />
+				</div>
 						</fieldset>
 						<div id="result">
 
@@ -89,7 +135,7 @@
 
 											<asp:Button ID="lnkDelete" text="" class="boxsubmit extend marged deleteBtn" 
 												CommandName="Delete" runat="server"></asp:Button>
-</div>
+                                            </div>
 										</ItemTemplate>
 										<EditItemTemplate>
 											<div class="flex-line">
