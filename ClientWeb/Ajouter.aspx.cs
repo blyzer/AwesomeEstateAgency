@@ -13,6 +13,9 @@ namespace ClientWeb
         protected void Page_Load(object sender, EventArgs e)
         {
             Catalogue obj = new Catalogue();
+
+			string id = Request.QueryString["id"];
+
             if (!this.IsPostBack)
             {
 
@@ -26,15 +29,60 @@ namespace ClientWeb
                 DropDownListTypeChauffage.SelectedValue = "0";
                 DropDownListTypeTransaction.SelectedValue = "0";
 
+				
+
+				if (id != null)
+				{
+
+					using (ServiceAgence.AgenceClient client = new ServiceAgence.AgenceClient())
+					{
+						client.Open();
+
+						ServiceAgence.BienImmobilier bien = client.LireDetailsBienImmobilier(id).Bien;
+
+						Titre.Text = bien.Titre;
+						Prix.Text = bien.Prix.ToString();
+						MontantCharges.Text = bien.MontantCharges.ToString();
+						Adresse.Text = bien.Adresse;
+						CP.Text = bien.CodePostal;
+						Ville.Text = bien.Ville;
+						Surface.Text = bien.Surface.ToString();
+						NombreEtage.Text = bien.NbEtages.ToString();
+						NumeroEtage.Text = bien.NumEtage.ToString();
+						Description.Text = bien.Description;
+						NombrePiece.Text = bien.NbPieces.ToString();
+						Description.Text = bien.Description;
+						DropDownListTypeBien.SelectedIndex = (int)bien.TypeBien;
+						DropDownListTypeTransaction.SelectedIndex = (int)bien.TypeTransaction;
+						DropDownListTypeChauffage.SelectedIndex = (int)bien.TypeChauffage;
+						DropDownListEnergieChauffage.SelectedIndex = (int)bien.EnergieChauffage;
+
+					}
+
+				}
+
             }
 
             if (this.IsPostBack)
             {
                 using (ServiceAgence.AgenceClient client = new ServiceAgence.AgenceClient())
                 {
-                    ServiceAgence.BienImmobilier bien = new ServiceAgence.BienImmobilier();
+					client.Open();
 
-                    Initbien(bien);
+					ServiceAgence.BienImmobilier bien;
+
+					if (id == null)
+					{
+						bien = new ServiceAgence.BienImmobilier();
+						Initbien(bien);
+					}
+					else
+					{
+						bien = client.LireDetailsBienImmobilier(id).Bien;
+
+					}
+
+
 
                     bien.Adresse = Adresse.Text;
                     bien.CodePostal = CP.Text;
@@ -71,7 +119,18 @@ namespace ClientWeb
                     bien.TypeTransaction = (ServiceAgence.BienImmobilierBase.eTypeTransaction)obj.AffectSelectedValue(DropDownListTypeTransaction);
                     bien.Ville = Ville.Text;
 
-                    client.AjouterBienImmobilier(bien);
+					if (id != null)
+					{
+						bien.Id = Convert.ToInt32(id);
+						client.ModifierBienImmobilier(bien);
+					}
+					else
+					{
+						client.AjouterBienImmobilier(bien);
+					}
+                   
+
+					client.Close();
                 }
 
                 Response.Redirect("~/Catalogue.aspx");

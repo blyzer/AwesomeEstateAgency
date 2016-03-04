@@ -4,7 +4,16 @@
 	<figure></figure>
 	<div id="main">
 		<div id="add" class="container wrap panel">
-			<h1>Ajouter un bien</h1>
+		
+
+			<h1>
+                <%
+                    if (Request.QueryString["id"] != null)
+						Response.Write("Modifier un bien");
+					else
+						Response.Write("Ajouter un bien");
+                %>
+			</h1>
 			<hr />
 			<form id="form2" runat="server">
 				<div class="categories">
@@ -149,7 +158,7 @@
 				<div class="clear"></div>
 				<hr />
 				<div id="submit" class="clear">
-					<input type="submit" value="Ajouter"  class="boxsubmit"/>
+					<input type="submit" value="Sauvegarder"  class="boxsubmit"/>
 				</div>
 				<div class="clear"></div>
 		
