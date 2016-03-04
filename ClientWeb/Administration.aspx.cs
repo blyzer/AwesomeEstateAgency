@@ -177,7 +177,7 @@ namespace ClientWeb
                     a.TypeBien = (ServiceAgence.BienImmobilierBase.eTypeBien)obj.AffectSelectedValue(DropDownListTypeBien);
                 }
 
-                a.AdresseContient = Adresse.Text;
+                a.AdresseContient = Adresse.Text ;
                 a.CodePostal = CP.Text;
                 a.Ville = Ville.Text;
                 BindData(a);
