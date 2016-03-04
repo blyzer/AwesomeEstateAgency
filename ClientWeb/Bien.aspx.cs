@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -43,6 +44,29 @@ namespace ClientWeb
             ServiceAgence.BienImmobilier bien;
             using (ServiceAgence.AgenceClient client = new ServiceAgence.AgenceClient())
             {
+				if (IsPostBack)
+				{
+
+					SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
+
+					smtpClient.Port = 587;
+					smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+					smtpClient.UseDefaultCredentials = false;
+					System.Net.NetworkCredential credentials =
+						new System.Net.NetworkCredential("kyx.team@gmail.com", "");
+					smtpClient.EnableSsl = true;
+					smtpClient.Credentials = credentials;
+
+					MailMessage mail = new MailMessage();
+
+					//Setting From , To and CC
+					mail.From = new MailAddress("contact@awesome-estate-agency.com", "The Awesome Estate Agency");
+					mail.To.Add(new MailAddress(Email.Text));
+					mail.Subject = "yolo";
+					mail.Body = "Hé ho ! Yolo ! Hé hé !";
+
+					smtpClient.Send(mail);
+				}
 
                 client.Open();
 
