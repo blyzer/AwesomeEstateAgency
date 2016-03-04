@@ -165,5 +165,56 @@
 			<div class="clear"></div>
 
 		</div>
+
+		<div id="contactform" class="container wrap panel">
+			<h1>Contacter le vendeur</h1>
+			<hr />
+			<form id="form" runat="server">
+			<div class="categories">
+
+				<div class="category">
+					<fieldset>
+						<legend>Vos informations de contact</legend>
+						<table>
+							<tr>
+								<td>Nom</td>
+								<td>
+									<asp:TextBox ID="Nom" class="boxinput" type="text" AutoPostBack="false" runat="server" />
+								</td>
+								<td id="contactclip" class="clip" rowspan="3">
+									Vous n'avez jamais été si proche du bien de votre rêve
+								</td>
+							</tr>
+							<tr>
+								<td>E-mail</td>
+								<td>
+									<asp:TextBox ID="Email" class="boxinput" type="text" AutoPostBack="false" runat="server" />
+								</td>
+							</tr>
+							<tr>
+								<td>Numéro de téléphone</td>
+								<td>
+									<asp:TextBox ID="Numero" class="boxinput" type="text" AutoPostBack="false" runat="server" />
+								</td>
+							</tr>
+							
+						</table>
+					</fieldset>
+				</div>
+				<div class="category">
+					<fieldset>
+						<legend>Votre message</legend>
+						<asp:TextBox class="boxarea" id="Message" rows="5" TextMode="multiline" runat="server" />
+					</fieldset>
+				</div>
+
+			</div>
+			<div id="submit" class="clear">
+				<input type="submit" value="Contacter"  class="boxsubmit"/>
+			</div>
+			</form>
+			<div class="clear"></div>
+
+		</div>
 	</div>
 </asp:Content>

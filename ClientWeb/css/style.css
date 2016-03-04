@@ -407,6 +407,14 @@ form {
 		float: none !important;
 		width: 100% !important;
 	}
+
+	.clip {
+		display:none;
+	}
+
+	fieldset input {
+    width: 97% !important;
+}
 }
 
 .panel {
@@ -490,9 +498,9 @@ fieldset {
 	margin-bottom: 10px;
 }
 
-	fieldset input {
-		width: 40%;
-	}
+fieldset input {
+    width: 90%;
+}
 
 #searchform {
 	margin-bottom: 20px;
@@ -661,7 +669,7 @@ legend {
 
 
 
-#add h1, #submit {
+#add h1, #contactform h1, #submit {
 	text-align: center;
 	padding:10px 0;
 }
@@ -751,3 +759,19 @@ legend {
 	background-image: url("/images/icons/cancel.png");
 }
 
+#contactform {
+	margin-top:30px;
+}
+
+#contactform fieldset{
+	border:0;
+}
+
+.clip {
+    background-color: #8bc34a;
+    color: white;
+    font-size: 20px;
+    padding: 0 20px;
+    text-align: center;
+    width: 50%;
+}
