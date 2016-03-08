@@ -7,18 +7,18 @@
 	<div id="main">
 		<div id="good" class="container wrap panel">
             <ul id="imgData">
-                <% if (this.BienImage1 != "")
+                <% if (this.BienImage1 != null && this.BienImage1 != "")
                          { %>
                 <li name=<% Response.Write("data:image/png;base64," + this.BienImage1);%>></li>
                 <%} %>
 
-                <% if (this.BienImage2 != "")
-                         { %>
+                <% if (this.BienImage2 != null && this.BienImage2 != "")
+                { %>
                 <li name=<% Response.Write("data:image/png;base64," + this.BienImage2);%>></li>
                 <%} %>
 
 
-                <% if (this.BienImage3 != "")
+                <% if (this.BienImage3 != null && this.BienImage3 != "")
                          { %>
                 <li name=<% Response.Write("data:image/png;base64," + this.BienImage3);%>></li>
                 <%} %>
@@ -39,9 +39,12 @@
                     else
                     {
                 %>
+				<div id="next">&gt;</div>
 				<div id="look">&#x2B1C;</div>
-                <div style=<% Response.Write("background-image:" + "url(data:image/png;base64," + this.BienImage + ")");%> class="background"></div>
-				<img src="<% Response.Write("data:image/png;base64," +this.BienImage);%>" />
+				
+                <div id="currImgBg" style=<% Response.Write("background-image:" + "url(data:image/png;base64," + this.BienImage + ")");%> class="background"></div>
+				<img id="currImg" src="<% Response.Write("data:image/png;base64," +this.BienImage);%>" />
+				
 
                 <%
                     }
@@ -50,6 +53,50 @@
 				
 				<div class="title"><%= this.BienTitre %></div>
 			</div>
+
+			<script>
+
+				for (var i = 0; i < document.getElementById("imgData").children.length;i++) {
+
+					if (document.getElementById("imgData").children[i].getAttribute("name").length < 100) {
+						document.getElementById("imgData").removeChild(document.getElementById("imgData").children[i]);
+					}
+				}
+
+				document.getElementById("next").onclick = function () { 
+
+				var current_image = document.getElementById("currImg").src;
+
+				var images = document.getElementById("imgData").children;
+
+				var next_image = current_image;
+
+				var curr_index = -2;
+
+				for (var i = 0; i < images.length; i++) {
+
+					if (images[i].getAttribute("name") == current_image) {
+						curr_index = i;
+						break;
+					}
+
+				}
+
+				curr_index++;
+
+				if (curr_index == -1)
+					curr_index--;
+
+				else if (curr_index == images.length)
+					curr_index = 0;
+
+				document.getElementById("currImg").src = images[curr_index].getAttribute("name");
+				document.getElementById("currImgBg").style.backgroundImage = "url(" + images[curr_index].getAttribute("name") + ")";
+
+
+				};
+
+			</script>
 
 			<div id="infos" class="categories">
 

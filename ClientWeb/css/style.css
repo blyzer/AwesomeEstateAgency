@@ -619,6 +619,22 @@ legend {
 		cursor: pointer;
 	}
 
+	#good .image #next {
+		width: 40px;
+		height: 40px;
+		background-color: #263238;
+		color: #fff;
+		font-weight: bold;
+		text-align: center;
+		line-height: 40px;
+		font-size: 26px;
+		position: absolute;
+		top: 20px;
+		right: 20px;
+		z-index: 5;
+		cursor: pointer;
+	}
+
 #look:hover + .background + img {
 	opacity: 1;
 }
@@ -801,4 +817,8 @@ legend {
 #filterform .boxsubmit {
 	margin:0 auto;
 	width:200px;
+}
+
+#imgData {
+	display:none;
 }
