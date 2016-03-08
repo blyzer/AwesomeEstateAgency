@@ -26,6 +26,9 @@ namespace ClientWeb
         public string BienTypeChauffage;
         public string BienTypeBien;
         public string BienImage;
+        public string BienImage1;
+        public string BienImage2;
+        public string BienImage3;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -46,7 +49,7 @@ namespace ClientWeb
             {
 				if (IsPostBack)
 				{
-
+                    /*
 					SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
 
 					smtpClient.Port = 587;
@@ -66,7 +69,12 @@ namespace ClientWeb
 					mail.Body = "Hé ho ! Yolo ! Hé hé !";
 
 					smtpClient.Send(mail);
-				}
+                    
+                    */
+                    EnvoyerMail();
+
+
+                }
 
                 client.Open();
 
@@ -104,9 +112,80 @@ namespace ClientWeb
 
                 //Image :
                 BienImage = bien.PhotoPrincipaleBase64;
+                try
+                {
+                    if (bien.PhotosBase64.ElementAt(0) != "")
+                        BienImage1 = bien.PhotosBase64.ElementAt(0);
+                }
+                catch(ArgumentOutOfRangeException)
+                {
+                    BienImage1 = "";
+                }
+
+                try
+                {
+                    if (bien.PhotosBase64.ElementAt(1) != "")
+                        BienImage2 = bien.PhotosBase64.ElementAt(1);
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                    BienImage2 = "";
+                }
+
+                try
+                {
+                    if (bien.PhotosBase64.ElementAt(2) != "")
+                        BienImage3 = bien.PhotosBase64.ElementAt(2);
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                    BienImage3 = "";
+                }
 
                 client.Close();
             }
         }
+
+        private bool EnvoyerMail()
+        {
+            System.Net.Mail.MailMessage message = new System.Net.Mail.MailMessage();
+            System.Net.Mail.MailAddress expediteur = new System.Net.Mail.MailAddress("NicolasLebelle@outlook.com");
+            System.Net.Mail.MailAddress destinataire = new System.Net.Mail.MailAddress("anthony.loup01@gmail.com");
+
+
+            // Adresse mail de l'expediteur
+            message.From = expediteur;
+            // Adresse mail du destinataire
+            message.To.Add(destinataire);
+            // Sujet
+            message.Subject = "Sujet du message";
+            // Corps
+            message.IsBodyHtml = true;
+            message.Body = @"<html>
+                             <head>
+                                 </head>
+                                 <body>
+                                     <p>
+                                         Bonjour,<br/>
+                                         Ceci est le coprs du mail de test...< br />
+                                         Cordialement
+                                     </p>
+                             </body>
+                             </html>";
+
+            // Client SMTP
+            System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient("smtp.gmail.com", 587);
+            client.EnableSsl = true;
+            client.DeliveryMethod = SmtpDeliveryMethod.Network;
+            client.UseDefaultCredentials = false;
+            client.Credentials = new System.Net.NetworkCredential("aspbronet@gmail.com", "aspbronet01");
+
+            // Envoi du message
+            client.Send(message);
+
+            return true;
+        }
+
+
     }
 }

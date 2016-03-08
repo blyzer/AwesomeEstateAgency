@@ -6,7 +6,24 @@
 
 	<div id="main">
 		<div id="good" class="container wrap panel">
+            <ul id="imgData">
+                <% if (this.BienImage1 != "")
+                         { %>
+                <li name=<% Response.Write("data:image/png;base64," + this.BienImage1);%>></li>
+                <%} %>
 
+                <% if (this.BienImage2 != "")
+                         { %>
+                <li name=<% Response.Write("data:image/png;base64," + this.BienImage2);%>></li>
+                <%} %>
+
+
+                <% if (this.BienImage3 != "")
+                         { %>
+                <li name=<% Response.Write("data:image/png;base64," + this.BienImage3);%>></li>
+                <%} %>
+
+            </ul>
 			<div class="image">
 				
                  
