@@ -53,10 +53,6 @@
                                     <td><asp:Label Text="Photo 2 :" runat="server" /></td>
                                     <td><asp:FileUpload ID="Image2" runat="server" /></td>
                                 </tr>
-                                <tr>
-                                    <td><asp:Label Text="Photo 3 :" runat="server" /></td>
-                                    <td><asp:FileUpload ID="Image3" runat="server" /></td>
-                                </tr>
                             </table>
 						</fieldset>
 					</div>

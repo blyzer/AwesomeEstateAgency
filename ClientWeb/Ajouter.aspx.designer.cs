@@ -67,15 +67,6 @@ namespace ClientWeb {
         protected global::System.Web.UI.WebControls.FileUpload Image2;
         
         /// <summary>
-        /// Contrôle Image3.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload Image3;
-        
-        /// <summary>
         /// Contrôle Prix.
         /// </summary>
         /// <remarks>
