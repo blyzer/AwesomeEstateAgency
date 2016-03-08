@@ -33,6 +33,11 @@
                         }
                         %>
                          href="Catalogue.aspx">Catalogue</a> /
+                     <%
+
+                        if (Session["Admin"] != null && Session["Admin"].ToString() == "true")
+                        {
+                        %>
 					<a 
                         <%
                         b = Convert.ToBoolean(System.IO.Path.GetFileName(Request.CurrentExecutionFilePath).CompareTo("Ajouter.aspx"));
@@ -40,7 +45,12 @@
                             Response.Write("class=\"selected\"");
                         }
                         %>
-                        href="Ajouter.aspx">Ajouter un bien</a> /
+                        
+
+                    <%
+                            Response.Write("href=\"Ajouter.aspx\">Ajouter un bien</a> / ");
+                        }
+                         %>
 
                     <%
 
