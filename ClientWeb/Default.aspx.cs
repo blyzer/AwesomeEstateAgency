@@ -26,7 +26,7 @@ namespace ClientWeb
 
 				Initcriteres(c);
 
-				ServiceAgence.ResultatListeBiensImmobiliers res = client.LireListeBiensImmobiliers(c, 0, 8);
+				ServiceAgence.ResultatListeBiensImmobiliers res = client.LireListeBiensImmobiliers(c, 1, 4);
 
 				this.rpResultats.DataSource = res.Liste.List;
 				this.rpResultats.DataBind();
