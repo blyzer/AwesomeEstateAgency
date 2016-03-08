@@ -63,6 +63,10 @@
 					}
 				}
 
+				if (document.getElementById("imgData").children.length <= 1) {
+					document.getElementById("next").style.display = 'none';
+				}
+
 				document.getElementById("next").onclick = function () { 
 
 				var current_image = document.getElementById("currImg").src;
