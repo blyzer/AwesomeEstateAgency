@@ -147,6 +147,9 @@
 											<asp:Button ID="lnkSave" text="" class="boxsubmit extend marged saveBtn" 
 												CommandName="Update" runat="server"></asp:Button>
 
+											<input type="button" value="" class="boxsubmit extend marged editPlusBtn" onclick="location.href = 'Ajouter.aspx?id=<%# Eval("Id") %>	';" />
+
+
 											<asp:Button ID="lnkCancel" text="" class="boxsubmit extend marged cancelBtn"
 												CommandName="Cancel" runat="server"></asp:Button>
 										

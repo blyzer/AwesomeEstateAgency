@@ -741,6 +741,13 @@ legend {
 	background-image: url("/images/icons/edit.png");
 }
 
+.editPlusBtn {
+	background-color:#c0ca33;
+	border-color:#c0ca33;
+
+	background-image: url("/images/icons/editplus.png");
+}
+
 .deleteBtn {
 	background-color:#e53935;
 	border-color:#e53935;
