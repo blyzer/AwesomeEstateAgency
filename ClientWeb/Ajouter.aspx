@@ -40,7 +40,10 @@
 					<div class="category">
 						<fieldset>
 							<legend>Image</legend>
-							<asp:FileUpload ID="Image" runat="server" />
+							<asp:FileUpload ID="ImageP" runat="server" />
+                            <asp:FileUpload ID="Image1" runat="server" />
+                            <asp:FileUpload ID="Image2" runat="server" />
+                            <asp:FileUpload ID="Image3" runat="server" />
 						</fieldset>
 					</div>
 					<div class="category">

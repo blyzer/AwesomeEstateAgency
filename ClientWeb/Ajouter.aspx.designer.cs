@@ -40,13 +40,40 @@ namespace ClientWeb {
         protected global::System.Web.UI.WebControls.TextBox Titre;
         
         /// <summary>
-        /// Contrôle Image.
+        /// Contrôle ImageP.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload Image;
+        protected global::System.Web.UI.WebControls.FileUpload ImageP;
+        
+        /// <summary>
+        /// Contrôle Image1.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload Image1;
+        
+        /// <summary>
+        /// Contrôle Image2.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload Image2;
+        
+        /// <summary>
+        /// Contrôle Image3.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload Image3;
         
         /// <summary>
         /// Contrôle Prix.

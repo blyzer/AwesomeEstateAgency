@@ -94,19 +94,12 @@ namespace ClientWeb
                     bien.NbEtages = ConvertStringToInt(NombreEtage.Text, 0);
                     bien.NbPieces = ConvertStringToInt(NombrePiece.Text, 0);
                     bien.NumEtage = ConvertStringToInt(NumeroEtage.Text, 0);
+                    bien.PhotoPrincipaleBase64 = "";
 
-                    if (Image.HasFile)
-                    {
-                        //bien.Description = ImageToBase64(Image);
-                        bien.PhotoPrincipaleBase64 = ImageToBase64(Image);
-                        string img = ImageToBase64(Image);
-                        bien.PhotosBase64 = new List<string>();
-                        bien.PhotosBase64.Add(img);
-                    }
-                    else
-                    {
-                        bien.PhotoPrincipaleBase64 = "";
-                    }
+                    PutImage(ImageP, bien);
+                    PutImage(Image1, bien);
+                    PutImage(Image2, bien);
+                    PutImage(Image3, bien);
 
 
                     bien.Prix = ConvertStringToDouble(Prix.Text, 0);
@@ -133,7 +126,7 @@ namespace ClientWeb
 					client.Close();
                 }
 
-                Response.Redirect("~/Catalogue.aspx");
+                Response.Redirect("~/Administration.aspx");
             }
         }
 
@@ -174,6 +167,31 @@ namespace ClientWeb
             byte[] imageBytes = m.ToArray();
             base64String = Convert.ToBase64String(imageBytes);
             return base64String;
+        }
+
+        private bool PutImage(FileUpload f, ServiceAgence.BienImmobilier b)
+        {
+            
+            if (f.HasFile)
+            {
+                if (b.PhotoPrincipaleBase64 == "")
+                {
+                    b.PhotoPrincipaleBase64 = ImageToBase64(f);
+                }
+                else
+                {
+                    string img = ImageToBase64(f);
+                    b.PhotosBase64 = new List<string>();
+                    b.PhotosBase64.Add(img);
+                }
+                
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
         }
 
     }
