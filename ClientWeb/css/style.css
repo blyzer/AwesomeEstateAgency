@@ -782,3 +782,23 @@ legend {
     text-align: center;
     width: 50%;
 }
+
+#filterform  fieldset legend {
+	color:#607d8b;
+}
+
+#filterform  fieldset {
+
+	border:0;
+	margin:0;
+
+}
+
+#filterform td:first-child {
+	width:150px;
+}
+
+#filterform .boxsubmit {
+	margin:0 auto;
+	width:200px;
+}

@@ -11,7 +11,7 @@
 				<div id="adminform" class="panel">
 					<div class="marger">
 
-						<fieldset>
+						<fieldset id="filterform">
 							<legend>Filtrer</legend>
 
                             <div class="category">
@@ -56,11 +56,12 @@
 												<asp:TextBox ID="Adresse" class="boxinput extend" AutoPostBack="false" runat="server" />
 											</td>
 										</tr>
+
 									</table>
 								</fieldset>
 							</div>
 
-						 <asp:Button  ID="FilterSubmit" Text="Rechercher" class="boxsubmit" runat="server" />
+							<asp:Button  ID="FilterSubmit" Text="Rechercher" class="boxsubmit" runat="server" />
 
 						</fieldset>     
 						
