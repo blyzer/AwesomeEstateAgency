@@ -40,10 +40,24 @@
 					<div class="category">
 						<fieldset>
 							<legend>Image</legend>
-							<asp:FileUpload ID="ImageP" runat="server" />
-                            <asp:FileUpload ID="Image1" runat="server" />
-                            <asp:FileUpload ID="Image2" runat="server" />
-                            <asp:FileUpload ID="Image3" runat="server" />
+                            <table>
+                                <tr>
+                                    <td><asp:Label Text="Photo principale:" runat="server" /></td>
+                                    <td><asp:FileUpload ID="ImageP" runat="server" /></td>
+                                </tr>
+                                <tr>
+                                    <td><asp:Label Text="Photo 1 :" runat="server" /></td>
+                                    <td><asp:FileUpload ID="Image1" runat="server" /></td>
+                                </tr>
+                                <tr>
+                                    <td><asp:Label Text="Photo 2 :" runat="server" /></td>
+                                    <td><asp:FileUpload ID="Image2" runat="server" /></td>
+                                </tr>
+                                <tr>
+                                    <td><asp:Label Text="Photo 3 :" runat="server" /></td>
+                                    <td><asp:FileUpload ID="Image3" runat="server" /></td>
+                                </tr>
+                            </table>
 						</fieldset>
 					</div>
 					<div class="category">
