@@ -149,7 +149,7 @@ namespace ClientWeb
         private bool EnvoyerMail()
         {
             System.Net.Mail.MailMessage message = new System.Net.Mail.MailMessage();
-            System.Net.Mail.MailAddress expediteur = new System.Net.Mail.MailAddress("NicolasLebelle@outlook.com");
+            System.Net.Mail.MailAddress expediteur = new System.Net.Mail.MailAddress(Email.Text);
             System.Net.Mail.MailAddress destinataire = new System.Net.Mail.MailAddress("anthony.loup01@gmail.com");
 
 
@@ -158,23 +158,13 @@ namespace ClientWeb
             // Adresse mail du destinataire
             message.To.Add(destinataire);
             // Sujet
-            message.Subject = "Sujet du message";
+            message.Subject = "Contact TAE";
             // Corps
             message.IsBodyHtml = true;
-            message.Body = @"<html>
-                             <head>
-                                 </head>
-                                 <body>
-                                     <p>
-                                         Bonjour,<br/>
-                                         Ceci est le coprs du mail de test...< br />
-                                         Cordialement
-                                     </p>
-                             </body>
-                             </html>";
+            message.Body = @"<html><head></head><body><p>"+ "Message de : "+Nom.Text+"<br/>"+Message.Text+"<br/>"+"Numero de telephone :"+Numero.Text+"</p></body></html>";
 
             // Client SMTP
-            System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient("smtp.gmail.com", 587);
+            System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient("smtp.gmail.com", 25);
             client.EnableSsl = true;
             client.DeliveryMethod = SmtpDeliveryMethod.Network;
             client.UseDefaultCredentials = false;
