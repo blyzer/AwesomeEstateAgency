@@ -80,6 +80,10 @@ namespace ClientWeb
 
                 ServiceAgence.ResultatBienImmobilier res = client.LireDetailsBienImmobilier(Request.QueryString["id"]);
                 bien = res.Bien;
+                if (bien == null)
+                {
+                    Response.Redirect("~/erreur.aspx");
+                }
 
                 //Titre :
                 BienTitre = bien.Titre.ToString();
