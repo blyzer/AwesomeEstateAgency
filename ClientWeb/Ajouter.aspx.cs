@@ -46,6 +46,10 @@ namespace ClientWeb
                             client.Open();
 
                             ServiceAgence.BienImmobilier bien = client.LireDetailsBienImmobilier(id).Bien;
+                            if(bien == null)
+                            {
+                                Response.Redirect("~/erreur.aspx");
+                            }
 
                             Titre.Text = bien.Titre;
                             Prix.Text = bien.Prix.ToString();
