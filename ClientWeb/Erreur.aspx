@@ -13,7 +13,7 @@
 					<div class="marger">
 						<h3>Erreur</h3>
 
-						<p>Il semble ue cette page n'existe pas ou plus.</p>
+						<p>Il semble que cette page n'existe pas ou plus.</p>
                         
 
 					</div>
