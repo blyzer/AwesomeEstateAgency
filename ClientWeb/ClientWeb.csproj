@@ -75,6 +75,7 @@
     <Content Include="Connexion.aspx" />
     <Content Include="css\style.css" />
     <Content Include="Deconnexion.aspx" />
+    <Content Include="Erreur.aspx" />
     <Content Include="images\footer.jpg" />
     <Content Include="images\jumbotron.jpg" />
     <Content Include="images\logo.png" />
@@ -170,6 +171,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Erreur.aspx.cs">
+      <DependentUpon>Erreur.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Erreur.aspx.designer.cs">
+      <DependentUpon>Erreur.aspx</DependentUpon>
     </Compile>
     <Compile Include="General.Master.cs">
       <DependentUpon>General.Master</DependentUpon>
