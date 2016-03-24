@@ -1,0 +1,35 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+
+namespace ClientWPF
+{
+    /// <summary>
+    /// Logique d'interaction pour Windowadd.xaml
+    /// </summary>
+    public partial class Windowadd : Window
+    {
+        public Windowadd(int id=-1)
+        {
+            if (id == -1)
+            {
+                // Ajouter
+            }
+            else
+            {
+                //Modifier (id est l'id du bien)
+            }
+            InitializeComponent();
+        }
+    }
+}
