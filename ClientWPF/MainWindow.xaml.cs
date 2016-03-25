@@ -128,6 +128,7 @@ namespace ClientWPF
 
                 client.Close();
             }
+            this.DataContext = this;
            
             InitializeComponent();
             listBox.Items.Refresh();

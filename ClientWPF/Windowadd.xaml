@@ -4,9 +4,94 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClientWPF"
+         xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:s="clr-namespace:ClientWPF.ServiceAgence"
         mc:Ignorable="d"
-        Title="Windowadd" Height="300" Width="300">
+        Title="Windowadd" Height="546" Width="300">
+
+    <Window.Resources>
+
+        <ObjectDataProvider x:Key="TypeBienTypesProvider"
+          MethodName="GetValues"
+          ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="s:BienImmobilierBase+eTypeBien"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+        <ObjectDataProvider x:Key="TypeChauffageTypesProvider"
+          MethodName="GetValues"
+          ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="s:BienImmobilierBase+eTypeChauffage"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+        <ObjectDataProvider x:Key="TransactionTypesProvider"
+          MethodName="GetValues"
+          ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="s:BienImmobilierBase+eTypeTransaction"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+        <ObjectDataProvider x:Key="EnergieChauffageTypesProvider"
+          MethodName="GetValues"
+          ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="s:BienImmobilierBase+eEnergieChauffage"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="Titre" Content="Titre :" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="TypeBien" Content="Type de bien :" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Prix" Content="Prix :" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="MontantCharges" Content="Montant des charges :" HorizontalAlignment="Left" Margin="10,99,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Adresse" Content="Adresse :" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="CodePostal" Content="CodePostal :" HorizontalAlignment="Left" Margin="10,161,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Ville" Content="Ville :" HorizontalAlignment="Left" Margin="10,187,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Surface" Content="Surface :" HorizontalAlignment="Left" Margin="10,218,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="NbEtages" Content="Nombres d'étages :" HorizontalAlignment="Left" Margin="10,249,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="NumEtage" Content="Numéro de l'étage :" HorizontalAlignment="Left" Margin="10,280,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Description" Content="Description :" HorizontalAlignment="Left" Margin="10,311,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="NbPiece" Content="Nombres de pièces :" HorizontalAlignment="Left" Margin="10,342,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="TypeChauffage" Content="Type chauffage :" HorizontalAlignment="Left" Margin="10,373,0,0" VerticalAlignment="Top"/>
+
+        <Label x:Name="TypeEChauffage" Content="Energie chauffage :" HorizontalAlignment="Left" Margin="10,404,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txt_Titre" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="textBox_TextChanged"/>
+        <ComboBox x:Name="cb_TypeBien" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Width="120"
+        	ItemsSource="{Binding Source={StaticResource TypeBienTypesProvider}}" Grid.Column="1"/>
+        <TextBox x:Name="txt_Prix" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,71,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="textBox_TextChanged"/>
+        <TextBox x:Name="txt_MontantCharges" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,102,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="textBox_TextChanged"/>
+        <TextBox x:Name="txt_Adresse" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,133,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="textBox_TextChanged"/>
+        <TextBox x:Name="txt_CodePostal" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,164,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="textBox_TextChanged"/>
+        <TextBox x:Name="txt_Ville" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,192,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="textBox_TextChanged"/>
+        <TextBox x:Name="txt_Surface" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,221,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="textBox_TextChanged"/>
+        <TextBox x:Name="txt_NbEtages" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,252,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="textBox_TextChanged"/>
+        <TextBox x:Name="txt_NumEtage" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,284,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="textBox_TextChanged"/>
+        <TextBox x:Name="txt_Description" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,315,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="textBox_TextChanged"/>
+        <TextBox x:Name="txt_NbPiece" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,345,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="textBox_TextChanged"/>
+
+        <ComboBox x:Name="cb_Chauffage" HorizontalAlignment="Left" Margin="10,377,0,0" VerticalAlignment="Top" Width="120"
+        	ItemsSource="{Binding Source={StaticResource TypeChauffageTypesProvider}}" Grid.Column="1"/>
+
+        <ComboBox x:Name="cb_EChauffage" HorizontalAlignment="Left" Margin="10,408,0,0" VerticalAlignment="Top" Width="120"
+                  ItemsSource="{Binding Source={StaticResource EnergieChauffageTypesProvider}}" Grid.Column="1"/>
+
+        <Button x:Name="button" Grid.ColumnSpan="2" Content="Valider" HorizontalAlignment="Left" Margin="108,485,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
+        <ComboBox x:Name="cb_Transaction" HorizontalAlignment="Left" Margin="10,439,0,0" VerticalAlignment="Top" Width="120"
+        	ItemsSource="{Binding Source={StaticResource TransactionTypesProvider}}" Grid.Column="1"/>
+        <Label x:Name="TypeTransaction" Content="Type de transaction:" HorizontalAlignment="Left" Margin="10,435,0,0" VerticalAlignment="Top"/>
+
+
+
+
+
 
     </Grid>
 </Window>

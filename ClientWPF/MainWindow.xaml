@@ -8,6 +8,13 @@
 
     <Window.Resources>
 
+        <Style x:Key="myLBStyle" TargetType="{x:Type ListBoxItem}">
+            <Style.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"
+                             Color="#cfd8dc"/>
+            </Style.Resources>
+        </Style>
+
         <ObjectDataProvider x:Key="TransactionTypesProvider"
           MethodName="GetValues"
           ObjectType="{x:Type sys:Enum}">
@@ -23,45 +30,33 @@
             <Setter Property="Width" Value="100"/>
         </Style>
 
-        <!--<ControlTemplate x:Key="T_Button" TargetType="Button" >
-            
-            <Grid>
-                <Grid.RowDefinitions>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <Image x:Name="Image" 
-                       Source="images/add.png"
-                           />
-                <TextBox x:Name="Label"
-                         Text="{TemplateBinding Content}"
-                         BorderThickness="0"
-                         TextAlignment="Justify"
-                         HorizontalAlignment="Center"
-                         VerticalAlignment="Center"
-                           Grid.Row="0"
-                           Grid.Column="1"
-                               />
-
-            </Grid>
-        </ControlTemplate>-->
-
     </Window.Resources>
 
     <Grid>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="173*"/>
-            <ColumnDefinition Width="207*"/>
+            <ColumnDefinition Width="270"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="21*"/>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="137*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <ListBox x:Name="listBox" HorizontalAlignment="Left" Margin="10,0,0,10" Width="310" Background="#FFEEEEEE" Grid.Row="2"
+        <Image HorizontalAlignment="Center" Stretch="Uniform" Source="logo.png" Grid.ColumnSpan="2"  Height="14" Margin="0,6,0,0" VerticalAlignment="Top"  Grid.Row="0"   Grid.Column="0" />
+
+        <Border BorderBrush="#263238" BorderThickness="0,0,0,1" Grid.Column="0"  Grid.Row="1" />
+
+        <Border BorderBrush="#cfd8dc" BorderThickness="0,0,0,1" Grid.Column="1"  Grid.Row="1" />
+
+        <StackPanel Margin="10,5,10,5" Orientation="Horizontal" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top"/>
+
+        <StackPanel Background="#263238" Grid.Row="2" Grid.Column="0">
+            <Label x:Name="Filtre" Content="Filtre :" Foreground="White"/>
+        </StackPanel>
+
+
+        <!-- <ListBox x:Name="listBox" HorizontalAlignment="Left" Margin="10,0,0,10" Width="310" Background="#FFEEEEEE" Grid.Row="2"
           ItemsSource="{Binding ListBienBase}"
                  MouseDoubleClick="ListBox_MouseDoubleClick"
                  >
@@ -71,16 +66,60 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        
+        -->
+
+        <ListBox ItemContainerStyle="{StaticResource myLBStyle}" Background="#eceff1" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="1" Grid.RowSpan="1" ItemsSource="{Binding ListBienBase}"
+                 MouseDoubleClick="ListBox_MouseDoubleClick"
+                 x:Name="listBox" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0" >
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel ItemHeight="245"
+							ItemWidth="285"
+							Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="0" HorizontalAlignment="Center">
+                        <Viewbox>
+
+
+                            <Grid x:Name="backgroundGrid"
+									Width="250"
+									Height="200">
+                                <Image Source="home.png"  Height="250" Width="200"/>
+                                <Rectangle Fill="#f0263238" HorizontalAlignment="Left" Height="50" Margin="25,130,0,0" Stroke="Transparent" VerticalAlignment="Top" Width="200"/>
+                                <Label Margin="25,130,0,20">
+                                    <TextBlock  TextTrimming="CharacterEllipsis"
+										FontFamily="Segoe UI"
+										FontSize="18"
+										Foreground="White" Text="{Binding Titre}" Width="195"/>
+                                </Label>
+                                <Label Margin="25,152,0,20">
+                                    <TextBlock   TextTrimming="CharacterEllipsis"
+										FontFamily="Segoe UI"
+										FontSize="14"
+										Foreground="#eceff1" Text="{Binding Ville}" Width="195" Height="20"/>
+                                </Label>
+                            </Grid>
+
+                        </Viewbox>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+
         <GridSplitter Grid.Row="2" HorizontalAlignment="Stretch" Margin="318,0,3,-10" />
-        <Button x:Name="button_A" Content="Ajouter" Click="button_Add" Style="{StaticResource S_Button}"  Margin="10,10,0,10" Width="70" />
-        <Button x:Name="button_M" Content="Modifier" Click="button_Modify" Style="{StaticResource S_Button}" Margin="85,10,0,10" Width="70" />
-        <Button x:Name="button_D" Content="Supprimer" Click="button_Delete" Style="{StaticResource S_Button}" Margin="160,10,0,10" Width="70" />
-        <Button x:Name="button_F" Content="Filtre" Click="button_Filtre" Style="{StaticResource S_Button}" Margin="247,10,0,10" Width="70" />
+        <Button x:Name="button_A" Content="Ajouter" Click="button_Add" Style="{StaticResource S_Button}"  Margin="10,10,0,5" Width="70" />
+        <Button x:Name="button_M" Content="Modifier" Click="button_Modify" Style="{StaticResource S_Button}" Margin="85,10,0,5" Width="70" />
+        <Button x:Name="button_D" Content="Supprimer" Click="button_Delete" Style="{StaticResource S_Button}" Margin="160,10,0,5" Width="70" />
 
         <Grid Grid.Column="1" HorizontalAlignment="Left" Height="421" Margin="10,10,-16,0" Grid.Row="1" VerticalAlignment="Top" Width="420" Grid.RowSpan="2">
-            <Label x:Name="label_ID" Content="Pas d'Item select" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="label_ID" Content="Pas d'Item select" HorizontalAlignment="Left" Margin="-272,416,0,-21" VerticalAlignment="Top"/>
         </Grid>
-        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120"
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="10,32,0,0" Grid.Row="2" VerticalAlignment="Top" Width="120"
                   ItemsSource="{Binding Source={StaticResource TransactionTypesProvider}}" Height="22"/>
 
 
