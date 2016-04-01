@@ -149,6 +149,7 @@ namespace ClientWPF
         private void button_Add(object sender, RoutedEventArgs e)
         {
             Windowadd winadd = new Windowadd();
+            winadd.Owner = this;
             winadd.Show();
 
 			winadd.Owner = this;
@@ -158,6 +159,7 @@ namespace ClientWPF
 
 				//recharger
 			}
+            
             
 
         }
