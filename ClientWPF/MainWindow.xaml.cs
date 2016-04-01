@@ -99,9 +99,8 @@ namespace ClientWPF
         public MainWindow()
         {
             
-            this.DataContext = this;
-            ListBienBase = new ObservableCollection<ServiceAgence.BienImmobilierBase>();
-
+            //this.DataContext = this;
+            
             BindBienList();
             //InitializeComponent();
         }
@@ -110,6 +109,8 @@ namespace ClientWPF
         #region BindingData
         private void BindBienList()
         {
+            this.DataContext = this;
+            ListBienBase = new ObservableCollection<ServiceAgence.BienImmobilierBase>();
             using (ServiceAgence.AgenceClient client = new ServiceAgence.AgenceClient())
             {
 
@@ -128,16 +129,16 @@ namespace ClientWPF
 
                 client.Close();
             }
-            this.DataContext = this;
-           
+            
             InitializeComponent();
             listBox.Items.Refresh();
         }
 
         /// <summary>
-        /// A faire
+        /// Nouvelle fenetre sur le bien bindé
         /// </summary>
-        private void BindCurrentBien()
+        /// <param name="id">ID du bien</param>
+        private void BindCurrentBien(int id)
         {
 
         }
@@ -155,8 +156,6 @@ namespace ClientWPF
             {
                 BindBienList();
             }
-            
-            
 
         }
 
@@ -246,11 +245,12 @@ namespace ClientWPF
                         CurrentBien = res.Bien;
                     }
 
-                    BindCurrentBien();
+                    BindCurrentBien(SelectedBien.Id);
                     
                 }
             }
         }
+
         #endregion
     }
 }
