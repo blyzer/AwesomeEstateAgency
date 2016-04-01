@@ -19,8 +19,16 @@ namespace ClientWPF
     /// </summary>
     public partial class Windowbien : Window
     {
-        public Windowbien()
+        public ServiceAgence.BienImmobilier bien;
+        public Windowbien(int id_bien=-1)
         {
+
+            using (ServiceAgence.AgenceClient client = new ServiceAgence.AgenceClient())
+            {
+                client.Open();
+                bien = client.LireDetailsBienImmobilier(id_bien.ToString()).Bien;
+                Titre.Content = bien.Titre;
+            }
             InitializeComponent();
         }
     }

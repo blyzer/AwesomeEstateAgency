@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         Title="Windowbien" Height="300" Width="300">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="Titre" Content="Label" HorizontalAlignment="Left" Margin="128,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+
     </Grid>
 </Window>

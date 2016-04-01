@@ -24,13 +24,9 @@ namespace ClientWPF
     public partial class MainWindow : Window
     {
 
-        public ServiceAgence.BienImmobilier CurrentBien=null;
+        public ObservableCollection<ServiceAgence.BienImmobilierBase> ListeBienImmo { get { return (ObservableCollection<ServiceAgence.BienImmobilierBase>)GetProperty(); } set { SetProperty(value); } }
 
-        public ObservableCollection<ServiceAgence.BienImmobilierBase> ListBienBase
-        {
-            get { return (ObservableCollection<ServiceAgence.BienImmobilierBase>)GetProperty(); }
-            set { SetProperty(value); }
-        }
+        public ServiceAgence.BienImmobilierBase selectedItem { get { return (ServiceAgence.BienImmobilierBase)GetProperty(); } set { SetProperty(value); } }
 
 
         private Dictionary<string, object> _propretyValues = new Dictionary<string, object>(); // Dictionary équivaut a HashMap
@@ -98,19 +94,21 @@ namespace ClientWPF
 
         public MainWindow()
         {
-            
-            //this.DataContext = this;
+
+            InitializeComponent();
+
+            this.ListeBienImmo = new ObservableCollection<ServiceAgence.BienImmobilierBase>();
 
             BindBienList();
-            //InitializeComponent();
+
+            this.DataContext = this;
         }
 
 
         #region BindingData
         private void BindBienList()
         {
-            this.DataContext = this;
-            ListBienBase = new ObservableCollection<ServiceAgence.BienImmobilierBase>();
+            
             using (ServiceAgence.AgenceClient client = new ServiceAgence.AgenceClient())
             {
 
@@ -122,16 +120,15 @@ namespace ClientWPF
 
                 ServiceAgence.ResultatListeBiensImmobiliers res = client.LireListeBiensImmobiliers(c, null, null);
 
-                this.ListBienBase = res.Liste.List;
+                this.ListeBienImmo = res.Liste.List;
 
-                for (int i = 0; i < ListBienBase.Count; i++)
-                    Console.WriteLine("id :" + ListBienBase.ElementAt(i).Id);
+                for (int i = 0; i < ListeBienImmo.Count; i++)
+                    Console.WriteLine("id :" + ListeBienImmo.ElementAt(i).Id);
 
                 client.Close();
             }
-           
             InitializeComponent();
-            listBox.Items.Refresh();
+
         }
 
         /// <summary>
@@ -150,15 +147,13 @@ namespace ClientWPF
         private void button_Add(object sender, RoutedEventArgs e)
         {
             Windowadd winadd = new Windowadd();
-            winadd.Owner = this;
-            winadd.Show();
+            //winadd.Show();
 
 			winadd.Owner = this;
-
+            
 			if (winadd.ShowDialog() == true)
             {
-
-				//recharger
+                ListeBienImmo.Add(winadd.bien);
             }
             
         }
@@ -170,18 +165,17 @@ namespace ClientWPF
         /// <param name="e"></param>
         private void button_Modify(object sender, RoutedEventArgs e)
         {
-            ServiceAgence.BienImmobilierBase SelectedBien = (ServiceAgence.BienImmobilierBase)listBox.SelectedItem;
-            if (SelectedBien != null)
+            if (selectedItem != null)
             {
-                Windowadd winadd = new Windowadd(SelectedBien.Id);
-                winadd.Show();
+                Windowadd winadd = new Windowadd(selectedItem.Id);
+                
+                if (winadd.ShowDialog() == true)
+                {
+                    int pos = ListeBienImmo.IndexOf(selectedItem);
+                    ListeBienImmo.Remove(selectedItem);
+                    ListeBienImmo.Insert(pos, winadd.bien);
+                }
             }
-            else
-            {
-                Windowadd winadd = new Windowadd();
-                winadd.Show();
-            }
-            
             
         }
 
@@ -193,7 +187,9 @@ namespace ClientWPF
         /// <param name="e"></param>
         private void button_Delete(object sender, RoutedEventArgs e)
         {
+            
             ServiceAgence.BienImmobilierBase SelectedBien = (ServiceAgence.BienImmobilierBase)listBox.SelectedItem;
+            
             if (SelectedBien != null)
             {
                 Console.WriteLine("Item select :" + SelectedBien.Id);
@@ -206,8 +202,9 @@ namespace ClientWPF
 
                     client.Close();
                 }
-                BindBienList();
+                ListeBienImmo.Remove(selectedItem);
             }
+            
             
         }
 
@@ -216,7 +213,7 @@ namespace ClientWPF
             // Faire une autre windows de filtre
             Windowadd winadd = new Windowadd();
 			winadd.Owner = this;
-			winadd.Show();
+			//winadd.Show();
 
 			if (winadd.ShowDialog() == true)
             {
@@ -233,22 +230,25 @@ namespace ClientWPF
         {
             Console.WriteLine("DoubleClick");
             
-            ServiceAgence.BienImmobilierBase SelectedBien = (ServiceAgence.BienImmobilierBase)listBox.SelectedItem;
-            if (SelectedBien != null) { // Le select n'est pas null
+            //ServiceAgence.BienImmobilierBase SelectedBien = (ServiceAgence.BienImmobilierBase)listBox.SelectedItem;
+            if (selectedItem != null) { // Le select n'est pas null
                 var item = ItemsControl.ContainerFromElement(listBox, e.OriginalSource as DependencyObject) as ListBoxItem;
                 if (item != null)
                 {
-                    Console.WriteLine("Item select :" + SelectedBien.Id);
-                    label_ID.Content = SelectedBien.Id.ToString();
+                    Console.WriteLine("Item select :" + selectedItem.Id);
+                    label_ID.Content = selectedItem.Id.ToString();
 
                     using (ServiceAgence.AgenceClient client = new ServiceAgence.AgenceClient()) // Recupere détails bien
                     {
-                        ServiceAgence.ResultatBienImmobilier res = client.LireDetailsBienImmobilier(SelectedBien.Id.ToString());
-                        CurrentBien = res.Bien;
+                        ServiceAgence.ResultatBienImmobilier res = client.LireDetailsBienImmobilier(selectedItem.Id.ToString());
                     }
 
-                    BindCurrentBien(SelectedBien.Id);
-                    
+                    BindCurrentBien(selectedItem.Id);
+
+                    Windowbien winbien = new Windowbien();
+                    winbien.Owner = this;
+                    winbien.Show();
+
                 }
             }
         }

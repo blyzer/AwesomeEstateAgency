@@ -20,7 +20,7 @@ namespace ClientWPF
     public partial class Windowadd : Window
     {
 
-        private ServiceAgence.BienImmobilier bien;
+        public ServiceAgence.BienImmobilier bien;
         private int id_bien;
         public Windowadd(int id=-1)
         {
@@ -52,11 +52,11 @@ namespace ClientWPF
                     cb_Chauffage.SelectedItem = bien.TypeChauffage;
                     cb_Transaction.SelectedItem = bien.TypeTransaction;
                     txt_Ville.Text = bien.Ville;
-                    bien.Id = Convert.ToInt32(id_bien);
                     client.Close();
                 }
                 
             }
+            
         }
 
         private void textBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -84,8 +84,7 @@ namespace ClientWPF
                 bien.NbEtages = ConvertStringToInt(txt_NbEtages.Text, 0);
                 bien.NbPieces = ConvertStringToInt(txt_NbPiece.Text, 0);
                 bien.NumEtage = ConvertStringToInt(txt_NumEtage.Text, 0);
-                bien.PhotoPrincipaleBase64 = null; // A completer
-                bien.PhotosBase64 = null; // A completer
+                
                 bien.Prix = ConvertStringToDouble(txt_Prix.Text, 0);
                 bien.Surface = ConvertStringToDouble(txt_Surface.Text, 0);
                 bien.Titre = txt_Titre.Text;
@@ -99,14 +98,16 @@ namespace ClientWPF
                     bien.DateMiseEnTransaction = DateTime.Now;
                     bien.DateTransaction = null;
                     bien.TransactionEffectuee = false;
+                    bien.PhotoPrincipaleBase64 = null; // A completer
+                    bien.PhotosBase64 = null; // A completer
 
                     client.AjouterBienImmobilier(bien);
                 }
                 
-
-                if(id_bien!=-1) // Modifier
+                else // Modifier
                 {
-                    client.ModifierBienImmobilier(bien);
+                    ServiceAgence.ResultatBool res= client.ModifierBienImmobilier(bien);
+
                 }
                 
 
