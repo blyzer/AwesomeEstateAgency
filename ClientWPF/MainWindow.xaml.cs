@@ -150,6 +150,14 @@ namespace ClientWPF
         {
             Windowadd winadd = new Windowadd();
             winadd.Show();
+
+			winadd.Owner = this;
+
+			if (winadd.ShowDialog() == true)
+			{
+
+				//recharger
+			}
             
 
         }
@@ -206,7 +214,13 @@ namespace ClientWPF
         {
             // Faire une autre windows de filtre
             Windowadd winadd = new Windowadd();
-            winadd.Show();
+			winadd.Owner = this;
+			winadd.Show();
+
+			if (winadd.ShowDialog() == true)
+			{
+				//recharger
+			}
         }
 
         /// <summary>

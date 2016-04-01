@@ -112,6 +112,8 @@ namespace ClientWPF
                 client.Close();
             }
 
+			this.DialogResult = true;
+
             this.Close();
         }
 
