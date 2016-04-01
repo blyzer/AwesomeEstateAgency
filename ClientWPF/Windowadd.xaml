@@ -65,7 +65,8 @@
         <Label x:Name="TypeEChauffage" Content="Energie chauffage :" HorizontalAlignment="Left" Margin="10,404,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txt_Titre" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="textBox_TextChanged"/>
         <ComboBox x:Name="cb_TypeBien" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Width="120"
-        	ItemsSource="{Binding Source={StaticResource TypeBienTypesProvider}}" Grid.Column="1"/>
+        	ItemsSource="{Binding Source={StaticResource TypeBienTypesProvider}}" Grid.Column="1"
+                  SelectedIndex="0"/>
         <TextBox x:Name="txt_Prix" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,71,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="textBox_TextChanged"/>
         <TextBox x:Name="txt_MontantCharges" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,102,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="textBox_TextChanged"/>
         <TextBox x:Name="txt_Adresse" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,133,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="textBox_TextChanged"/>
@@ -78,14 +79,17 @@
         <TextBox x:Name="txt_NbPiece" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,345,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="textBox_TextChanged"/>
 
         <ComboBox x:Name="cb_Chauffage" HorizontalAlignment="Left" Margin="10,377,0,0" VerticalAlignment="Top" Width="120"
-        	ItemsSource="{Binding Source={StaticResource TypeChauffageTypesProvider}}" Grid.Column="1"/>
+        	ItemsSource="{Binding Source={StaticResource TypeChauffageTypesProvider}}" Grid.Column="1"
+                  SelectedIndex="0"/>
 
         <ComboBox x:Name="cb_EChauffage" HorizontalAlignment="Left" Margin="10,408,0,0" VerticalAlignment="Top" Width="120"
-                  ItemsSource="{Binding Source={StaticResource EnergieChauffageTypesProvider}}" Grid.Column="1"/>
+                  ItemsSource="{Binding Source={StaticResource EnergieChauffageTypesProvider}}" Grid.Column="1"
+                  SelectedIndex="0"/>
 
         <Button x:Name="button" Grid.ColumnSpan="2" Content="Valider" HorizontalAlignment="Left" Margin="108,485,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
         <ComboBox x:Name="cb_Transaction" HorizontalAlignment="Left" Margin="10,439,0,0" VerticalAlignment="Top" Width="120"
-        	ItemsSource="{Binding Source={StaticResource TransactionTypesProvider}}" Grid.Column="1"/>
+        	ItemsSource="{Binding Source={StaticResource TransactionTypesProvider}}" Grid.Column="1"
+                  SelectedIndex="0"/>
         <Label x:Name="TypeTransaction" Content="Type de transaction:" HorizontalAlignment="Left" Margin="10,435,0,0" VerticalAlignment="Top"/>
 
 

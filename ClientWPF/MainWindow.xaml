@@ -23,6 +23,14 @@
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
 
+        <ObjectDataProvider x:Key="TypeBienTypesProvider"
+          MethodName="GetValues"
+          ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="s:BienImmobilierBase+eTypeBien"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
         <Style x:Key="S_Button" TargetType="Button">
             <Setter Property="Background" Value="#00000000" />
             <Setter Property="BorderThickness" Value="0" />
@@ -52,22 +60,8 @@
         <StackPanel Margin="10,5,10,5" Orientation="Horizontal" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top"/>
 
         <StackPanel Background="Transparent" Grid.Row="2" Grid.Column="0">
-            <Label x:Name="Filtre" Content="Filtre :" Foreground="White"/>
+            <Label x:Name="Filtre" Content="Filtre :" Foreground="Black"/>
         </StackPanel>
-
-
-        <!-- <ListBox x:Name="listBox" HorizontalAlignment="Left" Margin="10,0,0,10" Width="310" Background="#FFEEEEEE" Grid.Row="2"
-          ItemsSource="{Binding ListBienBase}"
-                 MouseDoubleClick="ListBox_MouseDoubleClick"
-                 >
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Titre}"/>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-        
-        -->
 
         <ListBox ItemContainerStyle="{StaticResource myLBStyle}" Background="#eceff1" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="1" Grid.RowSpan="1" ItemsSource="{Binding ListBienBase}"
                  MouseDoubleClick="ListBox_MouseDoubleClick"
@@ -117,9 +111,12 @@
         <Grid Grid.Column="1" HorizontalAlignment="Left" Height="421" Margin="10,10,-16,0" Grid.Row="1" VerticalAlignment="Top" Width="420" Grid.RowSpan="2">
             <Label x:Name="label_ID" Content="Pas d'Item select" HorizontalAlignment="Left" Margin="-272,416,0,-21" VerticalAlignment="Top"/>
         </Grid>
-        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="10,32,0,0" Grid.Row="2" VerticalAlignment="Top" Width="120"
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="10,31,0,0" Grid.Row="2" VerticalAlignment="Top" Width="120"
                   ItemsSource="{Binding Source={StaticResource TransactionTypesProvider}}" Height="22"/>
-        <GridSplitter x:Name="gridSplitter" Grid.Column="1" HorizontalAlignment="Left" Height="451" Grid.Row="2" VerticalAlignment="Top" Width="10"/>
+        <GridSplitter x:Name="gridSplitter" Grid.Column="1" HorizontalAlignment="Left" Height="461" Grid.Row="2" VerticalAlignment="Top" Width="10" Margin="5,0,0,0"/>
+        <ComboBox x:Name="comboBox_Copy" HorizontalAlignment="Left" Margin="10,71,0,0" Grid.Row="2" VerticalAlignment="Top" Width="120"
+        	ItemsSource="{Binding Source={StaticResource TypeBienTypesProvider}}" Height="22"/>
+        <Button x:Name="button_F" Content="Ajouter" Click="button_Filtre" Style="{StaticResource S_Button}"  Margin="97,390,0,53" Width="70" Grid.Row="2" />
 
 
     </Grid>

@@ -149,7 +149,13 @@ namespace ClientWPF
         private void button_Add(object sender, RoutedEventArgs e)
         {
             Windowadd winadd = new Windowadd();
+            winadd.Owner = this;
             winadd.Show();
+            if (!winadd.IsActive)
+            {
+                BindBienList();
+            }
+            
             
 
         }
@@ -204,9 +210,17 @@ namespace ClientWPF
 
         private void button_Filtre(object sender, RoutedEventArgs e)
         {
-            // Faire une autre windows de filtre
-            Windowadd winadd = new Windowadd();
-            winadd.Show();
+            using (ServiceAgence.AgenceClient client = new ServiceAgence.AgenceClient())
+            {
+                client.Open();
+                //ServiceAgence.ResultatListeBiensImmobiliers res = client.LireListeBiensImmobiliers(a, 0, 2);
+
+                //this.rpResultats.DataSource = res.Liste.List;
+                //this.rpResultats.DataBind();
+                client.Close();
+            }
+            BindBienList();
+
         }
 
         /// <summary>

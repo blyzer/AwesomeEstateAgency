@@ -26,6 +26,7 @@ namespace ClientWPF
         {
             id_bien = id;
             InitializeComponent();
+            cb_Chauffage.SelectedItem = 1;
 
             if (id != -1) // Modifier : Recup data du bien
             {
