@@ -100,7 +100,7 @@ namespace ClientWPF
         {
             
             //this.DataContext = this;
-            
+
             BindBienList();
             //InitializeComponent();
         }
@@ -129,7 +129,7 @@ namespace ClientWPF
 
                 client.Close();
             }
-            
+           
             InitializeComponent();
             listBox.Items.Refresh();
         }
@@ -152,11 +152,15 @@ namespace ClientWPF
             Windowadd winadd = new Windowadd();
             winadd.Owner = this;
             winadd.Show();
-            if (!winadd.IsActive)
-            {
-                BindBienList();
-            }
 
+			winadd.Owner = this;
+
+			if (winadd.ShowDialog() == true)
+            {
+
+				//recharger
+            }
+            
         }
 
         /// <summary>
@@ -209,17 +213,15 @@ namespace ClientWPF
 
         private void button_Filtre(object sender, RoutedEventArgs e)
         {
-            using (ServiceAgence.AgenceClient client = new ServiceAgence.AgenceClient())
+            // Faire une autre windows de filtre
+            Windowadd winadd = new Windowadd();
+			winadd.Owner = this;
+			winadd.Show();
+
+			if (winadd.ShowDialog() == true)
             {
-                client.Open();
-                //ServiceAgence.ResultatListeBiensImmobiliers res = client.LireListeBiensImmobiliers(a, 0, 2);
-
-                //this.rpResultats.DataSource = res.Liste.List;
-                //this.rpResultats.DataBind();
-                client.Close();
+				//recharger
             }
-            BindBienList();
-
         }
 
         /// <summary>
