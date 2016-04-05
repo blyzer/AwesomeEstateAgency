@@ -210,15 +210,12 @@ namespace ClientWPF
 
         private void button_Filtre(object sender, RoutedEventArgs e)
         {
-            // Faire une autre windows de filtre
-            Windowadd winadd = new Windowadd();
-			winadd.Owner = this;
-			//winadd.Show();
+            Console.WriteLine("Filtre");
+        }
 
-			if (winadd.ShowDialog() == true)
-            {
-				//recharger
-            }
+        private void button_UnFiltre(object sender,RoutedEventArgs e)
+        {
+            Console.WriteLine("Defiltrer");
         }
 
         /// <summary>

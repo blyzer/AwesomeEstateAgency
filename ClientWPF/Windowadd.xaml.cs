@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,8 +34,7 @@ namespace ClientWPF
                 using (ServiceAgence.AgenceClient client = new ServiceAgence.AgenceClient())
                 {
                     client.Open();
-                    bien = client.LireDetailsBienImmobilier(id_bien.ToString()).Bien;
-                    
+                    bien = client.LireDetailsBienImmobilier(id_bien.ToString()).Bien;          
                     txt_Adresse.Text = bien.Adresse;
                     txt_CodePostal.Text = bien.CodePostal;
                     txt_Description.Text = bien.Description;
@@ -107,7 +107,6 @@ namespace ClientWPF
                 else // Modifier
                 {
                     ServiceAgence.ResultatBool res= client.ModifierBienImmobilier(bien);
-
                 }
                 
 

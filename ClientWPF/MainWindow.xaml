@@ -2,26 +2,45 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:s="clr-namespace:ClientWPF.ServiceAgence"
+        xmlns:wpf="clr-namespace:ClientWPF"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         Title="Gestion de biens immobiliers"
         WindowStartupLocation="CenterScreen">
 
-	<Window.Resources>
+    <Window.Resources>
+        
+        <wpf:ConverterImage x:Key="ConversionImage"/>
 
-		<Style x:Key="myLBStyle" TargetType="{x:Type ListBoxItem}">
-			<Style.Resources>
-				<SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"
+        <Style x:Key="myLBStyle" TargetType="{x:Type ListBoxItem}">
+            <Style.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"
                              Color="#cfd8dc"/>
-			</Style.Resources>
-		</Style>
+            </Style.Resources>
+        </Style>
 
-		<ObjectDataProvider x:Key="TransactionTypesProvider"
+        <ObjectDataProvider x:Key="TransactionTypesProvider"
           MethodName="GetValues"
           ObjectType="{x:Type sys:Enum}">
-			<ObjectDataProvider.MethodParameters>
-				<x:Type TypeName="s:BienImmobilierBase+eTypeTransaction"/>
-			</ObjectDataProvider.MethodParameters>
-		</ObjectDataProvider>
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="s:BienImmobilierBase+eTypeTransaction"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+        <ObjectDataProvider x:Key="TypeChauffageTypesProvider"
+          MethodName="GetValues"
+          ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="s:BienImmobilierBase+eTypeChauffage"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+        <ObjectDataProvider x:Key="EnergieChauffageTypesProvider"
+          MethodName="GetValues"
+          ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="s:BienImmobilierBase+eEnergieChauffage"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
 
         <ObjectDataProvider x:Key="TypeBienTypesProvider"
           MethodName="GetValues"
@@ -36,86 +55,145 @@
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="HorizontalAlignment" Value="Left" />
             <Setter Property="Width" Value="100"/>
-			<Setter Property="BorderBrush" Value="White" />
-			<Setter Property="FontWeight" Value="Bold" />
-		</Style>
+            <Setter Property="BorderBrush" Value="White" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
 
-	</Window.Resources>
+    </Window.Resources>
 
-	<Grid>
+    <Grid>
 
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="270"/>
-			<ColumnDefinition/>
-		</Grid.ColumnDefinitions>
-		<Grid.RowDefinitions>
-			<RowDefinition Height="29"/>
-			<RowDefinition Height="31"/>
-			<RowDefinition Height="Auto"/>
-			<RowDefinition/>
-		</Grid.RowDefinitions>
-		<Image HorizontalAlignment="Center" Stretch="Uniform" Source="logo.png" Grid.ColumnSpan="2"  Height="14" Margin="237,15,237,0" VerticalAlignment="Top"  Grid.Row="0"   Grid.Column="0" Width="286" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="270"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="29"/>
+            <RowDefinition Height="31"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Image HorizontalAlignment="Center" Stretch="Uniform" Source="logo.png" Grid.ColumnSpan="2"  Height="14" Margin="237,15,237,0" VerticalAlignment="Top"  Grid.Row="0"   Grid.Column="0" Width="286" />
 
-		<Border BorderBrush="#cfd8dc" BorderThickness="0,0,1,0" Grid.Column="0"  Grid.Row="3" />
+        <Border BorderBrush="#cfd8dc" BorderThickness="0,0,1,0" Grid.Column="0"  Grid.Row="1" Margin="-5,28,5,4" Grid.RowSpan="3" />
 
-		<Border BorderBrush="#cfd8dc" BorderThickness="0,0,0,1" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" />
+        <Border BorderBrush="#cfd8dc" BorderThickness="0,0,0,1" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" />
 
         <ListBox ItemContainerStyle="{StaticResource myLBStyle}" Background="#eceff1" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="1" Grid.RowSpan="1" ItemsSource="{Binding ListeBienImmo}"
                  SelectedItem="{Binding selectedItem}"
                  MouseDoubleClick="ListBox_MouseDoubleClick"
                  x:Name="listBox" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0" >
-			<ListBox.ItemsPanel>
-				<ItemsPanelTemplate>
-					<WrapPanel ItemHeight="245"
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel ItemHeight="245"
 							ItemWidth="285"
 							Orientation="Horizontal" />
-				</ItemsPanelTemplate>
-			</ListBox.ItemsPanel>
-			<ListBox.ItemTemplate>
-				<DataTemplate>
-					<StackPanel Margin="0" HorizontalAlignment="Center">
-						<Viewbox>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="0" HorizontalAlignment="Center">
+                        <Viewbox>
 
 
-							<Grid x:Name="backgroundGrid"
+                            <Grid x:Name="backgroundGrid"
 									Width="250"
 									Height="200">
-								<Image Source="home.png"  Height="250" Width="200"/>
-								<Rectangle Fill="#f0263238" HorizontalAlignment="Left" Height="50" Margin="25,130,0,0" Stroke="Transparent" VerticalAlignment="Top" Width="200"/>
-								<Label Margin="25,130,0,20">
-									<TextBlock  TextTrimming="CharacterEllipsis"
+                                <Image Source="{Binding Path=PhotoPrincipaleBase64, Converter={StaticResource ConversionImage}}"  Height="250" Width="200"/>
+                                <Rectangle Fill="#f0263238" HorizontalAlignment="Left" Height="50" Margin="25,130,0,0" Stroke="Transparent" VerticalAlignment="Top" Width="200"/>
+                                <Label Margin="25,130,0,20">
+                                    <TextBlock  TextTrimming="CharacterEllipsis"
 										FontFamily="Segoe UI"
 										FontSize="18"
 										Foreground="White" Text="{Binding Titre}" Width="195"/>
-								</Label>
-								<Label Margin="25,152,0,20">
-									<TextBlock   TextTrimming="CharacterEllipsis"
+                                </Label>
+                                <Label Margin="25,152,0,20">
+                                    <TextBlock   TextTrimming="CharacterEllipsis"
 										FontFamily="Segoe UI"
 										FontSize="14"
 										Foreground="#eceff1" Text="{Binding Ville}" Width="195" Height="20"/>
-								</Label>
-							</Grid>
+                                </Label>
+                            </Grid>
 
-						</Viewbox>
-					</StackPanel>
-				</DataTemplate>
-			</ListBox.ItemTemplate>
-		</ListBox>
+                        </Viewbox>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
-		<Button x:Name="button_A" Content="Ajouter" Click="button_Add" Style="{StaticResource S_Button}"  Margin="12,2,0,8" Width="70" Grid.Row="1" />
-		<Button x:Name="button_M" Content="Modifier" Click="button_Modify" Style="{StaticResource S_Button}" Margin="87,2,0,8" Width="70" Grid.Row="1" />
-		<Button x:Name="button_D" Content="Supprimer" Click="button_Delete" Style="{StaticResource S_Button}" Margin="162,2,0,8" Width="70" Grid.Row="1" />
+        <Button x:Name="button_A" Content="Ajouter" Click="button_Add" Style="{StaticResource S_Button}"  Margin="12,2,0,8" Width="70" Grid.Row="1" />
+        <Button x:Name="button_M" Content="Modifier" Click="button_Modify" Style="{StaticResource S_Button}" Margin="87,2,0,8" Width="70" Grid.Row="1" />
+        <Button x:Name="button_D" Content="Supprimer" Click="button_Delete" Style="{StaticResource S_Button}" Margin="162,2,0,8" Width="70" Grid.Row="1" />
 
-		<Grid Grid.Column="1" HorizontalAlignment="Left" Height="421" Margin="10,9,0,0" Grid.Row="3" VerticalAlignment="Top" Width="420">
-			<Label x:Name="label_ID" Content="Pas d'Item select" HorizontalAlignment="Left" Margin="-272,416,0,-21" VerticalAlignment="Top"/>
-		</Grid>
-		<ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="10,32,0,0" Grid.Row="3" VerticalAlignment="Top" Width="120"
+        <Grid Grid.Column="1" HorizontalAlignment="Left" Height="421" Margin="10,9,0,0" Grid.Row="3" VerticalAlignment="Top" Width="420">
+            <Label x:Name="label_ID" Content="Pas d'Item select" HorizontalAlignment="Left" Margin="-199,403,0,-8" VerticalAlignment="Top"/>
+        </Grid>
+        <GridSplitter x:Name="gridSplitter" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="3"  Width="10"/>
+
+        <Label x:Name="label_transaction" Content="Type transaction :" HorizontalAlignment="Left" Margin="12,40,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="-0.816,-0.115"/>
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="140,43,0,0" Grid.Row="3" VerticalAlignment="Top" Width="120"
                   ItemsSource="{Binding Source={StaticResource TransactionTypesProvider}}" Height="22"/>
-		<GridSplitter x:Name="gridSplitter" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="3"  Width="10"/>
-		<ComboBox x:Name="comboBox_Copy" HorizontalAlignment="Left" Margin="10,71,0,0" Grid.Row="3" VerticalAlignment="Top" Width="120"
+        <Label x:Name="label_type" Content="Type bien :" HorizontalAlignment="Left" Margin="12,66,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="-0.816,-0.115"/>
+        <ComboBox x:Name="comboBox_Copy" HorizontalAlignment="Left" Margin="140,70,0,0" Grid.Row="3" VerticalAlignment="Top" Width="120"
         	ItemsSource="{Binding Source={StaticResource TypeBienTypesProvider}}" Height="22"/>
-		<Button x:Name="button_F" Content="Ajouter" Click="button_Filtre" Style="{StaticResource S_Button}"  Margin="97,390,0,53" Width="70" Grid.Row="3" />
+
+        <Label x:Name="label_CP" Content="Code postal :" HorizontalAlignment="Left" Margin="12,97,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="-0.816,-0.115"/>
+
+        <TextBox x:Name="txt_Adresse" HorizontalAlignment="Left" Height="23" Margin="140,100,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Row="3"/>
+
+        <Label x:Name="label_Ville" Content="Ville:" HorizontalAlignment="Left" Margin="12,130,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="-0.816,-0.115"/>
+
+        <TextBox x:Name="txt_Ville" HorizontalAlignment="Left" Height="23" Margin="140,130,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Row="3"/>
+
+        <Label x:Name="label_Prix" Content="Prix de" HorizontalAlignment="Left" Margin="11,169,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="-0.816,-0.115"/>
+
+        <TextBox x:Name="txt_PrixMin" HorizontalAlignment="Left" Height="23" Margin="78,169,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="70" Grid.Row="3"/>
+
+        <Label x:Name="label_a" Content="à" HorizontalAlignment="Left" Margin="153,169,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="-0.816,-0.115"/>
+
+        <TextBox x:Name="txt_PrixMax" HorizontalAlignment="Left" Height="23" Margin="174,169,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="70"  Grid.Row="3" RenderTransformOrigin="0.443,0.13"/>
+
+        <Label x:Name="label_euro" Content="€" HorizontalAlignment="Left" Margin="249,169,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="-0.816,-0.115"/>
+
+        <Label x:Name="label_Surface" Content="Surface de" HorizontalAlignment="Left" Margin="11,199,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="-0.816,-0.115"/>
+
+        <TextBox x:Name="txt_SurfaceMin" HorizontalAlignment="Left" Height="23" Margin="78,199,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="70" Grid.Row="3"/>
+
+        <Label x:Name="label_a2" Content="à" HorizontalAlignment="Left" Margin="153,199,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="-0.816,-0.115"/>
+
+        <TextBox x:Name="txt_SurfaceMax" HorizontalAlignment="Left" Height="23" Margin="174,199,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="70"  Grid.Row="3" RenderTransformOrigin="0.443,0.13"/>
+
+        <Label x:Name="label_mcarre" Content="m²" HorizontalAlignment="Left" Margin="244,197,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="-0.816,-0.115"/>
+
+        <Label x:Name="label_Montant" Content="Montant" HorizontalAlignment="Left" Margin="11,229,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="-0.816,-0.115"/>
+
+        <TextBox x:Name="txt_MontantMin" HorizontalAlignment="Left" Height="23" Margin="78,229,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="70" Grid.Row="3"/>
+
+        <Label x:Name="label_a3" Content="à" HorizontalAlignment="Left" Margin="153,229,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="-0.816,-0.115"/>
+
+        <TextBox x:Name="txt_MontantMax" HorizontalAlignment="Left" Height="23" Margin="174,229,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="70"  Grid.Row="3" RenderTransformOrigin="0.443,0.13"/>
+
+        <Label x:Name="label_euro2" Content="€" HorizontalAlignment="Left" Margin="244,229,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="-0.816,-0.115"/>
+
+        <Label x:Name="label_Titre" Content="Titre :" HorizontalAlignment="Left" Margin="12,9,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="-0.816,-0.115"/>
+
+        <TextBox x:Name="txt_Titre" HorizontalAlignment="Left" Height="23" Margin="139,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Row="3"/>
+
+        <Label x:Name="label_typechauffage" Content="Type chauffage :" HorizontalAlignment="Left" Margin="12,260,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="-0.816,-0.115"/>
+        <ComboBox x:Name="cb_typechauffage" HorizontalAlignment="Left" Margin="140,260,0,0" Grid.Row="3" VerticalAlignment="Top" Width="120"
+                  ItemsSource="{Binding Source={StaticResource TypeChauffageTypesProvider}}" Height="22"/>
+
+        <Label x:Name="label_typeenergiechauffage" Content="Type energie :" HorizontalAlignment="Left" Margin="12,290,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="-0.816,-0.115"/>
+        <ComboBox x:Name="cb_typeenergiechauffage" HorizontalAlignment="Left" Margin="140,290,0,0" Grid.Row="3" VerticalAlignment="Top" Width="120"
+                  ItemsSource="{Binding Source={StaticResource EnergieChauffageTypesProvider}}" Height="22"/>
+
+        <Button x:Name="button_F" Content="Filtre" Click="button_Filtre" Style="{StaticResource S_Button}"  Margin="12,369,0,44" Width="70" Grid.Row="3" />
+        <Button x:Name="button_UnF" Content="Desactiver filtre" Click="button_UnFiltre" Style="{StaticResource S_Button}"  Margin="152,369,0,44" Width="108" Grid.Row="3" />
 
 
-	</Grid>
+
+
+
+
+    </Grid>
 </Window>
