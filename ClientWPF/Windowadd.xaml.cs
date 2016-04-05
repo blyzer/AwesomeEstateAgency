@@ -1,5 +1,4 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,57 +11,83 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Collections.ObjectModel;
 
 namespace ClientWPF
 {
     /// <summary>
     /// Logique d'interaction pour Windowadd.xaml
     /// </summary>
-    public partial class Windowadd : Window
+	public partial class Windowadd : Window, INotifyPropertyChanged
     {
 
-        public ServiceAgence.BienImmobilier bien;
-        private int id_bien;
-        public Windowadd(int id=-1)
+
+
+        private Dictionary<string, object> _propretyValues = new Dictionary<string, object>(); // Dictionary équivaut a HashMap
+        private object GetProperty([CallerMemberName] string propertyName = null)
         {
-            id_bien = id;
+            if (_propretyValues.ContainsKey(propertyName)) return _propretyValues[propertyName];
+            return null;
+        }
+
+        private bool SetProperty<T>(T newValue, [CallerMemberName] string propertyName = null) // <T> : méthode générique
+        {                                                                                      // propretyName=null : params optionnel
+                                                                                               // [CallerMemberName] : remplace propertyName par nom element qui l'a appelé
+            T current = (T)GetProperty(propertyName);
+            if (!EqualityComparer<T>.Default.Equals(current, newValue)) // Si TextAffiche est changer
+            {
+                _propretyValues[propertyName] = newValue;
+                if (PropertyChanged != null) // Si y'a eu des changements
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs(propertyName)); // Actualise la valeur
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public ServiceAgence.BienImmobilier bien
+        {
+            get { return (ServiceAgence.BienImmobilier)GetProperty(); }
+            set { SetProperty(value); }
+        }
+
+        private int id_bien;
+
+
+        public Windowadd(int id = -1)
+        {
             InitializeComponent();
-            cb_Chauffage.SelectedItem = 1;
+
+            id_bien = id;
 
             if (id != -1) // Modifier : Recup data du bien
             {
                 using (ServiceAgence.AgenceClient client = new ServiceAgence.AgenceClient())
                 {
+
                     client.Open();
-                    bien = client.LireDetailsBienImmobilier(id_bien.ToString()).Bien;          
-                    txt_Adresse.Text = bien.Adresse;
-                    txt_CodePostal.Text = bien.CodePostal;
-                    txt_Description.Text = bien.Description;
-                    cb_EChauffage.SelectedItem = bien.EnergieChauffage;
-                    txt_MontantCharges.Text = bien.MontantCharges.ToString();
-                    txt_NbEtages.Text = bien.NbEtages.ToString();
-                    txt_NbPiece.Text = bien.NbPieces.ToString();
-                    txt_NumEtage.Text = bien.NumEtage.ToString();
-                    //bien.PhotoPrincipaleBase64 = null; // A completer
-                    //bien.PhotosBase64 = null; // A completer
-                    txt_Prix.Text = bien.Prix.ToString();
-                    txt_Surface.Text = bien.Surface.ToString();
-                    txt_Titre.Text = bien.Titre;
-                    cb_TypeBien.SelectedItem = bien.TypeBien;
-                    cb_Chauffage.SelectedItem = bien.TypeChauffage;
-                    cb_Transaction.SelectedItem = bien.TypeTransaction;
-                    txt_Ville.Text = bien.Ville;
+                    bien = client.LireDetailsBienImmobilier(id_bien.ToString()).Bien;
+
                     client.Close();
                 }
-                
+
             }
-            
+            else
+            {
+                bien = new ServiceAgence.BienImmobilier();
+            }
+
+
+            this.DataContext = this;
+
         }
 
-        private void textBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
 
-        }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
@@ -71,27 +96,6 @@ namespace ClientWPF
 
                 client.Open();
 
-                if (id_bien == -1) // Ajouter : création d'un bien
-                {
-                    bien = new ServiceAgence.BienImmobilier();
-                }
-
-                bien.Adresse = txt_Adresse.Text;
-                bien.CodePostal = txt_CodePostal.Text;
-                bien.Description = txt_Description.Text;
-                bien.EnergieChauffage = (ServiceAgence.BienImmobilierBase.eEnergieChauffage)cb_EChauffage.SelectedItem;
-                bien.MontantCharges = ConvertStringToDouble(txt_MontantCharges.Text, 0);
-                bien.NbEtages = ConvertStringToInt(txt_NbEtages.Text, 0);
-                bien.NbPieces = ConvertStringToInt(txt_NbPiece.Text, 0);
-                bien.NumEtage = ConvertStringToInt(txt_NumEtage.Text, 0);
-                
-                bien.Prix = ConvertStringToDouble(txt_Prix.Text, 0);
-                bien.Surface = ConvertStringToDouble(txt_Surface.Text, 0);
-                bien.Titre = txt_Titre.Text;
-                bien.TypeBien = (ServiceAgence.BienImmobilierBase.eTypeBien)cb_TypeBien.SelectedItem;
-                bien.TypeChauffage = (ServiceAgence.BienImmobilierBase.eTypeChauffage)cb_Chauffage.SelectedItem;
-                bien.TypeTransaction = (ServiceAgence.BienImmobilierBase.eTypeTransaction)cb_Transaction.SelectedItem;
-                bien.Ville = txt_Ville.Text;
 
                 if (id_bien == -1) // Ajouter
                 {
@@ -103,32 +107,22 @@ namespace ClientWPF
 
                     client.AjouterBienImmobilier(bien);
                 }
-                
+
                 else // Modifier
                 {
-                    ServiceAgence.ResultatBool res= client.ModifierBienImmobilier(bien);
+                    ServiceAgence.ResultatBool res = client.ModifierBienImmobilier(bien);
+
                 }
-                
+
 
                 client.Close();
             }
 
-			this.DialogResult = true;
+            this.DialogResult = true;
 
             this.Close();
         }
 
-        public int ConvertStringToInt(string s, int j)
-        {
-            int i;
-            if (int.TryParse(s, out i)) return i;
-            return j;
-        }
-        public double ConvertStringToDouble(string s, double j)
-        {
-            double i;
-            if (double.TryParse(s, out i)) return i;
-            return j;
-        }
+
     }
 }
