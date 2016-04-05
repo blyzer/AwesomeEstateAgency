@@ -63,7 +63,9 @@
         <Label x:Name="TypeChauffage" Content="Type chauffage :" HorizontalAlignment="Left" Margin="10,373,0,0" VerticalAlignment="Top"/>
 
         <Label x:Name="TypeEChauffage" Content="Energie chauffage :" HorizontalAlignment="Left" Margin="10,404,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txt_Titre" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="textBox_TextChanged"/>
+        <TextBox x:Name="txt_Titre"
+                 Grid.Column="1"
+                 HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="textBox_TextChanged"/>
         <ComboBox x:Name="cb_TypeBien" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Width="120"
         	ItemsSource="{Binding Source={StaticResource TypeBienTypesProvider}}" Grid.Column="1"
                   SelectedIndex="0"/>

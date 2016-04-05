@@ -34,7 +34,7 @@ namespace ClientWPF
                 {
                     client.Open();
                     bien = client.LireDetailsBienImmobilier(id_bien.ToString()).Bien;
-
+                    
                     txt_Adresse.Text = bien.Adresse;
                     txt_CodePostal.Text = bien.CodePostal;
                     txt_Description.Text = bien.Description;
