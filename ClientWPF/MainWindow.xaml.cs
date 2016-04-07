@@ -109,15 +109,29 @@ namespace ClientWPF
             this.filtre = new ServiceAgence.CriteresRechercheBiensImmobiliers();
 
             InitFiltre();
+			
+			new Action(async () =>
+			{
+				await InitBiensAsync();
+			}).Invoke();
 
-            InitBiens();
+			
 
             this.DataContext = this;
         }
 
 
         #region BindingData
-        private void InitBiens()
+
+		private async Task InitBiensAsync()
+		{
+			loader.Visibility = System.Windows.Visibility.Visible;
+			//Console.WriteLine("load..");
+			await InitBiens();
+
+		}
+
+		private async Task<Boolean> InitBiens()
         {
 
             using (ServiceAgence.AgenceClient client = new ServiceAgence.AgenceClient())
@@ -125,7 +139,7 @@ namespace ClientWPF
 
                 client.Open();
 
-                ServiceAgence.ResultatListeBiensImmobiliers res = client.LireListeBiensImmobiliers(filtre, null, null);
+                ServiceAgence.ResultatListeBiensImmobiliers res = await client.LireListeBiensImmobiliersAsync(filtre, null, null);
 				
 				this.ListeBienImmo.Clear();
 				for (int i = 0; i < res.Liste.List.Count; i++)
@@ -139,9 +153,14 @@ namespace ClientWPF
                     Console.WriteLine("id :" + ListeBienImmo.ElementAt(i).Id);
 
                 client.Close();
+
+				loader.Visibility = System.Windows.Visibility.Hidden;
+				//Console.WriteLine("load !");
+				
             }
 
-
+			return true;
+	
         }
 
         /// <summary>
@@ -157,7 +176,7 @@ namespace ClientWPF
 
         #region Gestion Events
 
-        private void button_Add(object sender, RoutedEventArgs e)
+		private async void button_Add(object sender, RoutedEventArgs e)
         {
             Windowadd winadd = new Windowadd();
             //winadd.Show();
@@ -167,7 +186,7 @@ namespace ClientWPF
             if (winadd.ShowDialog() == true)
             {
                 //ListeBienImmo.Add(winadd.bien);
-				InitBiens();
+				await InitBiensAsync();
             }
 
         }
@@ -177,7 +196,7 @@ namespace ClientWPF
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button_Modify(object sender, RoutedEventArgs e)
+		private async void button_Modify(object sender, RoutedEventArgs e)
         {
             if (selectedItem != null)
             {
@@ -188,7 +207,7 @@ namespace ClientWPF
                     int pos = ListeBienImmo.IndexOf(selectedItem);
                     ListeBienImmo.Remove(selectedItem);
                     ListeBienImmo.Insert(pos, winadd.bien);*/
-					InitBiens();
+					await InitBiensAsync();
                 }
             }
 
@@ -223,17 +242,17 @@ namespace ClientWPF
 
         }
 
-        private void button_Filtre(object sender, RoutedEventArgs e)
+		private async void button_Filtre(object sender, RoutedEventArgs e)
         {
-            InitBiens();
+			await InitBiensAsync();
 
             Console.WriteLine("Filtre");
         }
 
-        private void button_UnFiltre(object sender, RoutedEventArgs e)
+        private async void button_UnFiltre(object sender, RoutedEventArgs e)
         {
 			InitFiltre();
-			InitBiens();
+			await InitBiensAsync();
             Console.WriteLine("Defiltrer");
         }
 
@@ -263,5 +282,6 @@ namespace ClientWPF
         }
 
         #endregion
+
     }
 }

@@ -193,7 +193,8 @@
 
         <Grid Grid.Column="1" HorizontalAlignment="Left" Height="421" Margin="10,9,0,0" Grid.Row="3" VerticalAlignment="Top" Width="420" Grid.RowSpan="2"/>
         <GridSplitter x:Name="gridSplitter" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="3"  Width="10" Grid.RowSpan="2"/>
-        <!---->
+		<Image x:Name="loader" Grid.Column="1" HorizontalAlignment="Right" Height="40" Source="index.gif"  Margin="0,10,10,0" Grid.RowSpan="4" VerticalAlignment="Top" Width="40" />
+		<!---->
  
  
  
