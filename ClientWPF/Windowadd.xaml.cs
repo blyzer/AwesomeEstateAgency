@@ -14,6 +14,9 @@ using System.Windows.Shapes;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Collections.ObjectModel;
+using Microsoft.Win32;
+using System.IO;
+using System.Drawing.Imaging;
 
 namespace ClientWPF
 {
@@ -57,6 +60,7 @@ namespace ClientWPF
         }
 
         private int id_bien;
+        private Uri u=null;
 
 
         public Windowadd(int id = -1)
@@ -72,7 +76,6 @@ namespace ClientWPF
 
                     client.Open();
                     bien = client.LireDetailsBienImmobilier(id_bien.ToString()).Bien;
-
                     client.Close();
                 }
 
@@ -102,8 +105,17 @@ namespace ClientWPF
                     bien.DateMiseEnTransaction = DateTime.Now;
                     bien.DateTransaction = null;
                     bien.TransactionEffectuee = false;
-                    bien.PhotoPrincipaleBase64 = null; // A completer
-                    bien.PhotosBase64 = null; // A completer
+                    if(u==null)
+                    {
+                        //u = new Uri("file:///C:/Users/Anthony/Desktop/IUT/CSharp/TAE/AwesomeEstateAgency/ClientWPF/images/nothumbnail.png");
+                        u = new Uri(@".\images\nothumbnail.png");
+                    }
+                        
+                    BitmapImage bi = new BitmapImage(u);
+                    bien.PhotoPrincipaleBase64 = BitmapImagetoBase64(bi);
+                    bien.PhotosBase64 = new ObservableCollection<string>();
+                    bien.PhotosBase64.Add(bien.PhotoPrincipaleBase64);
+                    
 
                     client.AjouterBienImmobilier(bien);
                 }
@@ -123,6 +135,40 @@ namespace ClientWPF
             this.Close();
         }
 
+        private void bOpenFileDialog_Click(object sender, RoutedEventArgs e)
+        {
+            // Create an instance of the open file dialog box.
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+            // Set filter options and filter index.
+            openFileDialog1.Filter = "All Files (*.*)|*.*";
+            openFileDialog1.FilterIndex = 1;
+
+            openFileDialog1.Multiselect = true;
+
+
+            // Call the ShowDialog method to show the dialog box.
+            bool? userClickedOK = openFileDialog1.ShowDialog();
+
+            // Process input if the user clicked OK.
+            if (userClickedOK == true)
+            {
+                u = new Uri(openFileDialog1.FileName);
+            }
+        }
+
+        public static string BitmapImagetoBase64(BitmapImage image)
+        {
+            if (image == null) return "";
+            using(MemoryStream stream=new MemoryStream())
+            {
+                PngBitmapEncoder encoder = new PngBitmapEncoder();
+                encoder.Frames.Add(BitmapFrame.Create(image));
+                encoder.Save(stream);
+                byte[] byteArray = stream.ToArray();
+                return System.Convert.ToBase64String(byteArray);
+            }
+        }
 
     }
 }

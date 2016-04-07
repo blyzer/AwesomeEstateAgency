@@ -7,7 +7,7 @@
          xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:s="clr-namespace:ClientWPF.ServiceAgence"
         mc:Ignorable="d"
-        Title="Windowadd" Height="546" Width="300">
+        Title="Windowadd" Height="627" Width="300">
 
     <Window.Resources>
 
@@ -88,7 +88,12 @@
                   ItemsSource="{Binding Source={StaticResource EnergieChauffageTypesProvider}}" Grid.Column="1"
                   SelectedIndex="0"/>
 
-        <Button x:Name="button"  Click="button_Click" Content="Valider" HorizontalAlignment="Left" Margin="109,484,0,0" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2" />
+        <Button x:Name="bOpenFileDialog" Content="Open File"
+                 Height="30" Width="60" Margin="10,515,0,0"
+                 HorizontalAlignment="Left" VerticalAlignment="Top" 
+                 Click="bOpenFileDialog_Click" />
+
+        <Button x:Name="button"  Click="button_Click" Content="Valider" HorizontalAlignment="Left" Margin="109,566,0,0" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2" />
 
         <ComboBox x:Name="cb_Transaction" HorizontalAlignment="Left" Margin="10,439,0,0" VerticalAlignment="Top" Width="120"
         	ItemsSource="{Binding Source={StaticResource TransactionTypesProvider}}" SelectedValue="{Binding bien.TypeTransaction}" Grid.Column="1"

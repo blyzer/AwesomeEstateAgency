@@ -27,7 +27,7 @@ namespace ClientWPF
             {
                 client.Open();
                 bien = client.LireDetailsBienImmobilier(id_bien.ToString()).Bien;
-                Titre.Content = bien.Titre;
+                //Titre.Content = bien.Titre;
             }
             InitializeComponent();
         }
