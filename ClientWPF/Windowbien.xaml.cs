@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,7 +21,39 @@ namespace ClientWPF
     /// </summary>
     public partial class Windowbien : Window
     {
-        public ServiceAgence.BienImmobilier bien;
+        private Dictionary<string, object> _propretyValues = new Dictionary<string, object>(); // Dictionary équivaut a HashMap
+        private object GetProperty([CallerMemberName] string propertyName = null)
+        {
+            if (_propretyValues.ContainsKey(propertyName)) return _propretyValues[propertyName];
+            return null;
+        }
+
+        private bool SetProperty<T>(T newValue, [CallerMemberName] string propertyName = null) // <T> : méthode générique
+        {                                                                                      // propretyName=null : params optionnel
+                                                                                               // [CallerMemberName] : remplace propertyName par nom element qui l'a appelé
+            T current = (T)GetProperty(propertyName);
+            if (!EqualityComparer<T>.Default.Equals(current, newValue)) // Si TextAffiche est changer
+            {
+                _propretyValues[propertyName] = newValue;
+                if (PropertyChanged != null) // Si y'a eu des changements
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs(propertyName)); // Actualise la valeur
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public ServiceAgence.BienImmobilier bien
+        {
+            get { return (ServiceAgence.BienImmobilier)GetProperty(); }
+            set { SetProperty(value); }
+        }
+
+
+
         public Windowbien(int id_bien=-1)
         {
 
@@ -27,9 +61,10 @@ namespace ClientWPF
             {
                 client.Open();
                 bien = client.LireDetailsBienImmobilier(id_bien.ToString()).Bien;
-                //Titre.Content = bien.Titre;
             }
             InitializeComponent();
+
+            this.DataContext = this;
         }
     }
 }

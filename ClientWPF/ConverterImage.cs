@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -16,8 +17,12 @@ namespace ClientWPF
         {
             string s = value as string;
 
-            if (s == null || s=="")
-                return null;
+            if (s == null || s == "")
+            {
+                Uri u = new Uri(@".\images\nothumbnail.png", UriKind.Relative);
+                return new BitmapImage(u); // Ne marche pas
+            }
+                
 
             BitmapImage bi = new BitmapImage();
 

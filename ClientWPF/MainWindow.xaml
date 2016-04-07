@@ -7,203 +7,200 @@
         Title="Gestion de biens immobiliers"
         WindowStartupLocation="CenterScreen">
 
-    <Window.Resources>
+	<Window.Resources>
 
-        <wpf:ConverterImage x:Key="ConversionImage"/>
+		<wpf:ConverterImage x:Key="ConversionImage"/>
 
-        <Style x:Key="myLBStyle" TargetType="{x:Type ListBoxItem}">
-            <Style.Resources>
-                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"
+		<Style x:Key="myLBStyle" TargetType="{x:Type ListBoxItem}">
+			<Style.Resources>
+				<SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"
                              Color="#cfd8dc"/>
-            </Style.Resources>
-        </Style>
+			</Style.Resources>
+		</Style>
 
-        <ObjectDataProvider x:Key="TransactionTypesProvider"
+		<ObjectDataProvider x:Key="TransactionTypesProvider"
           MethodName="GetValues"
           ObjectType="{x:Type sys:Enum}">
-            <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="s:BienImmobilierBase+eTypeTransaction"/>
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
+			<ObjectDataProvider.MethodParameters>
+				<x:Type TypeName="s:BienImmobilierBase+eTypeTransaction"/>
+			</ObjectDataProvider.MethodParameters>
+		</ObjectDataProvider>
 
-        <ObjectDataProvider x:Key="TypeChauffageTypesProvider"
+		<ObjectDataProvider x:Key="TypeChauffageTypesProvider"
           MethodName="GetValues"
           ObjectType="{x:Type sys:Enum}">
-            <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="s:BienImmobilierBase+eTypeChauffage"/>
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
+			<ObjectDataProvider.MethodParameters>
+				<x:Type TypeName="s:BienImmobilierBase+eTypeChauffage"/>
+			</ObjectDataProvider.MethodParameters>
+		</ObjectDataProvider>
 
-        <ObjectDataProvider x:Key="EnergieChauffageTypesProvider"
+		<ObjectDataProvider x:Key="EnergieChauffageTypesProvider"
           MethodName="GetValues"
           ObjectType="{x:Type sys:Enum}">
-            <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="s:BienImmobilierBase+eEnergieChauffage"/>
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
+			<ObjectDataProvider.MethodParameters>
+				<x:Type TypeName="s:BienImmobilierBase+eEnergieChauffage"/>
+			</ObjectDataProvider.MethodParameters>
+		</ObjectDataProvider>
 
-        <ObjectDataProvider x:Key="TypeBienTypesProvider"
+		<ObjectDataProvider x:Key="TypeBienTypesProvider"
           MethodName="GetValues"
           ObjectType="{x:Type sys:Enum}">
-            <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="s:BienImmobilierBase+eTypeBien"/>
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
+			<ObjectDataProvider.MethodParameters>
+				<x:Type TypeName="s:BienImmobilierBase+eTypeBien"/>
+			</ObjectDataProvider.MethodParameters>
+		</ObjectDataProvider>
 
-        <Style x:Key="S_Button" TargetType="Button">
-            <Setter Property="Background" Value="#00000000" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="HorizontalAlignment" Value="Left" />
-            <Setter Property="Width" Value="100"/>
-            <Setter Property="BorderBrush" Value="White" />
-            <Setter Property="FontWeight" Value="Bold" />
-        </Style>
+		<Style x:Key="S_Button" TargetType="Button">
+			<Setter Property="Background" Value="#00000000" />
+			<Setter Property="BorderThickness" Value="0" />
+			<Setter Property="HorizontalAlignment" Value="Left" />
+			<Setter Property="Width" Value="120"/>
+			<Setter Property="BorderBrush" Value="White" />
+			<Setter Property="FontWeight" Value="Bold" />
+		</Style>
 
-    </Window.Resources>
+	</Window.Resources>
 
-    <Grid>
+	<Grid>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="280" MinWidth="280" MaxWidth="400"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="113*"/>
-        </Grid.RowDefinitions>
-        <Image HorizontalAlignment="Center" Stretch="Uniform" Source="logo.png" Grid.ColumnSpan="2"  Height="14" Margin="237,15,237,0" VerticalAlignment="Top"  Grid.Row="0"   Grid.Column="0" Width="286" />
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="280" MinWidth="280" MaxWidth="400"/>
+			<ColumnDefinition/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="30"/>
+			<RowDefinition Height="30"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="113*"/>
+		</Grid.RowDefinitions>
+		<Image HorizontalAlignment="Center" Stretch="Uniform" Source="logo.png" Grid.ColumnSpan="2"  Height="14" Margin="237,10,237,0" VerticalAlignment="Top"  Grid.Row="0"   Grid.Column="0" Width="286" />
 
-        <Border BorderBrush="#cfd8dc" BorderThickness="0,0,1,0" Grid.Column="0"  Grid.Row="3" Grid.RowSpan="2" >
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="13*"/>
-                    <ColumnDefinition Width="13*"/>
-                    <ColumnDefinition Width="30"/>
-                    <ColumnDefinition Width="13*"/>
-                    <ColumnDefinition Width="30"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+		<Border BorderBrush="#cfd8dc" BorderThickness="0,0,1,0" Grid.Column="0"  Grid.Row="3" Grid.RowSpan="2" >
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="13*"/>
+					<ColumnDefinition Width="13*"/>
+					<ColumnDefinition Width="30"/>
+					<ColumnDefinition Width="13*"/>
+					<ColumnDefinition Width="30"/>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="30"/>
+					<RowDefinition Height="30"/>
+					<RowDefinition Height="30"/>
+					<RowDefinition Height="30"/>
+					<RowDefinition Height="30"/>
+					<RowDefinition Height="30"/>
+					<RowDefinition Height="30"/>
+					<RowDefinition Height="30"/>
+					<RowDefinition Height="30"/>
+					<RowDefinition Height="30"/>
+					<RowDefinition Height="*"/>
+				</Grid.RowDefinitions>
 
-                <Label Content="Type de transaction :" Grid.Row="0" Grid.Column="0" Margin="10,0" Grid.ColumnSpan="2" />
-                <ComboBox ItemsSource="{Binding Source={StaticResource TransactionTypesProvider}}" SelectedValue="{Binding filtre.TypeTransaction}" Grid.Row="0" Grid.Column="2" Margin="10,4" Grid.ColumnSpan="3"/>
+				<Label Content="Type de transaction :" Grid.Row="0" Grid.Column="0" Margin="10,0" Grid.ColumnSpan="2" />
+				<ComboBox ItemsSource="{Binding Source={StaticResource TransactionTypesProvider}}" SelectedValue="{Binding filtre.TypeTransaction}" Grid.Row="0" Grid.Column="2" Margin="10,4" Grid.ColumnSpan="3"/>
 
-                <Label Content="Type de bien :" Grid.Row="1" Grid.Column="0" Margin="10,0" Grid.ColumnSpan="2" />
-                <ComboBox ItemsSource="{Binding Source={StaticResource TypeBienTypesProvider}}" SelectedValue="{Binding filtre.TypeBien}" Grid.Row="1" Grid.Column="2" Margin="10,4" Grid.ColumnSpan="3"/>
+				<Label Content="Type de bien :" Grid.Row="1" Grid.Column="0" Margin="10,0" Grid.ColumnSpan="2" />
+				<ComboBox ItemsSource="{Binding Source={StaticResource TypeBienTypesProvider}}" SelectedValue="{Binding filtre.TypeBien}" Grid.Row="1" Grid.Column="2" Margin="10,4" Grid.ColumnSpan="3"/>
 
-                <Label Content="Code postal :" Grid.Row="2" Grid.Column="0" Margin="10,0" Grid.ColumnSpan="2"/>
-                <TextBox Text="{Binding filtre.CodePostal}" Grid.Row="2" Grid.Column="2" Margin="10,4" Grid.ColumnSpan="3"/>
+				<Label Content="Code postal :" Grid.Row="2" Grid.Column="0" Margin="10,0" Grid.ColumnSpan="2"/>
+				<TextBox Text="{Binding filtre.CodePostal}" Grid.Row="2" Grid.Column="2" Margin="10,4" Grid.ColumnSpan="3"/>
 
-                <Label Content="Ville :" Grid.Row="3" Grid.Column="0" Margin="10,0,0,0" Grid.ColumnSpan="2" />
-                <TextBox Text="{Binding filtre.Ville}" Grid.Row="3" Grid.Column="2" Margin="10,4" Grid.ColumnSpan="3"/>
+				<Label Content="Ville :" Grid.Row="3" Grid.Column="0" Margin="10,0,0,0" Grid.ColumnSpan="2" />
+				<TextBox Text="{Binding filtre.Ville}" Grid.Row="3" Grid.Column="2" Margin="10,4" Grid.ColumnSpan="3"/>
 
-                <Label Content="Prix :" Grid.Row="4" Grid.Column="0"  Margin="10,0" Grid.ColumnSpan="1"/>
-                <TextBox Text="{Binding filtre.Prix1}" Grid.Row="4" Grid.Column="1" Margin="4" Grid.ColumnSpan="1"/>
-                <Label Content="à" Grid.Row="4" Grid.Column="2"  Margin="2,0" Grid.ColumnSpan="1"/>
-                <TextBox Text="{Binding filtre.Prix2}" Grid.Row="4" Grid.Column="3" Margin="4" Grid.ColumnSpan="1"/>
-                <Label Content="€" Grid.Row="4" Grid.Column="4" Margin="2,0" Grid.ColumnSpan="1"/>
+				<Label Content="Prix :" Grid.Row="4" Grid.Column="0"  Margin="10,0" Grid.ColumnSpan="1"/>
+				<TextBox Text="{Binding filtre.Prix1}" Grid.Row="4" Grid.Column="1" Margin="4" Grid.ColumnSpan="1"/>
+				<Label Content="à" Grid.Row="4" Grid.Column="2"  Margin="2,0" Grid.ColumnSpan="1"/>
+				<TextBox Text="{Binding filtre.Prix2}" Grid.Row="4" Grid.Column="3" Margin="4" Grid.ColumnSpan="1"/>
+				<Label Content="€" Grid.Row="4" Grid.Column="4" Margin="2,0" Grid.ColumnSpan="1"/>
 
-                <Label Content="Charges :" Grid.Row="5" Grid.Column="0"  Margin="10,0,0,0" Grid.ColumnSpan="1"/>
-                <TextBox Text="{Binding filtre.MontantCharges1}" Grid.Row="5" Grid.Column="1" Margin="4" Grid.ColumnSpan="1"/>
-                <Label Content="à" Grid.Row="5" Grid.Column="2"  Margin="2,0" Grid.ColumnSpan="1"/>
-                <TextBox Text="{Binding filtre.MontantCharges2}" Grid.Row="5" Grid.Column="3" Margin="4" Grid.ColumnSpan="1"/>
-                <Label Content="€" Grid.Row="5" Grid.Column="4"  Margin="2,0" Grid.ColumnSpan="1"/>
+				<Label Content="Charges :" Grid.Row="5" Grid.Column="0"  Margin="10,0,0,0" Grid.ColumnSpan="1"/>
+				<TextBox Text="{Binding filtre.MontantCharges1}" Grid.Row="5" Grid.Column="1" Margin="4" Grid.ColumnSpan="1"/>
+				<Label Content="à" Grid.Row="5" Grid.Column="2"  Margin="2,0" Grid.ColumnSpan="1"/>
+				<TextBox Text="{Binding filtre.MontantCharges2}" Grid.Row="5" Grid.Column="3" Margin="4" Grid.ColumnSpan="1"/>
+				<Label Content="€" Grid.Row="5" Grid.Column="4"  Margin="2,0" Grid.ColumnSpan="1"/>
 
-                <Label Content="Surface :" Grid.Row="6" Grid.Column="0"  Margin="10,0,0,0" Grid.ColumnSpan="1"/>
-                <TextBox Text="{Binding filtre.Surface1}" Grid.Row="6" Grid.Column="1" Margin="4" Grid.ColumnSpan="1"/>
-                <Label Content="à" Grid.Row="6" Grid.Column="2"  Margin="2,0" Grid.ColumnSpan="1"/>
-                <TextBox Text="{Binding filtre.Surface2}" Grid.Row="6" Grid.Column="3" Margin="4" Grid.ColumnSpan="1"/>
-                <Label Content="m²" Grid.Row="6" Grid.Column="4"  Margin="2,0" Grid.ColumnSpan="1"/>
+				<Label Content="Surface :" Grid.Row="6" Grid.Column="0"  Margin="10,0,0,0" Grid.ColumnSpan="1"/>
+				<TextBox Text="{Binding filtre.Surface1}" Grid.Row="6" Grid.Column="1" Margin="4" Grid.ColumnSpan="1"/>
+				<Label Content="à" Grid.Row="6" Grid.Column="2"  Margin="2,0" Grid.ColumnSpan="1"/>
+				<TextBox Text="{Binding filtre.Surface2}" Grid.Row="6" Grid.Column="3" Margin="4" Grid.ColumnSpan="1"/>
+				<Label Content="m²" Grid.Row="6" Grid.Column="4"  Margin="2,0" Grid.ColumnSpan="1"/>
 
-                <Label Content="Type de chauffage :" Grid.Row="7" Grid.Column="0" Margin="10,0" Grid.ColumnSpan="2"/>
-                <ComboBox ItemsSource="{Binding Source={StaticResource TypeChauffageTypesProvider}}" SelectedValue="{Binding filtre.TypeChauffage}"  Grid.Row="7" Grid.Column="2" Margin="10,4" Grid.ColumnSpan="3" />
+				<Label Content="Type de chauffage :" Grid.Row="7" Grid.Column="0" Margin="10,0" Grid.ColumnSpan="2"/>
+				<ComboBox ItemsSource="{Binding Source={StaticResource TypeChauffageTypesProvider}}" SelectedValue="{Binding filtre.TypeChauffage}"  Grid.Row="7" Grid.Column="2" Margin="10,4" Grid.ColumnSpan="3" />
 
-                <Label Content="Type d'énergie :" Grid.Row="8" Grid.Column="0" Margin="10,0" Grid.ColumnSpan="2"/>
-                <ComboBox ItemsSource="{Binding Source={StaticResource EnergieChauffageTypesProvider}}" SelectedValue="{Binding filtre.TypeEnergie}" Grid.Row="8" Grid.Column="2" Margin="10,4" Grid.ColumnSpan="3" />
+				<Label Content="Type d'énergie :" Grid.Row="8" Grid.Column="0" Margin="10,0" Grid.ColumnSpan="2"/>
+				<ComboBox ItemsSource="{Binding Source={StaticResource EnergieChauffageTypesProvider}}" SelectedValue="{Binding filtre.TypeEnergie}" Grid.Row="8" Grid.Column="2" Margin="10,4" Grid.ColumnSpan="3" />
 
-                <Button Content="Filtrer" Click="button_Filtre" Grid.Row="9" Grid.Column="0" Margin="10,4" Grid.ColumnSpan="2"/>
-                <Button Content="Réinitialiser" Click="button_UnFiltre" Grid.Row="9" Grid.Column="2" Margin="10,4" Grid.ColumnSpan="3"/>
-
-
+				<Button Content="Filtrer" Click="button_Filtre" Grid.Row="9" Grid.Column="0" Margin="10,4" Grid.ColumnSpan="2"/>
+				<Button Content="Réinitialiser" Click="button_UnFiltre" Grid.Row="9" Grid.Column="2" Margin="10,4" Grid.ColumnSpan="3"/>
 
 
-            </Grid>
-        </Border>
 
-        <Border BorderBrush="#cfd8dc" BorderThickness="0,0,0,1" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" />
 
-        <ListBox ItemContainerStyle="{StaticResource myLBStyle}" Background="#eceff1" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="1" Grid.RowSpan="2" ItemsSource="{Binding ListeBienImmo}"
+			</Grid>
+		</Border>
+
+		<Border BorderBrush="#cfd8dc" BorderThickness="0,0,0,1" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" />
+
+		<ListBox ItemContainerStyle="{StaticResource myLBStyle}" Background="#eceff1" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="1" Grid.RowSpan="2" ItemsSource="{Binding ListeBienImmo}"
                  SelectedItem="{Binding selectedItem}"
                  MouseDoubleClick="ListBox_MouseDoubleClick"
                  x:Name="listBox" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0" >
-            <ListBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel ItemHeight="245"
+			<ListBox.ItemsPanel>
+				<ItemsPanelTemplate>
+					<WrapPanel ItemHeight="245"
                             ItemWidth="285"
                             Orientation="Horizontal" />
-                </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Margin="0" HorizontalAlignment="Center">
-                        <Viewbox>
+				</ItemsPanelTemplate>
+			</ListBox.ItemsPanel>
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<StackPanel Margin="0" HorizontalAlignment="Center">
+						<Viewbox>
 
 
-                            <Grid x:Name="backgroundGrid"
+							<Grid x:Name="backgroundGrid"
                                     Width="250"
                                     Height="200">
-                                <Image Stretch="Fill" Source="{Binding Path=PhotoPrincipaleBase64, Converter={StaticResource ConversionImage}}"  Height="200" Width="200" />
-                                <Rectangle Fill="#e0263238" HorizontalAlignment="Left" Height="50" Margin="25,150,0,0" Stroke="Transparent" VerticalAlignment="Top" Width="200"/>
-                                <Label Margin="25,150,0,20" Height="36">
-                                    <TextBlock  TextTrimming="CharacterEllipsis"
+								<Image Stretch="Fill" Source="{Binding Path=PhotoPrincipaleBase64, Converter={StaticResource ConversionImage}}"  Height="200" Width="200" />
+								<Rectangle Fill="#e0263238" HorizontalAlignment="Left" Height="50" Margin="25,150,0,0" Stroke="Transparent" VerticalAlignment="Top" Width="200"/>
+								<Label Margin="25,150,0,20" Height="36">
+									<TextBlock  TextTrimming="CharacterEllipsis"
                                         FontFamily="Segoe UI"
                                         FontSize="18"
                                         Foreground="White" Text="{Binding Titre}" Width="195" Height="30"/>
-                                </Label>
-                                <Label Margin="25,175,0,0" Height="30">
-                                    <TextBlock   TextTrimming="CharacterEllipsis"
+								</Label>
+								<Label Margin="25,175,0,0" Height="30">
+									<TextBlock   TextTrimming="CharacterEllipsis"
                                         FontFamily="Segoe UI"
                                         FontSize="14"
                                         Foreground="#eceff1" Text="{Binding Ville}" Width="195" Height="40"/>
-                                </Label>
-                            </Grid>
+								</Label>
+							</Grid>
 
-                        </Viewbox>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+						</Viewbox>
+					</StackPanel>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
 
-        <Button x:Name="button_A" Content="Ajouter" Click="button_Add" Style="{StaticResource S_Button}"  Margin="12,0,0,8" Width="70" Grid.Row="1" Height="20" VerticalAlignment="Bottom" />
-        <Button x:Name="button_M" Content="Modifier" Click="button_Modify" Style="{StaticResource S_Button}" Margin="87,2,0,8" Width="70" Grid.Row="1" />
-        <Button x:Name="button_D" Content="Supprimer" Click="button_Delete" Style="{StaticResource S_Button}" Margin="162,2,0,8" Width="70" Grid.Row="1" />
+		<Button x:Name="button_A" Content="Ajouter" Click="button_Add" Style="{StaticResource S_Button}"  Margin="10,0,0,2" Width="70" Grid.Row="1"  VerticalAlignment="Bottom" Height="26" />
+		<Button x:Name="button_M" Content="Modifier" Click="button_Modify" Style="{StaticResource S_Button}" Margin="100,2,0,2" Width="70" Grid.Row="1" Grid.ColumnSpan="2" Height="26" />
+		<Button x:Name="button_D" Content="Supprimer" Click="button_Delete" Style="{StaticResource S_Button}" Margin="200,2,0,2" Width="70" Grid.Row="1" Grid.ColumnSpan="2" Height="26" />
 
-        <Grid Grid.Column="1" HorizontalAlignment="Left" Height="421" Margin="10,9,0,0" Grid.Row="3" VerticalAlignment="Top" Width="420" Grid.RowSpan="2"/>
-        <GridSplitter x:Name="gridSplitter" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="3"  Width="10" Grid.RowSpan="2"/>
-        <!-- <Image x:Name="loader" Grid.Column="1" HorizontalAlignment="Right" Height="40" Source="index.gif"  Margin="0,10,10,0" Grid.RowSpan="4" VerticalAlignment="Top" Width="40" />-->
-        <MediaElement x:Name="loader"  Source="Loading.gif" Visibility="Hidden" LoadedBehavior="Manual"
-                      Grid.Column="1"
-                      Grid.RowSpan="4"
-                      Height="200" Width="200"
-                      Margin="0,10,10,0"/>
-        <!---->
- 
- 
- 
- 
- 
-    </Grid>
+		<Grid Grid.Column="1" HorizontalAlignment="Left" Height="421" Margin="10,9,0,0" Grid.Row="3" VerticalAlignment="Top" Width="420" Grid.RowSpan="2"/>
+		<GridSplitter x:Name="gridSplitter" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="3"  Width="10" Grid.RowSpan="2"/>
+		<!-- <Image x:Name="loader" Grid.Column="1" HorizontalAlignment="Right" Height="40" Source="index.gif"  Margin="0,10,10,0" Grid.RowSpan="4" VerticalAlignment="Top" Width="40" />-->
+
+
+		<MediaElement x:Name="loader"  Source="index.gif" Visibility="Hidden" LoadedBehavior="Manual"
+                      Grid.Column="1" Height="40" Margin="430,10,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="40"/>
+
+
+
+
+	</Grid>
 </Window>
