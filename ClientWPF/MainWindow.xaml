@@ -8,7 +8,7 @@
         WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
-        
+
         <wpf:ConverterImage x:Key="ConversionImage"/>
 
         <Style x:Key="myLBStyle" TargetType="{x:Type ListBoxItem}">
@@ -64,30 +64,96 @@
     <Grid>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="270"/>
+            <ColumnDefinition Width="280" MinWidth="280" MaxWidth="400"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="29"/>
-            <RowDefinition Height="31"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition/>
+            <RowDefinition Height="113*"/>
         </Grid.RowDefinitions>
         <Image HorizontalAlignment="Center" Stretch="Uniform" Source="logo.png" Grid.ColumnSpan="2"  Height="14" Margin="237,15,237,0" VerticalAlignment="Top"  Grid.Row="0"   Grid.Column="0" Width="286" />
 
-        <Border BorderBrush="#cfd8dc" BorderThickness="0,0,1,0" Grid.Column="0"  Grid.Row="1" Margin="-5,28,5,4" Grid.RowSpan="3" />
+        <Border BorderBrush="#cfd8dc" BorderThickness="0,0,1,0" Grid.Column="0"  Grid.Row="3" Grid.RowSpan="2" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="13*"/>
+                    <ColumnDefinition Width="13*"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="13*"/>
+                    <ColumnDefinition Width="30"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Label Content="Type de transaction :" Grid.Row="0" Grid.Column="0" Margin="10,0" Grid.ColumnSpan="2" />
+                <ComboBox ItemsSource="{Binding Source={StaticResource TransactionTypesProvider}}" SelectedValue="{Binding filtre.TypeTransaction}" Grid.Row="0" Grid.Column="2" Margin="10,4" Grid.ColumnSpan="3"/>
+
+                <Label Content="Type de bien :" Grid.Row="1" Grid.Column="0" Margin="10,0" Grid.ColumnSpan="2" />
+                <ComboBox ItemsSource="{Binding Source={StaticResource TypeBienTypesProvider}}" SelectedValue="{Binding filtre.TypeBien}" Grid.Row="1" Grid.Column="2" Margin="10,4" Grid.ColumnSpan="3"/>
+
+                <Label Content="Code postal :" Grid.Row="2" Grid.Column="0" Margin="10,0" Grid.ColumnSpan="2"/>
+                <TextBox Text="{Binding filtre.CodePostal}" Grid.Row="2" Grid.Column="2" Margin="10,4" Grid.ColumnSpan="3"/>
+
+                <Label Content="Ville :" Grid.Row="3" Grid.Column="0" Margin="10,0,0,0" Grid.ColumnSpan="2" />
+                <TextBox Text="{Binding filtre.Ville}" Grid.Row="3" Grid.Column="2" Margin="10,4" Grid.ColumnSpan="3"/>
+
+                <Label Content="Prix :" Grid.Row="4" Grid.Column="0"  Margin="10,0" Grid.ColumnSpan="1"/>
+                <TextBox Text="{Binding filtre.Prix1}" Grid.Row="4" Grid.Column="1" Margin="4" Grid.ColumnSpan="1"/>
+                <Label Content="à" Grid.Row="4" Grid.Column="2"  Margin="2,0" Grid.ColumnSpan="1"/>
+                <TextBox Text="{Binding filtre.Prix2}" Grid.Row="4" Grid.Column="3" Margin="4" Grid.ColumnSpan="1"/>
+                <Label Content="€" Grid.Row="4" Grid.Column="4" Margin="2,0" Grid.ColumnSpan="1"/>
+
+                <Label Content="Charges :" Grid.Row="5" Grid.Column="0"  Margin="10,0,0,0" Grid.ColumnSpan="1"/>
+				<TextBox Text="{Binding filtre.MontantCharges1}" Grid.Row="5" Grid.Column="1" Margin="4" Grid.ColumnSpan="1"/>
+                <Label Content="à" Grid.Row="5" Grid.Column="2"  Margin="2,0" Grid.ColumnSpan="1"/>
+				<TextBox Text="{Binding filtre.MontantCharges2}" Grid.Row="5" Grid.Column="3" Margin="4" Grid.ColumnSpan="1"/>
+                <Label Content="€" Grid.Row="5" Grid.Column="4"  Margin="2,0" Grid.ColumnSpan="1"/>
+
+                <Label Content="Surface :" Grid.Row="6" Grid.Column="0"  Margin="10,0,0,0" Grid.ColumnSpan="1"/>
+                <TextBox Text="{Binding filtre.Surface1}" Grid.Row="6" Grid.Column="1" Margin="4" Grid.ColumnSpan="1"/>
+                <Label Content="à" Grid.Row="6" Grid.Column="2"  Margin="2,0" Grid.ColumnSpan="1"/>
+                <TextBox Text="{Binding filtre.Surface2}" Grid.Row="6" Grid.Column="3" Margin="4" Grid.ColumnSpan="1"/>
+                <Label Content="m²" Grid.Row="6" Grid.Column="4"  Margin="2,0" Grid.ColumnSpan="1"/>
+
+                <Label Content="Type de chauffage :" Grid.Row="7" Grid.Column="0" Margin="10,0" Grid.ColumnSpan="2"/>
+                <ComboBox ItemsSource="{Binding Source={StaticResource TypeChauffageTypesProvider}}" SelectedValue="{Binding filtre.TypeChauffage}"  Grid.Row="7" Grid.Column="2" Margin="10,4" Grid.ColumnSpan="3" />
+
+                <Label Content="Type d'énergie :" Grid.Row="8" Grid.Column="0" Margin="10,0" Grid.ColumnSpan="2"/>
+                <ComboBox ItemsSource="{Binding Source={StaticResource EnergieChauffageTypesProvider}}" SelectedValue="{Binding filtre.TypeEnergie}" Grid.Row="8" Grid.Column="2" Margin="10,4" Grid.ColumnSpan="3" />
+
+                <Button Content="Filtrer" Click="button_Filtre" Grid.Row="9" Grid.Column="0" Margin="10,4" Grid.ColumnSpan="2"/>
+                <Button Content="Réinitialiser" Click="button_UnFiltre" Grid.Row="9" Grid.Column="2" Margin="10,4" Grid.ColumnSpan="3"/>
+
+
+
+
+            </Grid>
+        </Border>
 
         <Border BorderBrush="#cfd8dc" BorderThickness="0,0,0,1" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" />
 
-        <ListBox ItemContainerStyle="{StaticResource myLBStyle}" Background="#eceff1" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="1" Grid.RowSpan="1" ItemsSource="{Binding ListeBienImmo}"
+        <ListBox ItemContainerStyle="{StaticResource myLBStyle}" Background="#eceff1" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="1" Grid.RowSpan="2" ItemsSource="{Binding ListeBienImmo}"
                  SelectedItem="{Binding selectedItem}"
                  MouseDoubleClick="ListBox_MouseDoubleClick"
                  x:Name="listBox" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0" >
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel ItemHeight="245"
-							ItemWidth="285"
-							Orientation="Horizontal" />
+                            ItemWidth="285"
+                            Orientation="Horizontal" />
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
             <ListBox.ItemTemplate>
@@ -97,21 +163,21 @@
 
 
                             <Grid x:Name="backgroundGrid"
-									Width="250"
-									Height="200">
-                                <Image Source="{Binding Path=PhotoPrincipaleBase64, Converter={StaticResource ConversionImage}}"  Height="250" Width="200"/>
-                                <Rectangle Fill="#f0263238" HorizontalAlignment="Left" Height="50" Margin="25,130,0,0" Stroke="Transparent" VerticalAlignment="Top" Width="200"/>
-                                <Label Margin="25,130,0,20">
+                                    Width="250"
+                                    Height="200">
+                                <Image Stretch="Fill" Source="{Binding Path=PhotoPrincipaleBase64, Converter={StaticResource ConversionImage}}"  Height="200" Width="200" />
+                                <Rectangle Fill="#e0263238" HorizontalAlignment="Left" Height="50" Margin="25,150,0,0" Stroke="Transparent" VerticalAlignment="Top" Width="200"/>
+                                <Label Margin="25,150,0,20" Height="36">
                                     <TextBlock  TextTrimming="CharacterEllipsis"
-										FontFamily="Segoe UI"
-										FontSize="18"
-										Foreground="White" Text="{Binding Titre}" Width="195"/>
+                                        FontFamily="Segoe UI"
+                                        FontSize="18"
+                                        Foreground="White" Text="{Binding Titre}" Width="195" Height="30"/>
                                 </Label>
-                                <Label Margin="25,152,0,20">
+                                <Label Margin="25,175,0,0" Height="30">
                                     <TextBlock   TextTrimming="CharacterEllipsis"
-										FontFamily="Segoe UI"
-										FontSize="14"
-										Foreground="#eceff1" Text="{Binding Ville}" Width="195" Height="20"/>
+                                        FontFamily="Segoe UI"
+                                        FontSize="14"
+                                        Foreground="#eceff1" Text="{Binding Ville}" Width="195" Height="40"/>
                                 </Label>
                             </Grid>
 
@@ -121,79 +187,17 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <Button x:Name="button_A" Content="Ajouter" Click="button_Add" Style="{StaticResource S_Button}"  Margin="12,2,0,8" Width="70" Grid.Row="1" />
+        <Button x:Name="button_A" Content="Ajouter" Click="button_Add" Style="{StaticResource S_Button}"  Margin="12,0,0,8" Width="70" Grid.Row="1" Height="20" VerticalAlignment="Bottom" />
         <Button x:Name="button_M" Content="Modifier" Click="button_Modify" Style="{StaticResource S_Button}" Margin="87,2,0,8" Width="70" Grid.Row="1" />
         <Button x:Name="button_D" Content="Supprimer" Click="button_Delete" Style="{StaticResource S_Button}" Margin="162,2,0,8" Width="70" Grid.Row="1" />
 
-        <Grid Grid.Column="1" HorizontalAlignment="Left" Height="421" Margin="10,9,0,0" Grid.Row="3" VerticalAlignment="Top" Width="420">
-            <Label x:Name="label_ID" Content="Pas d'Item select" HorizontalAlignment="Left" Margin="-199,403,0,-8" VerticalAlignment="Top"/>
-        </Grid>
-        <GridSplitter x:Name="gridSplitter" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="3"  Width="10"/>
-
-        <Label x:Name="label_transaction" Content="Type transaction :" HorizontalAlignment="Left" Margin="12,40,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="-0.816,-0.115"/>
-        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="140,43,0,0" Grid.Row="3" VerticalAlignment="Top" Width="120"
-                  ItemsSource="{Binding Source={StaticResource TransactionTypesProvider}}" Height="22"/>
-        <Label x:Name="label_type" Content="Type bien :" HorizontalAlignment="Left" Margin="12,66,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="-0.816,-0.115"/>
-        <ComboBox x:Name="comboBox_Copy" HorizontalAlignment="Left" Margin="140,70,0,0" Grid.Row="3" VerticalAlignment="Top" Width="120"
-        	ItemsSource="{Binding Source={StaticResource TypeBienTypesProvider}}" Height="22"/>
-
-        <Label x:Name="label_CP" Content="Code postal :" HorizontalAlignment="Left" Margin="12,97,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="-0.816,-0.115"/>
-
-        <TextBox x:Name="txt_Adresse" HorizontalAlignment="Left" Height="23" Margin="140,100,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Row="3"/>
-
-        <Label x:Name="label_Ville" Content="Ville:" HorizontalAlignment="Left" Margin="12,130,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="-0.816,-0.115"/>
-
-        <TextBox x:Name="txt_Ville" HorizontalAlignment="Left" Height="23" Margin="140,130,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Row="3"/>
-
-        <Label x:Name="label_Prix" Content="Prix de" HorizontalAlignment="Left" Margin="11,169,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="-0.816,-0.115"/>
-
-        <TextBox x:Name="txt_PrixMin" HorizontalAlignment="Left" Height="23" Margin="78,169,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="70" Grid.Row="3"/>
-
-        <Label x:Name="label_a" Content="à" HorizontalAlignment="Left" Margin="153,169,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="-0.816,-0.115"/>
-
-        <TextBox x:Name="txt_PrixMax" HorizontalAlignment="Left" Height="23" Margin="174,169,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="70"  Grid.Row="3" RenderTransformOrigin="0.443,0.13"/>
-
-        <Label x:Name="label_euro" Content="€" HorizontalAlignment="Left" Margin="249,169,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="-0.816,-0.115"/>
-
-        <Label x:Name="label_Surface" Content="Surface de" HorizontalAlignment="Left" Margin="11,199,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="-0.816,-0.115"/>
-
-        <TextBox x:Name="txt_SurfaceMin" HorizontalAlignment="Left" Height="23" Margin="78,199,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="70" Grid.Row="3"/>
-
-        <Label x:Name="label_a2" Content="à" HorizontalAlignment="Left" Margin="153,199,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="-0.816,-0.115"/>
-
-        <TextBox x:Name="txt_SurfaceMax" HorizontalAlignment="Left" Height="23" Margin="174,199,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="70"  Grid.Row="3" RenderTransformOrigin="0.443,0.13"/>
-
-        <Label x:Name="label_mcarre" Content="m²" HorizontalAlignment="Left" Margin="244,197,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="-0.816,-0.115"/>
-
-        <Label x:Name="label_Montant" Content="Montant" HorizontalAlignment="Left" Margin="11,229,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="-0.816,-0.115"/>
-
-        <TextBox x:Name="txt_MontantMin" HorizontalAlignment="Left" Height="23" Margin="78,229,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="70" Grid.Row="3"/>
-
-        <Label x:Name="label_a3" Content="à" HorizontalAlignment="Left" Margin="153,229,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="-0.816,-0.115"/>
-
-        <TextBox x:Name="txt_MontantMax" HorizontalAlignment="Left" Height="23" Margin="174,229,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="70"  Grid.Row="3" RenderTransformOrigin="0.443,0.13"/>
-
-        <Label x:Name="label_euro2" Content="€" HorizontalAlignment="Left" Margin="244,229,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="-0.816,-0.115"/>
-
-        <Label x:Name="label_Titre" Content="Titre :" HorizontalAlignment="Left" Margin="12,9,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="-0.816,-0.115"/>
-
-        <TextBox x:Name="txt_Titre" HorizontalAlignment="Left" Height="23" Margin="139,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Row="3"/>
-
-        <Label x:Name="label_typechauffage" Content="Type chauffage :" HorizontalAlignment="Left" Margin="12,260,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="-0.816,-0.115"/>
-        <ComboBox x:Name="cb_typechauffage" HorizontalAlignment="Left" Margin="140,260,0,0" Grid.Row="3" VerticalAlignment="Top" Width="120"
-                  ItemsSource="{Binding Source={StaticResource TypeChauffageTypesProvider}}" Height="22"/>
-
-        <Label x:Name="label_typeenergiechauffage" Content="Type energie :" HorizontalAlignment="Left" Margin="12,290,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="-0.816,-0.115"/>
-        <ComboBox x:Name="cb_typeenergiechauffage" HorizontalAlignment="Left" Margin="140,290,0,0" Grid.Row="3" VerticalAlignment="Top" Width="120"
-                  ItemsSource="{Binding Source={StaticResource EnergieChauffageTypesProvider}}" Height="22"/>
-
-        <Button x:Name="button_F" Content="Filtre" Click="button_Filtre" Style="{StaticResource S_Button}"  Margin="12,369,0,44" Width="70" Grid.Row="3" />
-        <Button x:Name="button_UnF" Content="Desactiver filtre" Click="button_UnFiltre" Style="{StaticResource S_Button}"  Margin="152,369,0,44" Width="108" Grid.Row="3" />
-
-
-
-
-
-
+        <Grid Grid.Column="1" HorizontalAlignment="Left" Height="421" Margin="10,9,0,0" Grid.Row="3" VerticalAlignment="Top" Width="420" Grid.RowSpan="2"/>
+        <GridSplitter x:Name="gridSplitter" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="3"  Width="10" Grid.RowSpan="2"/>
+        <!---->
+ 
+ 
+ 
+ 
+ 
     </Grid>
 </Window>

@@ -38,7 +38,7 @@ namespace ClientWPF
 
         private bool SetProperty<T>(T newValue, [CallerMemberName] string propertyName = null) // <T> : méthode générique
         {                                                                                      // propretyName=null : params optionnel
-                                                                                               // [CallerMemberName] : remplace propertyName par nom element qui l'a appelé
+            // [CallerMemberName] : remplace propertyName par nom element qui l'a appelé
             T current = (T)GetProperty(propertyName);
             if (!EqualityComparer<T>.Default.Equals(current, newValue)) // Si TextAffiche est changer
             {
@@ -60,38 +60,45 @@ namespace ClientWPF
             set { SetProperty(value); }
         }
 
-        private void Initcriteres(ServiceAgence.CriteresRechercheBiensImmobiliers c)
+        public ServiceAgence.CriteresRechercheBiensImmobiliers filtre
         {
-            c.TitreContient = "";
-            c.AdresseContient = "";
-            c.CodePostal = "";
-            c.DateMiseEnTransaction1 = null;
-            c.DateMiseEnTransaction2 = null;
-            c.DateTransaction1 = null;
-            c.DateTransaction2 = null;
-            c.DescriptionContient = "";
-            c.EnergieChauffage = null;
-            c.MontantCharges1 = -1;
-            c.MontantCharges2 = -1;
-            c.NbEtages1 = -1;
-            c.NbEtages2 = -1;
-            c.NbPieces1 = -1;
-            c.NbPieces2 = -1;
-            c.NumEtage1 = -1;
-            c.NumEtage2 = -1;
-            c.Prix1 = -1;
-            c.Prix2 = -1;
-            c.Surface1 = -1;
-            c.Surface2 = -1;
-            c.TransactionEffectuee = null;
-            c.Tris = null;
-            c.TypeBien = null;
-            c.TypeChauffage = null;
-            c.TypeTransaction = null;
-            c.Ville = "";
+            get { return (ServiceAgence.CriteresRechercheBiensImmobiliers)GetProperty(); }
+            set { SetProperty(value); }
         }
 
+        private void InitFiltre()
+        {
 
+            filtre.TitreContient = "";
+            filtre.AdresseContient = "";
+            filtre.CodePostal = "";
+            filtre.DateMiseEnTransaction1 = null;
+            filtre.DateMiseEnTransaction2 = null;
+            filtre.DateTransaction1 = null;
+            filtre.DateTransaction2 = null;
+            filtre.DescriptionContient = "";
+            filtre.EnergieChauffage = null;
+            filtre.MontantCharges1 = -1;
+            filtre.MontantCharges2 = -1;
+            filtre.NbEtages1 = -1;
+            filtre.NbEtages2 = -1;
+            filtre.NbPieces1 = -1;
+            filtre.NbPieces2 = -1;
+            filtre.NumEtage1 = -1;
+            filtre.NumEtage2 = -1;
+            filtre.Prix1 = -1;
+            filtre.Prix2 = -1;
+            filtre.Surface1 = -1;
+            filtre.Surface2 = -1;
+            filtre.TransactionEffectuee = null;
+            filtre.Tris = null;
+            filtre.TypeBien = null;
+            filtre.TypeChauffage = null;
+            filtre.TypeTransaction = null;
+            filtre.Ville = "";
+        }
+
+		
         public MainWindow()
         {
 
@@ -99,35 +106,41 @@ namespace ClientWPF
 
             this.ListeBienImmo = new ObservableCollection<ServiceAgence.BienImmobilierBase>();
 
-            BindBienList();
+            this.filtre = new ServiceAgence.CriteresRechercheBiensImmobiliers();
+
+            InitFiltre();
+
+            InitBiens();
 
             this.DataContext = this;
         }
 
 
         #region BindingData
-        private void BindBienList()
+        private void InitBiens()
         {
-            
+
             using (ServiceAgence.AgenceClient client = new ServiceAgence.AgenceClient())
             {
 
                 client.Open();
 
-                ServiceAgence.CriteresRechercheBiensImmobiliers c = new ServiceAgence.CriteresRechercheBiensImmobiliers();
-
-                Initcriteres(c);
-
-                ServiceAgence.ResultatListeBiensImmobiliers res = client.LireListeBiensImmobiliers(c, null, null);
-
-                this.ListeBienImmo = res.Liste.List;
+                ServiceAgence.ResultatListeBiensImmobiliers res = client.LireListeBiensImmobiliers(filtre, null, null);
+				
+				this.ListeBienImmo.Clear();
+				for (int i = 0; i < res.Liste.List.Count; i++)
+				{
+					this.ListeBienImmo.Add(res.Liste.List.ElementAt(i));
+				}
+                //this.ListeBienImmo = res.Liste.List;
+				
 
                 for (int i = 0; i < ListeBienImmo.Count; i++)
                     Console.WriteLine("id :" + ListeBienImmo.ElementAt(i).Id);
 
                 client.Close();
             }
-            InitializeComponent();
+
 
         }
 
@@ -149,13 +162,14 @@ namespace ClientWPF
             Windowadd winadd = new Windowadd();
             //winadd.Show();
 
-			winadd.Owner = this;
-            
-			if (winadd.ShowDialog() == true)
+            winadd.Owner = this;
+
+            if (winadd.ShowDialog() == true)
             {
-                ListeBienImmo.Add(winadd.bien);
+                //ListeBienImmo.Add(winadd.bien);
+				InitBiens();
             }
-            
+
         }
 
         /// <summary>
@@ -168,15 +182,16 @@ namespace ClientWPF
             if (selectedItem != null)
             {
                 Windowadd winadd = new Windowadd(selectedItem.Id);
-                
+
                 if (winadd.ShowDialog() == true)
-                {
+                {/*
                     int pos = ListeBienImmo.IndexOf(selectedItem);
                     ListeBienImmo.Remove(selectedItem);
-                    ListeBienImmo.Insert(pos, winadd.bien);
+                    ListeBienImmo.Insert(pos, winadd.bien);*/
+					InitBiens();
                 }
             }
-            
+
         }
 
 
@@ -187,9 +202,9 @@ namespace ClientWPF
         /// <param name="e"></param>
         private void button_Delete(object sender, RoutedEventArgs e)
         {
-            
+
             ServiceAgence.BienImmobilierBase SelectedBien = (ServiceAgence.BienImmobilierBase)listBox.SelectedItem;
-            
+
             if (SelectedBien != null)
             {
                 Console.WriteLine("Item select :" + SelectedBien.Id);
@@ -204,17 +219,21 @@ namespace ClientWPF
                 }
                 ListeBienImmo.Remove(selectedItem);
             }
-            
-            
+
+
         }
 
         private void button_Filtre(object sender, RoutedEventArgs e)
         {
+            InitBiens();
+
             Console.WriteLine("Filtre");
         }
 
-        private void button_UnFiltre(object sender,RoutedEventArgs e)
+        private void button_UnFiltre(object sender, RoutedEventArgs e)
         {
+			InitFiltre();
+			InitBiens();
             Console.WriteLine("Defiltrer");
         }
 
@@ -226,23 +245,16 @@ namespace ClientWPF
         private void ListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Console.WriteLine("DoubleClick");
-            
+
             //ServiceAgence.BienImmobilierBase SelectedBien = (ServiceAgence.BienImmobilierBase)listBox.SelectedItem;
-            if (selectedItem != null) { // Le select n'est pas null
+            if (selectedItem != null)
+            { // Le select n'est pas null
                 var item = ItemsControl.ContainerFromElement(listBox, e.OriginalSource as DependencyObject) as ListBoxItem;
                 if (item != null)
                 {
                     Console.WriteLine("Item select :" + selectedItem.Id);
-                    label_ID.Content = selectedItem.Id.ToString();
 
-                    using (ServiceAgence.AgenceClient client = new ServiceAgence.AgenceClient()) // Recupere détails bien
-                    {
-                        ServiceAgence.ResultatBienImmobilier res = client.LireDetailsBienImmobilier(selectedItem.Id.ToString());
-                    }
-
-                    BindCurrentBien(selectedItem.Id);
-
-                    Windowbien winbien = new Windowbien();
+                    Windowbien winbien = new Windowbien(selectedItem.Id);
                     winbien.Owner = this;
                     winbien.Show();
 
