@@ -196,8 +196,8 @@
 		<!-- <Image x:Name="loader" Grid.Column="1" HorizontalAlignment="Right" Height="40" Source="index.gif"  Margin="0,10,10,0" Grid.RowSpan="4" VerticalAlignment="Top" Width="40" />-->
 
 
-		<MediaElement x:Name="loader"  Source="index.gif" Visibility="Hidden" LoadedBehavior="Manual"
-                      Grid.Column="1" Height="40" Margin="430,10,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="40"/>
+		<MediaElement x:Name="loader"  Source="loader.gif" Visibility="Hidden" LoadedBehavior="Manual"
+                      Grid.Column="0" Grid.ColumnSpan="2" Height="25" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1"/>
 
 
 

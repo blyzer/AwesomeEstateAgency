@@ -127,10 +127,10 @@ namespace ClientWPF
 
 		private async Task InitBiensAsync()
 		{
-            loader.Visibility = System.Windows.Visibility.Visible;
+
             loader.Position = TimeSpan.Zero;
             loader.Play();
-
+			loader.Visibility = System.Windows.Visibility.Visible;
 
             //Console.WriteLine("load..");
             await InitBiens();
