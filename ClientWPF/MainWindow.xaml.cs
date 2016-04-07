@@ -109,8 +109,10 @@ namespace ClientWPF
             this.filtre = new ServiceAgence.CriteresRechercheBiensImmobiliers();
 
             InitFiltre();
-			
-			new Action(async () =>
+
+            
+
+            new Action(async () =>
 			{
 				await InitBiensAsync();
 			}).Invoke();
@@ -125,9 +127,13 @@ namespace ClientWPF
 
 		private async Task InitBiensAsync()
 		{
-			loader.Visibility = System.Windows.Visibility.Visible;
-			//Console.WriteLine("load..");
-			await InitBiens();
+            loader.Visibility = System.Windows.Visibility.Visible;
+            loader.Position = TimeSpan.Zero;
+            loader.Play();
+
+
+            //Console.WriteLine("load..");
+            await InitBiens();
 
 		}
 
@@ -154,9 +160,10 @@ namespace ClientWPF
 
                 client.Close();
 
-				loader.Visibility = System.Windows.Visibility.Hidden;
-				//Console.WriteLine("load !");
-				
+                loader.Visibility = System.Windows.Visibility.Hidden;
+                loader.Stop();
+                //Console.WriteLine("load !");
+
             }
 
 			return true;
@@ -263,6 +270,8 @@ namespace ClientWPF
         /// <param name="e"></param>
         private void ListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            
+            
             Console.WriteLine("DoubleClick");
 
             //ServiceAgence.BienImmobilierBase SelectedBien = (ServiceAgence.BienImmobilierBase)listBox.SelectedItem;
@@ -280,8 +289,9 @@ namespace ClientWPF
                 }
             }
         }
-
         #endregion
+
+
 
     }
 }
