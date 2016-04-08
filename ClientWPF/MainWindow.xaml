@@ -4,7 +4,7 @@
         xmlns:s="clr-namespace:ClientWPF.ServiceAgence"
         xmlns:wpf="clr-namespace:ClientWPF"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
-        Title="Gestion de biens immobiliers"
+        Title="The Awesome Estate Agency - Gestion de biens immobiliers"
         WindowStartupLocation="CenterScreen">
 
 	<Window.Resources>
