@@ -6,7 +6,7 @@
         xmlns:wpf="clr-namespace:ClientWPF"
         xmlns:local="clr-namespace:ClientWPF"
         mc:Ignorable="d"
-        Title="Windowbien" Height="Auto" Width="300" SizeToContent="Height">
+        Title="Édition de bien" Height="Auto" Width="300" SizeToContent="Height">
 	<Window.Resources>
 		<wpf:ConverterImage x:Key="ConversionImage"/>
 	</Window.Resources>

@@ -71,7 +71,7 @@ namespace ClientWPF
 
 			if (id != -1) // Modifier : Recup data du bien
 			{
-				//openFileDialog.Content = "Remplacer l'image";
+				openFileDialog.Content = "Remplacer l'image";
 				using (ServiceAgence.AgenceClient client = new ServiceAgence.AgenceClient())
 				{
 
@@ -145,27 +145,19 @@ namespace ClientWPF
 
 		private void bOpenFileDialog_Click(object sender, RoutedEventArgs e)
 		{
-			// Create an instance of the open file dialog box.
 			OpenFileDialog openFileDialog1 = new OpenFileDialog();
-			openFileDialog1.Title = "Photo...";
 
-			// Set filter options and filter index.
-			openFileDialog1.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
+			openFileDialog1.Filter = "Tous les formats supportés|*.jpg;*.jpeg;*.png|" +
 			  "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
 			  "Portable Network Graphic (*.png)|*.png";
 			openFileDialog1.FilterIndex = 1;
 
-			openFileDialog1.Multiselect = true;
-
-
-			// Call the ShowDialog method to show the dialog box.
 			bool? userClickedOK = openFileDialog1.ShowDialog();
 
-			// Process input if the user clicked OK.
 			if (userClickedOK == true)
 			{
 				u = new Uri(openFileDialog1.FileName);
-				//openFileDialog.Content = "Remplacer l'image";
+				openFileDialog.Content = "Remplacer l'image";
 			}
 		}
 
