@@ -192,14 +192,13 @@ namespace ClientWPF
 
             if (winadd.ShowDialog() == true)
             {
-                //ListeBienImmo.Add(winadd.bien);
 				await InitBiensAsync();
             }
 
         }
 
         /// <summary>
-        /// Non opérationnelle
+        /// Fenetre de modification d'un bien
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -210,10 +209,7 @@ namespace ClientWPF
                 Windowadd winadd = new Windowadd(selectedItem.Id);
 
                 if (winadd.ShowDialog() == true)
-                {/*
-                    int pos = ListeBienImmo.IndexOf(selectedItem);
-                    ListeBienImmo.Remove(selectedItem);
-                    ListeBienImmo.Insert(pos, winadd.bien);*/
+                {
 					await InitBiensAsync();
                 }
             }
@@ -222,7 +218,7 @@ namespace ClientWPF
 
 
         /// <summary>
-        /// Supprime dans la base, mais actualisation ne marche pas (il faut relancer le programme)
+        /// Supprime dans la base
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

@@ -71,7 +71,7 @@ namespace ClientWPF
 
 			if (id != -1) // Modifier : Recup data du bien
 			{
-				openFileDialog.Content = "Remplacer l'image";
+				//openFileDialog.Content = "Remplacer l'image";
 				using (ServiceAgence.AgenceClient client = new ServiceAgence.AgenceClient())
 				{
 
@@ -165,7 +165,7 @@ namespace ClientWPF
 			if (userClickedOK == true)
 			{
 				u = new Uri(openFileDialog1.FileName);
-				openFileDialog.Content = "Remplacer l'image";
+				//openFileDialog.Content = "Remplacer l'image";
 			}
 		}
 
