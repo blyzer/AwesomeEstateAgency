@@ -84,9 +84,8 @@
 		<Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" Content="Titre"  FontSize="12" FontWeight="Bold" />
 		<TextBox Grid.Row="0" Grid.Column="2" HorizontalAlignment="Stretch" Height="24"  TextWrapping="Wrap" Text="{Binding bien.Titre}" VerticalAlignment="Center" />
 
-		<Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Content="Image"  FontSize="12" FontWeight="Bold" />
-		<TextBox Grid.Row="1" Grid.Column="2" Text="{Binding u.AbsolutePath}" Height="24" Margin="0,2,55,2" />		
-		<Button Grid.Row="1" Grid.Column="2" Content="Ouvrir..." Height="24"  Click="bOpenFileDialog_Click" Margin="81,2,0,2" />
+		<Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Content="Image"  FontSize="12" FontWeight="Bold" />		
+		<Button x:Name="openFileDialog" Grid.Row="1" Grid.Column="2" Content="Ouvrir une image" Height="24"  Click="bOpenFileDialog_Click"  />
 <!---->
 		<Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="1"  Content="Description" FontSize="12" FontWeight="Bold" />
 		<TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"  Text="{Binding bien.Description}" MinHeight="48" TextWrapping="Wrap"  Margin="4,4,0,4" FontSize="12"  />
