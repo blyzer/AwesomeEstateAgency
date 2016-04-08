@@ -11,6 +11,14 @@
 
 	<Window.Resources>
 
+		<ObjectDataProvider x:Key="TypeTransactionTypesProvider"
+          MethodName="GetValues"
+          ObjectType="{x:Type sys:Enum}">
+			<ObjectDataProvider.MethodParameters>
+				<x:Type TypeName="s:BienImmobilierBase+eTypeTransaction"/>
+			</ObjectDataProvider.MethodParameters>
+		</ObjectDataProvider>
+
 		<ObjectDataProvider x:Key="TypeBienTypesProvider"
           MethodName="GetValues"
           ObjectType="{x:Type sys:Enum}">
@@ -62,6 +70,7 @@
 			<RowDefinition Height="28"/>
 			<RowDefinition Height="28"/>
 			<RowDefinition Height="28"/>
+			<RowDefinition Height="28"/>			
 			<RowDefinition Height="32"/>
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
@@ -76,53 +85,54 @@
 		<TextBox Grid.Row="0" Grid.Column="2" HorizontalAlignment="Stretch" Height="24"  TextWrapping="Wrap" Text="{Binding bien.Titre}" VerticalAlignment="Center" />
 
 		<Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Content="Image"  FontSize="12" FontWeight="Bold" />
-		<Button Grid.Row="1" Grid.Column="2" Content="Ouvrir un fichier" Height="24"  Click="bOpenFileDialog_Click" />
-
+		<TextBox Grid.Row="1" Grid.Column="2" Text="{Binding u.AbsolutePath}" Height="24" Margin="0,2,55,2" />		
+		<Button Grid.Row="1" Grid.Column="2" Content="Ouvrir..." Height="24"  Click="bOpenFileDialog_Click" Margin="81,2,0,2" />
+<!---->
 		<Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="1"  Content="Description" FontSize="12" FontWeight="Bold" />
 		<TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"  Text="{Binding bien.Description}" MinHeight="48" TextWrapping="Wrap"  Margin="4,4,0,4" FontSize="12"  />
 
 		<Label Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="1" Content="Type de bien"  FontSize="12" FontWeight="Bold" />
-		<TextBox Grid.Row="4" Grid.Column="2" HorizontalAlignment="Stretch" Height="24"  TextWrapping="Wrap" Text="{Binding bien.TypeBien}" VerticalAlignment="Center" />
 		<ComboBox  Grid.Row="4" Grid.Column="2" HorizontalAlignment="Stretch" Height="24" VerticalAlignment="Center" ItemsSource="{Binding Source={StaticResource TypeBienTypesProvider}}" SelectedValue="{Binding bien.TypeBien}" SelectedIndex="0" />
 
-		<Label Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="1" Content="Adresse" FontSize="12" FontWeight="Bold" />
-		<TextBox Grid.Row="5" Grid.Column="2" HorizontalAlignment="Stretch" Height="24" TextWrapping="Wrap" Text="{Binding bien.Adresse}" VerticalAlignment="Center" />
+		<Label Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="1" Content="Type de transaction"  FontSize="12" FontWeight="Bold" />
+		<ComboBox  Grid.Row="5" Grid.Column="2" HorizontalAlignment="Stretch" Height="24" VerticalAlignment="Center" ItemsSource="{Binding Source={StaticResource TypeTransactionTypesProvider}}" SelectedValue="{Binding bien.TypeTransaction}" SelectedIndex="0" />
 
-		<Label Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="1" Content="Ville" FontSize="12" FontWeight="Bold" />
-		<TextBox Grid.Row="6" Grid.Column="2" HorizontalAlignment="Stretch" Height="24" TextWrapping="Wrap" Text="{Binding bien.Ville}" VerticalAlignment="Center" />
+		<Label Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="1" Content="Adresse" FontSize="12" FontWeight="Bold" />
+		<TextBox Grid.Row="6" Grid.Column="2" HorizontalAlignment="Stretch" Height="24" TextWrapping="Wrap" Text="{Binding bien.Adresse}" VerticalAlignment="Center" />
 
-		<Label Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="1" Content="Numéro d'étage" FontSize="12" FontWeight="Bold" />
-		<TextBox Grid.Row="7" Grid.Column="2" HorizontalAlignment="Stretch" Height="24" TextWrapping="Wrap" Text="{Binding bien.NumEtage}" VerticalAlignment="Center" />
+		<Label Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="1" Content="Ville" FontSize="12" FontWeight="Bold" />
+		<TextBox Grid.Row="7" Grid.Column="2" HorizontalAlignment="Stretch" Height="24" TextWrapping="Wrap" Text="{Binding bien.Ville}" VerticalAlignment="Center" />
 
 		<Label Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="1" Content="Code postal" FontSize="12" FontWeight="Bold" />
 		<TextBox Grid.Row="8" Grid.Column="2" HorizontalAlignment="Stretch" Height="24" TextWrapping="Wrap" Text="{Binding bien.CodePostal}" VerticalAlignment="Center" />
 
+		<Label Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="1" Content="Numéro d'étage" FontSize="12" FontWeight="Bold" />
+		<TextBox Grid.Row="9" Grid.Column="2" HorizontalAlignment="Stretch" Height="24" TextWrapping="Wrap" Text="{Binding bien.NumEtage}" VerticalAlignment="Center" />
+
+		<Label Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="1" Content="Surface (m²)" FontSize="12" FontWeight="Bold" />
+		<TextBox Grid.Row="10" Grid.Column="2" HorizontalAlignment="Stretch" Height="24" TextWrapping="Wrap" Text="{Binding bien.Surface}" VerticalAlignment="Center" />
+
+		<Label Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="1" Content="Nombre de pièces" FontSize="12" FontWeight="Bold" />
+		<TextBox Grid.Row="11" Grid.Column="2" HorizontalAlignment="Stretch" Height="24" TextWrapping="Wrap" Text="{Binding bien.NbPieces}" VerticalAlignment="Center" />
+
+		<Label Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="1" Content="Nombre d'étages" FontSize="12" FontWeight="Bold" />
+		<TextBox Grid.Row="12" Grid.Column="2" HorizontalAlignment="Stretch" Height="24" TextWrapping="Wrap" Text="{Binding bien.NbEtages}" VerticalAlignment="Center" />
+
+		<Label Grid.Row="13" Grid.Column="1" Grid.ColumnSpan="1" Content="Type de chauffage" FontSize="12" FontWeight="Bold" />
+		<ComboBox  Grid.Row="13" Grid.Column="2" HorizontalAlignment="Stretch" Height="24" VerticalAlignment="Center" ItemsSource="{Binding Source={StaticResource TypeChauffageTypesProvider}}" SelectedValue="{Binding bien.TypeChauffage}" SelectedIndex="0" />
+
+		<Label Grid.Row="14" Grid.Column="1" Grid.ColumnSpan="1" Content="Énergie chauffage" FontSize="12" FontWeight="Bold" />
+		<ComboBox  Grid.Row="14" Grid.Column="2" HorizontalAlignment="Stretch" Height="24" VerticalAlignment="Center" ItemsSource="{Binding Source={StaticResource EnergieChauffageTypesProvider}}" SelectedValue="{Binding bien.EnergieChauffage}" SelectedIndex="0" />
 
 
-		<Label Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="1" Content="Surface" FontSize="12" FontWeight="Bold" />
-		<TextBox Grid.Row="9" Grid.Column="2" HorizontalAlignment="Stretch" Height="24" TextWrapping="Wrap" Text="{Binding bien.Surface}" VerticalAlignment="Center" />
+		<Label Grid.Row="15" Grid.Column="1" Grid.ColumnSpan="1" Content="Prix (€)" FontSize="12" FontWeight="Bold" />
+		<TextBox Grid.Row="15" Grid.Column="2" HorizontalAlignment="Stretch" Height="24" TextWrapping="Wrap" Text="{Binding bien.Prix}" VerticalAlignment="Center" />
 
-		<Label Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="1" Content="Nombre de pièces" FontSize="12" FontWeight="Bold" />
-		<TextBox Grid.Row="10" Grid.Column="2" HorizontalAlignment="Stretch" Height="24" TextWrapping="Wrap" Text="{Binding bien.NbPieces}" VerticalAlignment="Center" />
+		<Label Grid.Row="16" Grid.Column="1" Grid.ColumnSpan="1"  Content="Charges (€)" FontSize="12" FontWeight="Bold" />
+		<TextBox Grid.Row="16" Grid.Column="2" HorizontalAlignment="Stretch" Height="24" TextWrapping="Wrap" Text="{Binding bien.MontantCharges}" VerticalAlignment="Center" />
 
-		<Label Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="1" Content="Nombre d'étages" FontSize="12" FontWeight="Bold" />
-		<TextBox Grid.Row="11" Grid.Column="2" HorizontalAlignment="Stretch" Height="24" TextWrapping="Wrap" Text="{Binding bien.NbEtages}" VerticalAlignment="Center" />
-
-		<Label Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="1" Content="Type de chauffage" FontSize="12" FontWeight="Bold" />
-		<ComboBox  Grid.Row="12" Grid.Column="2" HorizontalAlignment="Stretch" Height="24" VerticalAlignment="Center" ItemsSource="{Binding Source={StaticResource TypeChauffageTypesProvider}}" SelectedValue="{Binding bien.TypeChauffage}" SelectedIndex="0" />
-
-		<Label Grid.Row="13" Grid.Column="1" Grid.ColumnSpan="1" Content="Énergie chauffage" FontSize="12" FontWeight="Bold" />
-		<ComboBox  Grid.Row="13" Grid.Column="2" HorizontalAlignment="Stretch" Height="24" VerticalAlignment="Center" ItemsSource="{Binding Source={StaticResource EnergieChauffageTypesProvider}}" SelectedValue="{Binding bien.EnergieChauffage}" SelectedIndex="0" />
-
-
-		<Label Grid.Row="14" Grid.Column="1" Grid.ColumnSpan="1" Content="Prix" FontSize="12" FontWeight="Bold" />
-		<TextBox Grid.Row="14" Grid.Column="2" HorizontalAlignment="Stretch" Height="24" TextWrapping="Wrap" Text="{Binding bien.Prix}" VerticalAlignment="Center" />
-
-		<Label Grid.Row="15" Grid.Column="1" Grid.ColumnSpan="1"  Content="Charges" FontSize="12" FontWeight="Bold" />
-		<TextBox Grid.Row="15" Grid.Column="2" HorizontalAlignment="Stretch" Height="24" TextWrapping="Wrap" Text="{Binding bien.MontantCharges}" VerticalAlignment="Center" />
-
-		<Button Grid.Row="16" Grid.Column="1" Content="Sauvegarder" Height="24" Margin="0,0,4,0" Click="save_Click"></Button>
-		<Button Grid.Row="16" Grid.Column="2" Content="Annuler" Height="24" Margin="4,0,0,0" Click="close_Click"></Button>
+		<Button Grid.Row="17" Grid.Column="1" Content="Sauvegarder" Height="24" Margin="0,0,4,0" Click="save_Click"></Button>
+		<Button Grid.Row="17" Grid.Column="2" Content="Annuler" Height="24" Margin="4,0,0,0" Click="close_Click"></Button>
 
 
 	</Grid>
