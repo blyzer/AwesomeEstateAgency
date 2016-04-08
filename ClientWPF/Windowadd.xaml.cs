@@ -122,6 +122,13 @@ namespace ClientWPF
 
 				else // Modifier
 				{
+                    if (u != null)
+                    {
+                        BitmapImage bi = new BitmapImage(u);
+                        bien.PhotoPrincipaleBase64 = BitmapImagetoBase64(bi);
+                        bien.PhotosBase64 = new ObservableCollection<string>();
+                        bien.PhotosBase64.Add(bien.PhotoPrincipaleBase64);
+                    }
 					ServiceAgence.ResultatBool res = client.ModifierBienImmobilier(bien);
 
 				}
